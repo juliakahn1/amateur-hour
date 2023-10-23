@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const mongoose = require('mongoose');
-const { mongoURI: db } = require('../config/key');
+const { mongoURI: db } = require('../config/keys');
 
 /**
  * Module dependencies.
