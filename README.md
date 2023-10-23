@@ -9,10 +9,11 @@ It can be near impossible for people who have marketable skills (such as photogr
 ## Functionality and MVP
 
 - [ ] User authorization: sign up and login
-- [ ] Profile creation: client or provider — display relevant portfolio, links, and skillsm
-- [ ] Profile display: providers marketing themselves to potential clients
-- [ ] Service index: browsing vendor offerings
-- [ ]  
+- [ ] Profile: create and personalize public profiles to advertise skills 
+- [ ] Services: list all available providers/services 
+- [ ] Service request flow
+- [ ] User dashboard: view your requests, job requests, and ongoing jobs
+- [ ] Production README.md
 
 ## Technologies and technical challenges
 
