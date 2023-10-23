@@ -8,7 +8,7 @@ It can be near impossible for people who have marketable skills (such as photogr
 
 To ensure the integrity between provider and client (to avoid the client accepting the provider's services without compensation), the service request flow is:
 1. Client requests a service from the provider (job status: "requested")
-2. The provder requests the service (job status: "ongoing")
+2. The provider requests the service (job status: "ongoing")
 3. The provider marks the job as finished (job status: "pending client compensation")
 4. The client loses access to the Amateur Hour features until they compensate the provider and mark their review/post/etc. as complete (job status: "pending provider confirmation")
 5. The provider confirms the client's compensation, the client regains access to site (job status: "complete")
