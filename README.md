@@ -17,6 +17,9 @@ It can be near impossible for people who have marketable skills (such as photogr
 
 ## Technologies and technical challenges
 
+We're not using any outside APIs.
+An anticipated technical challenge is implenting the logic for the user dashboard to field service requests and ongoing jobs.
+
 ## Group members and work breakdown
 
 Julia Kahn (frontend), Shannon Millar (backend), Mitchell Chan & Davis Lucky
