@@ -6,45 +6,26 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [location, setLocation] = useState('');
-  const [service, setService] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
-  let form
-
-  const updateProfile = (e) => {
-    e.preventDefault()
-    // patch profile with services/links from local state "service"
-    // redirect to user index
-  }
 
   const handleSubmit = e => {
     e.preventDefault();
     const user = {
+      firstName,
+      lastName,
       email,
-      username,
       password,
       location
     };
-
+    console.log(user)
     dispatch(signup(user));
-    form = (
-      <>
-        <div className="profile-services-form">
-          <h2>Profile details</h2>
-          <h3>Services</h3>
-          <div className="service-type-tiles">
-            <button onClick={() => setService('Photography')}>Photography</button>
-            <button onClick={() => setService('Gardening')}>Gardening</button>
-          </div>
-        </div>
-          <button onClick={() => updateProfile(e)}>Create Account</button>
-        <button>Skip</button>
-      </>
-    )
+    <Redirect to='/signup/services' />
   }
 
   const update = field => {
@@ -54,8 +35,11 @@ function SignupForm () {
       case 'email':
         setState = setEmail;
         break;
-      case 'username':
-        setState = setUsername;
+      case 'firstName':
+        setState = setFirstName;
+        break;
+      case 'lastName':
+        setState = setLastName;
         break;
       case 'password':
         setState = setPassword;
@@ -73,64 +57,6 @@ function SignupForm () {
     return e => setState(e.currentTarget.value);
   }
 
-  form = (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Sign Up Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
-        />
-      </label>
-      <div className="errors">{errors?.username}</div>
-      <label>
-        <span>Username</span>
-        <input type="text"
-          value={username}
-          onChange={update('username')}
-          placeholder="Username"
-        />
-      </label>
-      <div className="errors">{errors?.location}</div>
-      <label>
-        <span>Location</span>
-        <input type="text"
-          value={location}
-          onChange={update('location')}
-          placeholder="Where are you?"
-        />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <div className="errors">
-        {password !== password2 && 'Confirm Password field must match'}
-      </div>
-      <label>
-        <span>Confirm Password</span>
-        <input type="password"
-          value={password2}
-          onChange={update('password2')}
-          placeholder="Confirm Password"
-        />
-      </label>
-      <input
-        type="submit"
-        value="Next"
-        disabled={!email || !username || !password || password !== password2}
-      />
-    </form>
-  )
-
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
@@ -139,7 +65,71 @@ function SignupForm () {
 
   return (
     <>
-      { form }
+      <form className="session-form" onSubmit={handleSubmit}>
+        <h2>Sign Up Form</h2>
+        <div className="errors">{errors?.email}</div>
+        <label>
+          <span>Email</span>
+          <input type="text"
+            value={email}
+            onChange={update('email')}
+            placeholder="Email"
+          />
+        </label>
+        <div className="errors">{errors?.firstName}</div>
+        <label>
+          <span>First Name</span>
+          <input type="text"
+            value={firstName}
+            onChange={update('firstName')}
+            placeholder="First name"
+          />
+        </label>
+        <div className="errors">{errors?.lastName}</div>
+        <label>
+          <span>Last Name</span>
+          <input type="text"
+            value={lastName}
+            onChange={update('lastName')}
+            placeholder="Last name"
+          />
+        </label>
+        <div className="errors">{errors?.location}</div>
+        <label>
+          <span>Location (optional)</span>
+          <select name="services" onChange={update("location")}>
+            <option selected value="none">Where are you located?</option>
+            <option value="ca-bay-area">California Bay Area</option>
+            <option value="s-ca">Southern California</option>
+            <option value="chicagoland">Chicagoland</option>
+          </select>
+        </label>
+        <div className="errors">{errors?.password}</div>
+        <label>
+          <span>Password</span>
+          <input type="password"
+            value={password}
+            onChange={update('password')}
+            placeholder="Password"
+          />
+        </label>
+        <div className="errors">
+          {password !== password2 && 'Confirm Password field must match'}
+        </div>
+        <label>
+          <span>Confirm Password</span>
+          <input type="password"
+            value={password2}
+            onChange={update('password2')}
+            placeholder="Reenter your password"
+          />
+        </label>
+        <input
+          type="submit"
+          value="Create Account"
+          disabled={!email || !firstName || !lastName || !password || password !== password2}
+        />
+      </form>
     </>
   );
 }
