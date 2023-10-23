@@ -1,0 +1,12 @@
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links-auth {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

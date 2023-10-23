@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import './NavBar.scss';
+import './NavBar.css';
 import { logout } from '../../store/session';
 
 const NavBar = () => {
@@ -33,8 +33,10 @@ const NavBar = () => {
 
   return (
     <>
-      <h1>Amateur Hour</h1>
-      { getLinks() }
+      <div className="navbar-wrapper">
+        <h1>Amateur Hour</h1>
+        { getLinks() }
+      </div>
     </>
   )
 }

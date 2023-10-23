@@ -28,7 +28,8 @@ function LoginForm () {
 
   return (
     <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Log In Form</h2>
+      {/* <h2>Log In Form</h2> */}
+      <p>Description of what this site is about.</p>
       <div className="errors">{errors?.email}</div>
       <label>
         <span>Email</span>

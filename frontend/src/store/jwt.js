@@ -39,10 +39,10 @@ function getCookie(cookieName) {
 // If the options.method is not 'GET', then set the "Content-Type" header to
   // "application/json" and the "CSRF-Token" header to the value stored in the
   // "CSRF-TOKEN" cookie.
-if (options.method.toUpperCase() !== "GET") {
-  options.headers["Content-Type"] =
-    options.headers["Content-Type"] || "application/json";
-  options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
-}
+// if (options.method.toUpperCase() !== "GET") {
+//   options.headers["Content-Type"] =
+//     options.headers["Content-Type"] || "application/json";
+//   options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
+// }
 
 export default jwtFetch;
