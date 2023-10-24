@@ -63,9 +63,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', requireUser, validateServiceInput, async (req, res, next) => {
     // Check to make sure a user does not already have a service with the proposed
     // category.
-    const service = await Service.findOne({
-        $or: [{ provider: req.user._id, category: req.body.category }]
-    });
+    const service = await Service.findOne({ provider: req.user._id, category: req.body.category });
 
     if (service) {
         // Throw a 400 error if the email address and/or email already exists
