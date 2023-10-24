@@ -15,6 +15,7 @@ const passport = require('passport');
 
 const usersRouter = require('./routes/api/users');
 const servicesRouter = require('./routes/api/services');
+const jobsRouter = require('./routes/api/jobs');
 const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
@@ -47,6 +48,7 @@ app.use(
 
 app.use('/api/users', usersRouter);
 app.use('/api/services', servicesRouter);
+app.use('/api/jobs', jobsRouter);
 app.use('/api/csrf', csrfRouter);
 
 // Express custom middleware for catching all unmatched requests and formatting

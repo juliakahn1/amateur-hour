@@ -1,19 +1,15 @@
 const { check } = require("express-validator");
 const handleValidationErrors = require('./handleValidationErrors');
-const { statusOptions } = require('../../frontend/src/constants');
+
+//// status will be updated from routes only and not passed in from the front-end
+// const { statusOptions } = require('../../frontend/src/constants');
 
 const validateJobInput = [
-    check('statusDescription')
-        .exists({ checkFalse: true })
-        .isIn(statusOptions)
-        .withMessage('Status does not exist in job request flow'),
-    check('date')
-        // To delete leading and trailing space
-        .trim()
-        // Validate DOB to be a valid date
-        .isDate()
-        // Custom message
-        .withMessage('Must be a valid date'),
+    //// isDate is no longer used. Consider using ISO if it matches frontend date input
+    // check('date')
+    //     .isDate()
+    //     .withMessage('Date is not valid'),
+    
     handleValidationErrors
 ];
 
