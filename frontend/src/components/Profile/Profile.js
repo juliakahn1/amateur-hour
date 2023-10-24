@@ -46,7 +46,7 @@ function Profile () {
         </>
     ) : (
         <>
-        <div>
+        <div className="service-info-container">
             {/* <h1>Hello, {userService.provider.firstName}</h1> */}
             <p>{userService.category}</p>
             <p>{userService.compensation}</p>
