@@ -1,16 +1,23 @@
 import jwtFetch from "./jwt"
 
-const GET_SERVICE = "service/GET_SERVICE"
-const ADD_SERVICE = "service/ADD_SERVICE"
-const EDIT_SERVICE = "service/EDIT_SERVICE"
-const REMOVE_SERVICE = "service/REMOVE_SERVICE"
+const GET_SERVICE = "services/GET_SERVICE"
+const GET_SERVICES = "services/GET_SERVICES"
+const ADD_SERVICE = "services/ADD_SERVICE"
+const EDIT_SERVICE = "services/EDIT_SERVICE"
+const REMOVE_SERVICE = "services/REMOVE_SERVICE"
 
-// post
 
 const getService = service => {
   return {
     type: GET_SERVICE,
     service
+  }
+}
+
+const getServices = services => {
+  return {
+    type: GET_SERVICES,
+    services
   }
 }
 
@@ -35,6 +42,22 @@ const removeService = serviceId => {
   }
 }
 
+export const fetchService = (serviceId) => async (dispatch) => {
+  const res = await jwtFetch(`/api/services/${serviceId}`)
+  if (res.ok) {
+    const service = await res.json()
+    dispatch(getService(service))
+  }
+}
+
+export const fetchServices = () => async (dispatch) => {
+  const res = await jwtFetch(`/api/services/`)
+  if (res.ok) {
+    const services = await res.json()
+    dispatch(getServices(services))
+  }
+}
+
 export const createService = (service) => async (dispatch) => {
   const res = await jwtFetch('/api/services/', {
     method: 'POST',
@@ -46,10 +69,40 @@ export const createService = (service) => async (dispatch) => {
   }
 }
 
+export const updateService = (service, serviceId) => async (dispatch) => {
+  const res = await jwtFetch(`/api/services/${serviceId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(service)
+  })
+  if (res.ok) {
+    const service = await res.json()
+    dispatch(editService(service))
+  }
+}
+
+export const deleteService = (serviceId) => async (dispatch) => {
+  const res = await jwtFetch(`/api/services/${serviceId}`, {
+    method: 'DELETE',
+  })
+  if (res.ok) {
+    dispatch(removeService(serviceId))
+  }
+}
+
 export const servicesReducer = (store = {}, action) => {
   switch (action.type) {
+    case GET_SERVICES:
+      return { ...store, ...action.services }
+    case GET_SERVICE:
+      return { ...store, [action.service._id]: action.service }
     case ADD_SERVICE:
       return { ...store, [action.service._id]: action.service}
+    case EDIT_SERVICE:
+      return { ...store, [action.service._id]: action.service}
+    case REMOVE_SERVICE:
+      const newStore = { ...store }
+      delete newStore[action.serviceId]
+      return newStore
     default:
       return store
   }

@@ -44,7 +44,7 @@ return (
                 <input value={service}
                   className="service-radio-button"
                   type="radio"
-                  name="radio"
+                  name="radio-service"
                   onChange={() => setServiceCategory({service})}/>
                   <div className="radio-tile">{service}</div>
               </div>
@@ -66,7 +66,7 @@ return (
                 <input value={comp}
                   className="service-radio-button"
                   type="radio"
-                  name="radio"
+                  name="radio-comp"
                   onChange={() => setCompensation({comp})}/>
                   <div className="radio-tile">{comp}</div>
               </div>
