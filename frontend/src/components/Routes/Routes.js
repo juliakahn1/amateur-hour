@@ -1,5 +1,6 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 // prevents users from visiting login page is signed in
 export const AuthRoute = ({ component: Component, path, exact }) => {
@@ -18,18 +19,23 @@ export const AuthRoute = ({ component: Component, path, exact }) => {
 
 // prevents not-logged in users from accessing certain routes
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const loggedIn = useSelector(state => !!state.session.user);
-
-  return (
+  const [mounting, setMounting] = useState(false)
+  // const loggedIn = useSelector(state => !!state.session.user);
+  const loggedIn = useSelector(state => state.session.user);
+  console.log(loggedIn)
+  useEffect(() => {
+    if (loggedIn !== undefined) setMounting(true)
+  }, [loggedIn])
+  return mounting ? (
     <Route
       {...rest}
       render={props =>
         loggedIn ? (
           <Component {...props} /> // to desired component
         ) : (
-          <Redirect to="/login" /> // redirect to login
+          <Redirect to="/login" />
         )
       }
     />
-  );
+  ) : null;
 };

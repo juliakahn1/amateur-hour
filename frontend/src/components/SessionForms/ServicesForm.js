@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import { compOptions, serviceCategories } from "../../constants"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 const ServicesForm = () => {
   const [serviceCategory, setServiceCategory] = useState('')
   const [portfolio, setPortfolio] = useState('')
   const [compensation, setCompensation] = useState('')
-
-  const services = ['Photography', 'Bartending', 'Gardening']
-  const comp = ['Yelp review', 'Social media tagged post', 'Google review']
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -17,7 +17,12 @@ const ServicesForm = () => {
       portfolio,
       compensation
     }
-    // dispatch
+    // dispatch()
+  }
+
+  const skipServices = e => {
+    e.preventDefault()
+    history.push('/')
   }
 
 return (
@@ -29,7 +34,7 @@ return (
       <form onSubmit={handleSubmit}>
         <h4>Your skills</h4>
         <div className="services-tiles">
-          { services.map((service, index) => {
+          { serviceCategories.map((service, index) => {
             return (
               <div key={index} className="service-input-container">
                 <input value={service}
@@ -51,7 +56,7 @@ return (
         </label>
         <h4>Choose your compensation</h4>
         <div className="services-tiles">
-          { comp.map((comp, index) => {
+          { compOptions.map((comp, index) => {
             return (
               <div key={index} className="service-input-container">
                 <input value={comp}
@@ -70,7 +75,7 @@ return (
           disabled={!serviceCategory || !portfolio || !compensation}
         />
       </form>
-      <button>Skip</button>
+      <button onClick={(e) => skipServices(e)}>Skip</button>
     </div>
 
   </>
