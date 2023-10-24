@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 import { sessionErrorsReducer } from './session';
+import { jobsErrorsReducer } from './jobs';
 
 export default combineReducers({
-  session: sessionErrorsReducer
+  session: sessionErrorsReducer,
+  jobs: jobsErrorsReducer
   // will also have jobs
 });
