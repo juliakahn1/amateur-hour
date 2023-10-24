@@ -11,7 +11,6 @@ import SignupForm from './components/SessionForms/SignupForm';
 import ServicesForm from './components/SessionForms/ServicesForm'
 
 import { getCurrentUser } from './store/session';
-import { Route } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -24,10 +23,10 @@ function App() {
     <>
       <NavBar />
       <Switch>
-        <AuthRoute exact path="/" component={Home} />
-        <AuthRoute exact path="/login" component={LoginForm} />
         <ProtectedRoute exact path="/signup/services" component={ServicesForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
+        <AuthRoute exact path="/login" component={LoginForm} />
+        <AuthRoute exact path="/" component={Home} />
       </Switch>
     </>
   );
