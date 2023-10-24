@@ -9,11 +9,20 @@ async function jwtFetch(url, options = {}) {
   if (jwtToken) options.headers["Authorization"] = 'Bearer ' + jwtToken;
 
   // If the options.method is not 'GET', then set the "Content-Type" header to
-  // "application/json".
+  // "application/json" and the "CSRF-Token" header to the value stored in the
+  // "CSRF-TOKEN" cookie.
   if (options.method.toUpperCase() !== "GET") {
     options.headers["Content-Type"] =
       options.headers["Content-Type"] || "application/json";
+    options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
   }
+
+  // If the options.method is not 'GET', then set the "Content-Type" header to
+  // "application/json".
+  // if (options.method.toUpperCase() !== "GET") {
+  //   options.headers["Content-Type"] =
+  //     options.headers["Content-Type"] || "application/json";
+  // }
 
   // Call fetch with the url and the updated options hash.
   const res = await fetch(url, options);
@@ -35,14 +44,5 @@ function getCookie(cookieName) {
   }
   return null;
 }
-
-// If the options.method is not 'GET', then set the "Content-Type" header to
-  // "application/json" and the "CSRF-Token" header to the value stored in the
-  // "CSRF-TOKEN" cookie.
-// if (options.method.toUpperCase() !== "GET") {
-//   options.headers["Content-Type"] =
-//     options.headers["Content-Type"] || "application/json";
-//   options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
-// }
 
 export default jwtFetch;
