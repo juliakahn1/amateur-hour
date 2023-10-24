@@ -14,7 +14,7 @@ function SignupForm () {
   const [location, setLocation] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
-  let history = useHistory()
+  const history = useHistory()
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -25,8 +25,8 @@ function SignupForm () {
       password,
       location
     };
-    console.log(user)
-    dispatch(signup(user));
+    dispatch(signup(user))
+    // return <Redirect to='/signup/services' />
     history.push('/signup/services')
   }
 

@@ -7,8 +7,8 @@ const ServicesForm = () => {
   const [portfolio, setPortfolio] = useState('')
   const [compensation, setCompensation] = useState('')
 
-  const services = ['Photography', 'Bartending', 'Gardening']
-  const comp = ['Yelp review', 'Social media tagged post', 'Google review']
+  // const services = ['Photography', 'Bartending', 'Gardening']
+  // const comp = ['Yelp review', 'Social media tagged post', 'Google review']
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,7 +29,7 @@ return (
       <form onSubmit={handleSubmit}>
         <h4>Your skills</h4>
         <div className="services-tiles">
-          { services.map((service, index) => {
+          { serviceCategories.map((service, index) => {
             return (
               <div key={index} className="service-input-container">
                 <input value={service}
@@ -51,7 +51,7 @@ return (
         </label>
         <h4>Choose your compensation</h4>
         <div className="services-tiles">
-          { comp.map((comp, index) => {
+          { compOptions.map((comp, index) => {
             return (
               <div key={index} className="service-input-container">
                 <input value={comp}
