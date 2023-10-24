@@ -2,24 +2,28 @@ import { compOptions, serviceCategories } from "../../constants";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { updateService } from "../../store/services";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
-function ProfileEdit() {
+
+function ProfileEdit({userService}) {
     const dispatch = useDispatch();
     const [serviceCategory, setServiceCategory] = useState();
     const [compensation, setCompensation] = useState();
-    const [portfolio, setPortfolio] = useState();
+    const [portfolio, setPortfolio] = useState(userService.otherLink);
+    
     const history = useHistory();
 
     const handleSubmit = e => {
-        // e.preventDefault();
         
         const service = {
-            serviceCategory,
-            portfolio,
-            compensation
+            
+            category: serviceCategory,
+            otherLink: portfolio,
+            compensation: compensation
         }
+        dispatch(updateService(service, userService._id));
 
     }
 
@@ -31,18 +35,18 @@ function ProfileEdit() {
                 <h4>Change skill</h4>
                 <div className="services-tiles">
                     {
-                        serviceCategories.map((category, index) => {
+                        serviceCategories.map((categoryType, index) => {
                             return (
                                 <div key={index} className="service-input-container">
                                     <input 
-                                        value={category}
+                                        value={categoryType}
                                         className="service-radio-button"
                                         type="radio"
                                         name="radio-service-category"
-                                        onChange={() => setServiceCategory({category})}
-                                        
+                                        onChange={() => setServiceCategory(categoryType)}
+                                        // defaultChecked={}
                                     />
-                                    <div className="radio-tile">{category}</div>
+                                    <div className="radio-tile">{categoryType}</div>
                                 </div>
                             )
                         })
@@ -59,7 +63,7 @@ function ProfileEdit() {
                                         className="service-radio-button"
                                         type="radio"
                                         name="radio-compType"
-                                        onChange={() => setCompensation({compType})}
+                                        onChange={() => setCompensation(compType)}
                                     />
                                     <div className="radio-tile">{compType}</div>
                                 </div>
