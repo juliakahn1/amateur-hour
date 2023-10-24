@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -13,6 +14,8 @@ function SignupForm () {
   const [location, setLocation] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+  let history = useHistory()
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -25,7 +28,7 @@ function SignupForm () {
     };
     console.log(user)
     dispatch(signup(user));
-    <Redirect to='/signup/services' />
+    history.push('/signup/services')
   }
 
   const update = field => {
