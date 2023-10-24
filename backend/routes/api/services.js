@@ -57,8 +57,8 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // Attach requireUser as a middleware before the route handler to gain access
-// to req.user. (requireUser will return an error response if there is no 
-// current user.) Also attach validateServiceInput as a middleware before the 
+// to req.user. (requireUser will return an error response if there is no
+// current user.) Also attach validateServiceInput as a middleware before the
 // route handler.
 router.post('/', requireUser, validateServiceInput, async (req, res, next) => {
     // Check to make sure a user does not already have a service with the proposed
@@ -97,8 +97,8 @@ router.post('/', requireUser, validateServiceInput, async (req, res, next) => {
 });
 
 // Attach requireUser as a middleware before the route handler to gain access
-// to req.user. (requireUser will return an error response if there is no 
-// current user.) Also attach validateServiceInput as a middleware before the 
+// to req.user. (requireUser will return an error response if there is no
+// current user.) Also attach validateServiceInput as a middleware before the
 // route handler.
 router.patch('/:id', requireUser, validateServiceInput, async (req, res, next) => {
     try {
@@ -115,10 +115,10 @@ router.patch('/:id', requireUser, validateServiceInput, async (req, res, next) =
 });
 
 // Attach requireUser as a middleware before the route handler to gain access
-// to req.user. (requireUser will return an error response if there is no 
-// current user.) Also attach validateServiceInput as a middleware before the 
+// to req.user. (requireUser will return an error response if there is no
+// current user.) Also attach validateServiceInput as a middleware before the
 // route handler.
-router.delete('/:id', requireUser, validateServiceInput, async (req, res, next) => {
+router.delete('/:id', requireUser, async (req, res, next) => {
     try {
         const filter = { _id: req.params.id };
         let service = await Service.findOneAndDelete(filter);
