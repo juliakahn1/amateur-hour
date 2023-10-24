@@ -16,7 +16,6 @@ function SignupForm () {
   const dispatch = useDispatch();
   let history = useHistory()
 
-
   const handleSubmit = e => {
     e.preventDefault();
     const user = {
