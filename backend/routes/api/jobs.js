@@ -50,12 +50,14 @@ router.get('/client/:userId', async (req, res, next) => {
     }
 });
 
-// get all jobs with specified provider
+// get all jobs for the provider's FIRST service. 
+//// TODO: get jobs for all services once we allow providers to have more than one service
 router.get('/provider/:userId', async (req, res, next) => {
-    let user, service;
+    let user;
+    let firstService;
     try {
         user = await User.findById(req.params.userId);
-        services = await Service.find({ provider: user._id })
+        firstService = await Service.findOne({ provider: user._id })
     } catch(err) {
         const error = new Error('Service not found');
         error.statusCode = 404;
@@ -67,8 +69,7 @@ router.get('/provider/:userId', async (req, res, next) => {
         return next(error);
     }
     try {
-        // TODO: Jobs here is not returning any records. How do you filter?
-        const jobs = await Job.find({ service: {provider: user._id}})
+        const jobs = await Job.find({ service: firstService._id })
             .populate({
                 path: 'service',
                 populate: ({ path: 'provider', select: '_id firstName' })
@@ -111,13 +112,11 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
     });
 
     if (job) {
-        // Throw a 400 error if the email address and/or email already exists
+        // Throw a 400 error if a service has already been requested for this client
         const err = new Error("Validation Error");
         err.statusCode = 400;
         const errors = {};
-        if (job.service === req.body.service) {
-            errors.service = "You have already requested this service";
-        }
+        errors.service = "You have already requested this service";
         err.errors = errors;
         return next(err);
     }
@@ -170,7 +169,7 @@ router.patch('/:id', requireUser, validateJobInput, async (req, res, next) => {
     }
 });
 
-router.delete('/:id', requireUser, validateJobInput, async (req, res, next) => {
+router.delete('/:id', requireUser, async (req, res, next) => {
     try {
         const filter = { _id: req.params.id };
         let job = await Job.findOneAndDelete(filter);
