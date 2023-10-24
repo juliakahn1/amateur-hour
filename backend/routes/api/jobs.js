@@ -147,6 +147,7 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
     }
 });
 
+// update fields for a single job
 router.patch('/:id', requireUser, validateJobInput, async (req, res, next) => {
     try {
         const filter = { _id: req.params.id };
@@ -169,6 +170,7 @@ router.patch('/:id', requireUser, validateJobInput, async (req, res, next) => {
     }
 });
 
+// delete a single job with an id
 router.delete('/:id', requireUser, async (req, res, next) => {
     try {
         const filter = { _id: req.params.id };
