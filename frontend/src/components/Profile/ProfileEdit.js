@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateService } from "../../store/services";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 
 
 
@@ -12,8 +12,6 @@ function ProfileEdit({userService}) {
     const [serviceCategory, setServiceCategory] = useState();
     const [compensation, setCompensation] = useState();
     const [portfolio, setPortfolio] = useState(userService.otherLink);
-    
-    const history = useHistory();
 
     const handleSubmit = e => {
         
