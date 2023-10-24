@@ -14,7 +14,8 @@ const ServicesForm = () => {
     e.preventDefault()
     const service = {
       serviceCategory,
-      portfolio
+      portfolio,
+      compensation
     }
     // dispatch
   }
@@ -26,7 +27,7 @@ return (
       <h3>Services</h3>
       <p>If you're looking to offer services, select what best describes your skills and a link to your portfolio, if you have one.</p>
       <form onSubmit={handleSubmit}>
-        <h3>What skills are you offering?</h3>
+        <h4>Your skills</h4>
         <div className="services-tiles">
           { services.map((service, index) => {
             return (
@@ -48,7 +49,7 @@ return (
             onChange={(e) => setPortfolio(e.currentTarget.value)}>
           </input>
         </label>
-        <h4>How would you like to be compensated?</h4>
+        <h4>Choose your compensation</h4>
         <div className="services-tiles">
           { comp.map((comp, index) => {
             return (
