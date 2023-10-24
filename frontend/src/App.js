@@ -26,8 +26,8 @@ function App() {
       <Switch>
         <AuthRoute exact path="/" component={Home} />
         <AuthRoute exact path="/login" component={LoginForm} />
-        <AuthRoute exact path="/signup" component={SignupForm} />
         <ProtectedRoute exact path="/signup/services" component={ServicesForm} />
+        <AuthRoute exact path="/signup" component={SignupForm} />
       </Switch>
     </>
   );
