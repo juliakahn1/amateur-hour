@@ -8,10 +8,12 @@ const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
 require('./models/User');
+require('./models/Service');
 require('./config/passport');
 const passport = require('passport'); 
 
 const usersRouter = require('./routes/api/users');
+const servicesRouter = require('./routes/api/services');
 const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
@@ -43,6 +45,7 @@ app.use(
 );
 
 app.use('/api/users', usersRouter);
+app.use('/api/services', servicesRouter);
 app.use('/api/csrf', csrfRouter);
 
 // Express custom middleware for catching all unmatched requests and formatting
