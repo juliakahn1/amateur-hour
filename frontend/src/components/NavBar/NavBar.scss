@@ -1,0 +1,47 @@
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+.site-title {
+  margin-right: 25px;
+}
+
+.links-auth {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links-nav {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.nav-button {
+  font-size: 0.9rem;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color .2s ease-out;
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: 600;
+  letter-spacing: .02em;
+  border-radius: 30px;
+  /* border: 1px solid grey; */
+  padding: 10px 15px;
+
+  &.logout-button {
+    color: yellow;
+  }
+
+}
