@@ -3,17 +3,19 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Job = mongoose.model('Job');
+const Service = mongoose.model('Service');
 const { requireUser } = require('../../config/passport');
 const validateJobInput = require('../../validations/jobs');
 
+// get all jobs
 router.get('/', async (req, res) => {
     try {
         const jobs = await Job.find()
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName lastName' })
+                populate: ({ path: 'provider', select: '_id firstName' })
             })
-            .populate("client", "_id firstName lastName location")
+            .populate("client", "_id firstName")
             .sort({ createdAt: -1 });
         return res.json(jobs);
     }
@@ -22,7 +24,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/user/:userId', async (req, res, next) => {
+// get all jobs with specified client
+router.get('/client/:userId', async (req, res, next) => {
     let user;
     try {
         user = await User.findById(req.params.userId);
@@ -36,9 +39,9 @@ router.get('/user/:userId', async (req, res, next) => {
         const jobs = await Job.find({ client: user._id })
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName lastName' })
+                populate: ({ path: 'provider', select: '_id firstName' })
             })
-            .populate("client", "_id firstName lastName location")
+            .populate("client", "_id firstName")
             .sort({ createdAt: -1 })
         return res.json(jobs);
     }
@@ -47,6 +50,39 @@ router.get('/user/:userId', async (req, res, next) => {
     }
 });
 
+// get all jobs with specified provider
+router.get('/provider/:userId', async (req, res, next) => {
+    let user, service;
+    try {
+        user = await User.findById(req.params.userId);
+        services = await Service.find({ provider: user._id })
+    } catch(err) {
+        const error = new Error('Service not found');
+        error.statusCode = 404;
+        if (user._id === req.params.userId) {
+            errors.errors = { message: "No service found with that user" };
+        } else {
+            error.errors = { message: "No user found with that id" };
+        }
+        return next(error);
+    }
+    try {
+        // TODO: Jobs here is not returning any records. How do you filter?
+        const jobs = await Job.find({ service: {provider: user._id}})
+            .populate({
+                path: 'service',
+                populate: ({ path: 'provider', select: '_id firstName' })
+            })
+            .populate("client", "_id firstName")
+            .sort({ createdAt: -1 })
+        return res.json(jobs);
+    }
+    catch(err) {
+        return res.json([]);
+    }
+});
+
+// get job with specified id
 router.get('/:id', async (req, res, next) => {
     try {
         const job = await Job.findById(req.params.id)
@@ -64,7 +100,10 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+//// create job
+//// attach requireUser as middleware before route handler to gain access to req.user
 router.post('/', requireUser, validateJobInput, async (req, res, next) => {
+
     // check to make sure the user has not already requested a job from this service
     const job = await Job.findOne({
         client: req.user._id,
@@ -87,7 +126,7 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
         const newJob = new Job({
             service: req.body.service,
             client: req.user._id,
-            statusDescription: "requested",
+            statusDescription: req.body.statusDescription,
             date: req.body.date,
             description: req.body.description
         })
@@ -108,5 +147,38 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
         next(err);
     }
 });
+
+router.patch('/:id', requireUser, validateJobInput, async (req, res, next) => {
+    try {
+        const filter = { _id: req.params.id };
+        let job = await Job.findOneAndUpdate(filter, req.body, {
+            new: true
+        });
+        job = await job.populate({
+            path: "service", 
+            populate: {
+                path: "provider",
+                select: "_id firstName lastName email"
+            },
+            select: "category compensation"
+        });
+        job = await job.populate("client", "_id firstName lastName email");
+        return res.json(job);
+    }
+    catch (err) {
+        next(err);
+    }
+});
+
+router.delete('/:id', requireUser, validateJobInput, async (req, res, next) => {
+    try {
+        const filter = { _id: req.params.id };
+        let job = await Job.findOneAndDelete(filter);
+        return res.json(job);
+    }
+    catch (err) {
+        next(err)
+    }
+})
 
 module.exports = router;
