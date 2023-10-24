@@ -10,11 +10,6 @@ const NavBar = () => {
   const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
   const history = useHistory()
-  // const [category, setCategory] = useState('all')
-  // let categoryView
-
-  // category === 'all' ? categoryView = serviceCategories :
-  //   categoryView = serviceCategories.map(category => )
 
   const logoutUser = e => {
     e.preventDefault();

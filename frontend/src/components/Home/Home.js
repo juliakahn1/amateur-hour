@@ -17,11 +17,11 @@ const Home = () => {
   return (
     <>
       <div className="home-services-container">
-      { allServices.map((service, index) => {
+      {/* { allServices.map((service, index) => {
         return (
           <ServiceItem />
         )
-      })}
+      })} */}
       </div>
     </>
   );
