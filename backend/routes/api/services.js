@@ -63,6 +63,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', requireUser, validateServiceInput, async (req, res, next) => {
   // Check to make sure a user does not already have a service with the proposed
   // category.
+  debugger
   const service = await Service.findOne({
     $or: [{ provider: req.user._id, category: req.body.category }]
   });
