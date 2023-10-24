@@ -9,6 +9,7 @@ const { isProduction } = require('./config/keys');
 
 require('./models/User');
 require('./models/Service');
+require('./models/Job');
 require('./config/passport');
 const passport = require('passport'); 
 
