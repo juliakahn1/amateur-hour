@@ -98,4 +98,33 @@ router.post('/', requireUser, validateServiceInput, async (req, res, next) => {
   }
 });
 
+// // Attach requireUser as a middleware before the route handler to gain access
+// // to req.user. (requireUser will return an error response if there is no 
+// // current user.) Also attach validateServiceInput as a middleware before the 
+// // route handler.
+// router.patch('/:id', requireUser, validateServiceInput, async (req, res, next) => {
+
+//     const service = await Service.findOne({
+//       $or: [{ provider: req.user._id, category: req.body.category }]
+//     });
+  
+//     try {
+//       const newService = new Service({
+//         category: req.body.category,
+//         provider: req.user._id,
+//         compensation: req.body.compensation,
+//         instagramLink: req.body.instagramLink,
+//         yelpLink: req.body.yelpLink,
+//         otherLink: req.body.otherLink,
+//       });
+  
+//       let service = await newService.save();
+//       service = await service.populate('provider', '_id firstName lastName location');
+//       return res.json(service);
+//     }
+//     catch(err) {
+//       next(err);
+//     }
+//   });
+
 module.exports = router;
