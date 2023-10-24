@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux"
 import { useState } from "react"
+import { compOptions, serviceCategories } from "../../constants"
 
 const ServicesForm = () => {
   const [serviceCategory, setServiceCategory] = useState('')
   const [portfolio, setPortfolio] = useState('')
   const [compensation, setCompensation] = useState('')
+
   const services = ['Photography', 'Bartending', 'Gardening']
   const comp = ['Yelp review', 'Social media tagged post', 'Google review']
-
-  console.log(serviceCategory)
 
   const handleSubmit = (e) => {
     e.preventDefault()
