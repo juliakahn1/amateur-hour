@@ -6,6 +6,7 @@ const Service = mongoose.model('Service');
 const { requireUser } = require('../../config/passport');
 const validateServiceInput = require('../../validations/services');
 
+// get all services
 router.get('/', async (req, res) => {
   try {
     const services = await Service.find()
@@ -18,6 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// get all services for a specific user
 router.get('/user/:userId', async (req, res, next) => {
   let user;
   try {
@@ -37,8 +39,9 @@ router.get('/user/:userId', async (req, res, next) => {
   catch(err) {
     return res.json([]);
   }
-})
+});
 
+// get a specific service
 router.get('/:id', async (req, res, next) => {
   try {
     const service = await Service.findById(req.params.id)
