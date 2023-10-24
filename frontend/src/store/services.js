@@ -85,14 +85,18 @@ export const deleteService = (serviceId) => async (dispatch) => {
     method: 'DELETE',
   })
   if (res.ok) {
-    dispatch(removeService(serviceId))
+    const service = await res.json()
+    console.log(service)
+    dispatch(removeService(service._id))
   }
 }
 
 export const servicesReducer = (store = {}, action) => {
+  const newStore = { ...store }
   switch (action.type) {
     case GET_SERVICES:
-      return { ...store, ...action.services }
+      action.services.forEach(service => newStore[service._id] = service)
+      return newStore
     case GET_SERVICE:
       return { ...store, [action.service._id]: action.service }
     case ADD_SERVICE:
@@ -100,7 +104,6 @@ export const servicesReducer = (store = {}, action) => {
     case EDIT_SERVICE:
       return { ...store, [action.service._id]: action.service}
     case REMOVE_SERVICE:
-      const newStore = { ...store }
       delete newStore[action.serviceId]
       return newStore
     default:
