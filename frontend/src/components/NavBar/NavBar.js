@@ -1,15 +1,29 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import './NavBar.scss';
+import { useState } from 'react';
 import { logout } from '../../store/session';
+import { serviceCategories } from '../../constants';
+import './NavBar.scss';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const NavBar = () => {
   const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
+  // const [category, setCategory] = useState('all')
+  // let categoryView
+
+  // category === 'all' ? categoryView = serviceCategories :
+  //   categoryView = serviceCategories.map(category => )
 
   const logoutUser = e => {
     e.preventDefault();
     dispatch(logout());
+  }
+
+  const goHome = e => {
+    e.preventDefault()
+    history.push('/')
   }
 
   const getLinks = () => {
@@ -33,9 +47,20 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar-wrapper">
-        <h1 className="site-title">Amateur Hour</h1>
-        { getLinks() }
+      <div className="navbar-wrapper-outer">
+        <div className="navbar-wrapper-title-session">
+          <h1 className="site-title" onClick={(e) => goHome(e)}>AmateurHour</h1>
+          { getLinks() }
+        </div>
+        <div className="navbar-service-categories">
+          {serviceCategories.map((category, index) => {
+            return ( // add on click here
+              <div key={index} className="navbar-service-category-tile">
+                {category}
+              </div>
+            )
+          })}
+        </div>
       </div>
     </>
   )
