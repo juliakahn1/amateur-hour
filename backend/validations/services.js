@@ -11,9 +11,9 @@ const categories = [
 
 // array of possible compensation options that can be provided
 const compOptions = [
-    'Provide Yelp review',
-    'Provide Google review',
-    'Post on Instagram and tag account'
+    'Yelp review',
+    'Google review',
+    'Instagram post and tag account'
 ];
 
 // validateServiceInput is a combination Express middleware that uses the `check`
@@ -30,5 +30,7 @@ const validateServiceInput = [
     .withMessage('Compensation needs to be a valid option'),
   handleValidationErrors
 ];
+
+exports.compOptions = compOptions;
 
 module.exports = validateServiceInput;
