@@ -22,7 +22,6 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
   const [mounting, setMounting] = useState(false)
   // const loggedIn = useSelector(state => !!state.session.user);
   const loggedIn = useSelector(state => state.session.user);
-  console.log(loggedIn)
   useEffect(() => {
     if (loggedIn !== undefined) setMounting(true)
   }, [loggedIn])
