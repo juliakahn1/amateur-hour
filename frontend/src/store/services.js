@@ -85,7 +85,6 @@ export const deleteService = (serviceId) => async (dispatch) => {
   })
   if (res.ok) {
     const service = await res.json()
-    console.log(service)
     dispatch(removeService(service._id))
   }
 }
