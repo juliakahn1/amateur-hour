@@ -1,23 +1,27 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { compOptions, serviceCategories } from "../../constants"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { createService } from "../../store/services"
 
 const ServicesForm = () => {
   const [serviceCategory, setServiceCategory] = useState('')
   const [portfolio, setPortfolio] = useState('')
   const [compensation, setCompensation] = useState('')
   const history = useHistory()
+  const currentUserId = useSelector(store => store.session?.user._id)
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const service = {
-      serviceCategory,
-      portfolio,
-      compensation
+      provider: currentUserId,
+      category: serviceCategory.service,
+      otherLink: portfolio,
+      compensation: compensation.comp
     }
-    // dispatch()
+    dispatch(createService(service))
+    history.push('/')
   }
 
   const skipServices = e => {
