@@ -11,7 +11,6 @@ import SignupForm from './components/SessionForms/SignupForm';
 import ServicesForm from './components/SessionForms/ServicesForm'
 
 import { getCurrentUser } from './store/session';
-import { Route } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

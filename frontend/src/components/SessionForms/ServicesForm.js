@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import { compOptions, serviceCategories } from "../../constants"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 const ServicesForm = () => {
   const [serviceCategory, setServiceCategory] = useState('')
   const [portfolio, setPortfolio] = useState('')
   const [compensation, setCompensation] = useState('')
-
-  // const services = ['Photography', 'Bartending', 'Gardening']
-  // const comp = ['Yelp review', 'Social media tagged post', 'Google review']
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -17,7 +17,12 @@ const ServicesForm = () => {
       portfolio,
       compensation
     }
-    // dispatch
+    // dispatch()
+  }
+
+  const skipServices = e => {
+    e.preventDefault()
+    history.push('/')
   }
 
 return (
@@ -70,7 +75,7 @@ return (
           disabled={!serviceCategory || !portfolio || !compensation}
         />
       </form>
-      <button>Skip</button>
+      <button onClick={(e) => skipServices(e)}>Skip</button>
     </div>
 
   </>

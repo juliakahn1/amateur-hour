@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function SignupForm () {
@@ -26,7 +25,6 @@ function SignupForm () {
       location
     };
     dispatch(signup(user))
-    // return <Redirect to='/signup/services' />
     history.push('/signup/services')
   }
 
