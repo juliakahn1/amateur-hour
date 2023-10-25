@@ -3,9 +3,11 @@ import thunk from 'redux-thunk';
 import session from './session'
 import errors from './errors'
 import services from './services'
+import jobs from './jobs'
 
 const rootReducer = combineReducers({
   services,
+  jobs,
   session,
   errors,
 });
