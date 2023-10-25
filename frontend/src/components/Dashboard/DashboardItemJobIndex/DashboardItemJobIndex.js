@@ -4,31 +4,37 @@ import { fetchJobs } from '../../../store/jobs';
 import JobItem from './JobItem/JobItem';
 import './DashboardItemJobIndex.scss';
 
-const DashboardItemJobIndex = ({indexType}) => {
+const DashboardItemJobIndex = ({ indexType }) => {
     // get all jobs from the store/backend with useEffect and useSelector
     const dispatch = useDispatch();
     const currentUser = useSelector(store => store.session.user);
-    const allJobs = Object.values(useSelector(store => store.jobs));
+    const jobs = Object.values(useSelector(store => store.jobs));
     const services = useSelector(state => state.services);
 
-    let specificJobs
-    indexType === "requests" ?
-        specificJobs = allJobs.filter(job => job.client._id === currentUser._id) : 
-        specificJobs = allJobs.filter(job => job.provider._id === currentUser._id);
+    let filteredJobs;
+    indexType === "Requested" ?
+        filteredJobs = jobs.filter(job => job.client._id === currentUser._id) :
+        filteredJobs = jobs.filter(job => job.provider._id === currentUser._id);
 
-    useEffect(() => {   
-        if (allJobs.length === 0) dispatch(fetchJobs())
+    useEffect(() => {
+        if (jobs.length === 0) dispatch(fetchJobs())
     }, []);
 
     return (
         <>
             <div className="dashboard-item-job-index-container">
-                <div className="dashboard-item-header">{indexType}</div>
+                <div className="dashboard-item-header">Your {indexType} Jobs</div>
                 <div className="job-index-container">
-                    {specificJobs.map(job => {
-                        const client = indexType === "requests" ? job.provider.firstName : job.client.firstName;
+                    {filteredJobs.map(job => {
+                        const name = indexType === "Requested" ? job.provider.firstName : job.client.firstName;
+                        const service = services[job.service];
                         return (
-                            <JobItem key={job._id} job={job} client={client} />
+                            <JobItem
+                                key={job._id}
+                                job={job}
+                                name={name}
+                                service={service}
+                            />
                         );
                     })}
                 </div>
