@@ -18,7 +18,6 @@ const ServiceItem = ({service, job}) => {
     }
   }
 
-
   const jobLength = job.length
   return (
     <>
