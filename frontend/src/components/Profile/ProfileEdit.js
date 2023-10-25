@@ -4,9 +4,6 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateService } from "../../store/services";
 
-
-
-
 function ProfileEdit({userService}) {
     const dispatch = useDispatch();
     const [serviceCategory, setServiceCategory] = useState();
@@ -14,9 +11,9 @@ function ProfileEdit({userService}) {
     const [portfolio, setPortfolio] = useState(userService.otherLink);
 
     const handleSubmit = e => {
-        
+
         const service = {
-            
+
             category: serviceCategory,
             otherLink: portfolio,
             compensation: compensation
@@ -36,7 +33,7 @@ function ProfileEdit({userService}) {
                         serviceCategories.map((categoryType, index) => {
                             return (
                                 <div key={index} className="service-input-container">
-                                    <input 
+                                    <input
                                         value={categoryType}
                                         className="service-radio-button"
                                         type="radio"
@@ -56,7 +53,7 @@ function ProfileEdit({userService}) {
                         compOptions.map((compType, index) => {
                             return (
                                 <div key={index} className="service-input-container">
-                                    <input 
+                                    <input
                                         value={compType}
                                         className="service-radio-button"
                                         type="radio"
@@ -73,14 +70,14 @@ function ProfileEdit({userService}) {
                 <div className="links-container">
                     <label>
                         <span>Portfolio Link</span>
-                        <input 
+                        <input
                             type="text"
                             value={portfolio}
                             onChange={(e) => setPortfolio(e.target.value)}
                         />
                     </label>
                 </div>
-                <input 
+                <input
                     type="submit"
                     value="Finish editing"
                 />
