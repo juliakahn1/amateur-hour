@@ -4,12 +4,14 @@ import session from './session'
 import errors from './errors'
 import services from './services'
 import jobs from './jobs'
+import modals from './modals'
 
 const rootReducer = combineReducers({
   services,
   jobs,
   session,
   errors,
+  modals
 });
 
 let enhancer;

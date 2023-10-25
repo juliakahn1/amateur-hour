@@ -10,6 +10,7 @@ import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 import ServicesForm from './components/SessionForms/ServicesForm';
 import Profile from './components/Profile/Profile';
+import Modal from './components/Modal/modal';
 import Dashboard from './components/Dashboard/Dashboard';
 import { Route } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -24,6 +25,7 @@ function App() {
 
   return loaded && (
     <>
+      <Modal />
       <NavBar />
       <Switch>
         <ProtectedRoute exact path="/signup/services" component={ServicesForm} />
