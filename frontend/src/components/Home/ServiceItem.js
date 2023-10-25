@@ -1,7 +1,7 @@
 import './ServiceItem.scss'
 
 const ServiceItem = ({service, job}) => {
-
+  const jobLength = job.length
   return (
     <>
       <div className="service-item-shape">
@@ -19,7 +19,7 @@ const ServiceItem = ({service, job}) => {
                     <i className="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
-                <span className="service-tile-job-count"><span className="job-count">{job.length}</span> jobs completed</span>
+                <span className="service-tile-job-count"><span className="job-count">{jobLength}</span> {jobLength > 1 || jobLength === 0 ? "jobs" : "job"} completed</span>
                 <span className="service-tile-compensation-label">Compensation</span>
                 <span className="service-tile-compensation-data">{service.compensation}</span>
               </section>
