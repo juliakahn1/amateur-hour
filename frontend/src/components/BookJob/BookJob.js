@@ -35,6 +35,7 @@ function BookJob() {
     return (
         <form onSubmit={handleSubmit}>
             <div className="book-job-container">
+                <h3>Other info if we want</h3>
                 <h3>Before we send your {service.category} request to {provider.firstName}, we need a few details from you.</h3>
                 <div className="description-field">
                     <label>
