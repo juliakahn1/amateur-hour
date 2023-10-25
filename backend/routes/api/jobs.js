@@ -151,7 +151,14 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
 router.patch('/:id', requireUser, validateJobInput, async (req, res, next) => {
     try {
         const filter = { _id: req.params.id };
-        let job = await Job.findOneAndUpdate(filter, req.body, {
+        const update = {
+            service: req.body.service,
+            client: req.body.client,
+            statusDescription: req.body.statusDescription,
+            date: req.body.date,
+            description: req.body.description
+        }
+        let job = await Job.findOneAndUpdate(filter, update, {
             new: true
         });
         job = await job.populate({
