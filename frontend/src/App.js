@@ -11,6 +11,7 @@ import SignupForm from './components/SessionForms/SignupForm';
 import ServicesForm from './components/SessionForms/ServicesForm';
 import Profile from './components/Profile/Profile';
 import Dashboard from './components/Dashboard/Dashboard';
+import { Route } from 'react-router-dom/cjs/react-router-dom.min';
 
 import { getCurrentUser } from './store/session';
 
@@ -31,6 +32,7 @@ function App() {
         <ProtectedRoute exact path="/profile" component={Profile}/>
         <ProtectedRoute exact path="/dashboard" component={Dashboard}/>
         <AuthRoute exact path="/" component={Home} />
+        <Route exact path="/" component={Home} />
       </Switch>
     </>
   );
