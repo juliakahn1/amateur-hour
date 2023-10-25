@@ -16,7 +16,7 @@ const ServiceItem = ({service, job}) => {
                 <div className="service-tile-portfolio-container">
                   <a href={service.otherLink} target="_blank">
                     <span className="service-tile-portfolio">visit portfolio</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <i className="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
                 <span className="service-tile-job-count"><span className="job-count">{job.length}</span> jobs completed</span>
