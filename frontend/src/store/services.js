@@ -6,7 +6,7 @@ const ADD_SERVICE = "services/ADD_SERVICE"
 const EDIT_SERVICE = "services/EDIT_SERVICE"
 const REMOVE_SERVICE = "services/REMOVE_SERVICE"
 
-export const getService = service => {
+const getService = service => {
   return {
     type: GET_SERVICE,
     service
