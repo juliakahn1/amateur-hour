@@ -15,22 +15,15 @@ const Home = () => {
   const servicesArr = Object.values(services)
   const jobsArr = Object.values(jobs)
   const [categoryFilter, setCategoryFilter] = useState('all')
+  let filteredServices
 
   useEffect(() => {
     dispatch(fetchServices())
     dispatch(fetchJobs())
   }, [dispatch])
 
-  // <div className="navbar-service-tile-container">
-  //             <input type="radio"
-  //               name={`radio-${index}`}
-  //               key={index}
-  //               onChange={() => setCategoryFilter(category)}
-  //               className="navbar-service-category-tile-radio"
-  //               value={category}
-  //             />
-  //             <div className="navbar-service-category-tile-label">{category}</div>
-  //           </div>
+  categoryFilter === 'all' ? filteredServices = servicesArr :
+    filteredServices = servicesArr.filter(service => service.category === categoryFilter)
 
   return servicesArr.length > 0 ? (
     <>
@@ -41,7 +34,7 @@ const Home = () => {
             type="radio"
             name="radio-cat"
             onChange={() => setCategoryFilter('all')}/>
-            <div className="navbar-service-category-tile-label">all</div>
+            <div className="navbar-service-category-tile-label all-filter">all</div>
         </div>
         {serviceCategories.map((category, index) => {
           return (
@@ -57,7 +50,7 @@ const Home = () => {
         })}
       </form>
       <div className="home-services-container">
-      { servicesArr.map((service, index) => {
+      { filteredServices.map((service, index) => {
         let job = jobsArr.filter(job => job.provider._id === service.provider._id)
         return (
           <div className="service-item-tile-wrapper" key={index}>
