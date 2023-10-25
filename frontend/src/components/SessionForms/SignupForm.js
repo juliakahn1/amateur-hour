@@ -12,7 +12,6 @@ function SignupForm () {
   const [password2, setPassword2] = useState('');
   const [location, setLocation] = useState('');
   const errors = useSelector(state => state.errors.session);
-  const currentUser = useSelector(state => state.session?.user);
   const dispatch = useDispatch();
   const history = useHistory()
 
@@ -111,7 +110,7 @@ function SignupForm () {
                 onChange={update("location")}
                 className="signup-location-dropdown-menu"
                 >
-                  <option selected value="none">Where are you located?</option>
+                  <option selected value="null">Where are you located?</option>
                   <option value="ca-bay-area">California Bay Area</option>
                   <option value="s-ca">Southern California</option>
                   <option value="chicagoland">Chicagoland</option>
