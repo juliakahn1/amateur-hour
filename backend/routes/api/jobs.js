@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
                 path: 'service',
                 populate: ({ path: 'provider', select: '_id firstName' })
             })
-            .populate("client", "_id firstName")
+            .populate("client", "_id firstName email")
             .sort({ createdAt: -1 });
         return res.json(jobs);
     } catch(err) {
@@ -40,7 +40,7 @@ router.get('/client/:userId', async (req, res, next) => {
                 path: 'service',
                 populate: ({ path: 'provider', select: '_id firstName' })
             })
-            .populate("client", "_id firstName")
+            .populate("client", "_id firstName email")
             .sort({ createdAt: -1 })
         return res.json(jobs);
     } catch(err) {
@@ -72,7 +72,7 @@ router.get('/provider/:userId', async (req, res, next) => {
                 path: 'service',
                 populate: ({ path: 'provider', select: '_id firstName' })
             })
-            .populate("client", "_id firstName")
+            .populate("client", "_id firstName email")
             .sort({ createdAt: -1 })
         return res.json(jobs);
     } catch(err) {
@@ -88,7 +88,7 @@ router.get('/:id', async (req, res, next) => {
                 path: 'service',
                 populate: ({ path: 'provider', select: '_id firstName lastName' })
             })
-            .populate("client", "_id firstName lastName location");
+            .populate("client", "_id firstName lastName location email");
         return res.json(job);
     } catch(err) {
         const error = new Error('Job not found');
