@@ -25,10 +25,6 @@ const ServiceItem = ({service, job}) => {
               </section>
               <button className="service-item-button">Book</button>
             </div>
-            {/* <div className="compensation-container">
-              <span className="compensation-label">Compensation</span>
-              <span>{service.compensation}</span>
-            </div> */}
           </div>
         </div>
       </div>
