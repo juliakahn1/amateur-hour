@@ -1,39 +1,107 @@
+
+
 .service-item-shape {
-  background-color: rgb(249, 249, 249);
-  margin: 10px;
-  width: 250px;
-  height: 300px;
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1em;
+  padding: 15px;
+  // background-color: rgb(249, 249, 249);
+  // margin: 10px;
+  // width: 250px;
+  // height: 300px;
+  // position: relative;
 }
 
 .service-item-inner-container {
+  background: #fff 50%;
+  background-size: cover;
+  border-radius: 5px;
+  box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06),
+    1px 3px 8px rgba(39, 44, 49, 0.03);
+  transition: all 0.5s ease;
+
+  &:hover {
+    box-shadow: 0 0 1px rgba(39, 44, 49, 0.1),
+      0 3px 16px rgba(39, 44, 49, 0.07);
+    transition: all 0.3s ease;
+    transform: translate3D(0, -1px, 0);
+  }
+  // display: flex;
+  // flex-direction: column;
+  // padding: 10px;
+  // margin: 10px;
+}
+
+.service-item-metadata {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin: 10px;
+  justify-content: space-between;
+  // min-height: 240px;
+  height: 100%;
+  padding: 25px;
+}
+
+.service-item-header {
+  padding-bottom: 5px;
+  // height: 100%;
+}
+
+h3 {
+  text-transform: uppercase;
+  margin-bottom: 9px;
+  font-size: .9rem;
+  letter-spacing: -.01rem;
+  font-weight: 600;
+
 }
 
 h2.service-item-name {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
-h3.service-item-category {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-  font-weight: 600;
-  font-size: .9rem;
-  letter-spacing: -.01rem;
-}
-
-.compensation-container {
+.service-item-details {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  padding-bottom: 20px;
+}
 
-  .compensation-label {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: .9rem;
+.service-tile-portfolio {
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+
+.service-tile-job-count {
+  padding-bottom: 20px;
+}
+
+.service-tile-compensation-label {
+  text-transform: uppercase;
+  font-size: .8rem;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+.service-item-button {
+  width: 100%;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(218, 218, 218);
   }
 }
+
+// .compensation-container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+
+//   .compensation-label {
+//     text-transform: uppercase;
+//     font-weight: 600;
+//     font-size: .9rem;
+//   }
+// }
