@@ -101,12 +101,16 @@ function SignupForm () {
               <div className="session-errors">{errors?.lastName}</div>
             </div>
             <div className="session-input-container signup-location-dropdown">
-              <span className="session-input-label">Location (optional)</span>
-              <select name="services" onChange={update("location")}>
-                <option selected value="none">Where are you located?</option>
-                <option value="ca-bay-area">California Bay Area</option>
-                <option value="s-ca">Southern California</option>
-                <option value="chicagoland">Chicagoland</option>
+              <span className="session-input-label signup-location">Location (optional)</span>
+              <select
+                name="services"
+                onChange={update("location")}
+                className="signup-location-dropdown-menu"
+                >
+                  <option selected value="none">Where are you located?</option>
+                  <option value="ca-bay-area">California Bay Area</option>
+                  <option value="s-ca">Southern California</option>
+                  <option value="chicagoland">Chicagoland</option>
               </select>
               <div className="session-errors">{errors?.location}</div>
             </div>

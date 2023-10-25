@@ -49,15 +49,30 @@ h2.session-form-title {
   margin: 10px;
   width: 100%;
 
-  &.signup-location-dropdown{
+  &.signup-location-dropdown {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center
+  }
+
+  .signup-location-dropdown-menu {
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+    color: grey;
   }
 
   .session-input-label {
     margin-bottom: 10px;
     font-weight: 500;
+
+    &.signup-location {
+      width: 42%;
+      line-height: 1.3rem;;
+    }
   }
 
   .session-input-text-field {
