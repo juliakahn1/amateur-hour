@@ -3,7 +3,7 @@ import './Dashboard.css';
 const Dashboard = () => {
     return (
         <>
-            <div>
+            <div className='dashboard-container'>
                 <h1>Dashboard</h1>
             </div>
         </>
