@@ -3,6 +3,7 @@ import { useState } from "react"
 import { compOptions, serviceCategories } from "../../constants"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { createService } from "../../store/services"
+import './ServicesForm.scss'
 
 const ServicesForm = () => {
   const [serviceCategory, setServiceCategory] = useState('')
@@ -16,9 +17,9 @@ const ServicesForm = () => {
     e.preventDefault()
     const service = {
       provider: currentUserId,
-      category: serviceCategory.service,
+      category: serviceCategory,
       otherLink: portfolio,
-      compensation: compensation.comp
+      compensation: compensation
     }
     dispatch(createService(service))
     history.push('/')
@@ -45,7 +46,7 @@ return (
                   className="service-radio-button"
                   type="radio"
                   name="radio-service"
-                  onChange={() => setServiceCategory({service})}/>
+                  onChange={() => setServiceCategory(service)}/>
                   <div className="radio-tile">{service}</div>
               </div>
             )
@@ -67,7 +68,7 @@ return (
                   className="service-radio-button"
                   type="radio"
                   name="radio-comp"
-                  onChange={() => setCompensation({comp})}/>
+                  onChange={() => setCompensation(comp)}/>
                   <div className="radio-tile">{comp}</div>
               </div>
             )
