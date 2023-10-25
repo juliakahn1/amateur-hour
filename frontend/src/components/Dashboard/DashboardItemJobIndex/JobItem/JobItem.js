@@ -1,10 +1,12 @@
 import './JobItem.scss';
 
-const JobItem = ({ job, name, service }) => {
+const JobItem = ({ job, name, service = {} }) => {
+    const date = new Date(job.date);
     return (
         <div className="job-item-container">
             <div className="job-item-header">{name} - {service.category}</div>
-            <div className="job-item-email">place@holder.email</div>
+            <div className="job-item-email">{service.provider.email}</div>
+            <div className="job-item-date">{date.toLocaleDateString()}</div>
             <div className="job-item-description">{job.description}</div>
             <div className="job-item-status">
                 {job.statusDescription}

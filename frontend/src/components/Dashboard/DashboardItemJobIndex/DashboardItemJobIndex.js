@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchJobs } from '../../../store/jobs';
 import JobItem from './JobItem/JobItem';
+import { fetchServices } from '../../../store/services';
 import './DashboardItemJobIndex.scss';
 
 const DashboardItemJobIndex = ({ indexType }) => {
@@ -18,6 +19,7 @@ const DashboardItemJobIndex = ({ indexType }) => {
 
     useEffect(() => {
         if (jobs.length === 0) dispatch(fetchJobs())
+        if (Object.values(services).length === 0) dispatch(fetchServices())
     }, []);
 
     return (
@@ -27,12 +29,14 @@ const DashboardItemJobIndex = ({ indexType }) => {
                 <div className="job-index-container">
                     {filteredJobs.map(job => {
                         const name = indexType === "Requested" ? job.provider.firstName : job.client.firstName;
+                        const email = indexType === "Requested" ? job.provider.email : job.client.email;
                         const service = services[job.service];
                         return (
                             <JobItem
                                 key={job._id}
                                 job={job}
                                 name={name}
+                                email={email}
                                 service={service}
                             />
                         );

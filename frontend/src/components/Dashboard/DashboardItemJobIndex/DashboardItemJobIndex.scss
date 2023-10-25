@@ -1,6 +1,6 @@
 .dashboard-item-job-index-container {
     width: 400px;
-    height: 800px;
+    height: 100%;
     background-color: antiquewhite;
     margin: 20px;
     display: flex;
@@ -11,5 +11,6 @@
 
 .dashboard-item-header {
     margin: 15px;
+    font-size: 1.7rem;
     background-color: inherit;
 }
