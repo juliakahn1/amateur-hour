@@ -1,0 +1,11 @@
+.dashboard-container {
+    padding-top: 130px;
+    height: 100vh;
+}
+
+.dashboard-item-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
