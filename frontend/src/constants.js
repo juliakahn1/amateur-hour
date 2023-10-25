@@ -16,4 +16,6 @@ const serviceCategories = [
     'decorating'
 ]
 
-module.exports = { compOptions, serviceCategories }
+const statusOptions = ['requested', 'accepted', 'providerCompleted', 'clientCompleted', 'providerCompensated']
+
+module.exports = { compOptions, serviceCategories, statusOptions }
