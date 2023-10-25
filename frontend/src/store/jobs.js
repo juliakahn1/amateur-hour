@@ -1,5 +1,4 @@
 import jwtFetch from "./jwt"
-import { fetchService } from "./services";
 
 const GET_JOB = "jobs/GET_JOB";
 const GET_JOBS = "jobs/GET_JOBS";
@@ -67,7 +66,6 @@ export const fetchJob = (jobId) => async (dispatch) => {
         const res = await jwtFetch(`/api/jobs/${jobId}`)
         if (res.ok) {
             const job = await res.json()
-            dispatch(fetchService(job.service._id))
             const payload = {
                     _id: job._id,
                     service: job.service._id,
@@ -92,9 +90,6 @@ export const fetchJobs = () => async (dispatch) => {
         const res = await jwtFetch(`/api/jobs/`)
         if (res.ok) {
             const jobs = await res.json()
-            jobs.forEach((job)=> {
-                dispatch(fetchService(job.service._id))
-            })
             const payload = jobs.map((job)=>{
                 return {
                     _id: job._id,
@@ -121,9 +116,6 @@ export const fetchClientJobs = (clientId) => async (dispatch) => {
         const res = await jwtFetch(`/api/jobs/client/${clientId}`)
         if (res.ok) {
             const jobs = await res.json()
-            jobs.forEach((job)=> {
-                dispatch(fetchService(job.service._id))
-            })
             const payload = jobs.map((job)=>{
                 return {
                     _id: job._id,
@@ -150,9 +142,6 @@ export const fetchProviderJobs = (providerId) => async (dispatch) => {
         const res = await jwtFetch(`/api/jobs/provider/${providerId}`)
         if (res.ok) {
             const jobs = await res.json()
-            jobs.forEach((job)=> {
-                dispatch(fetchService(job.service._id))
-            })
             const payload = jobs.map((job)=>{
                 return {
                     _id: job._id,
@@ -182,7 +171,6 @@ export const createJob = (job) => async (dispatch) => {
         })
         if (res.ok) {
             const job = await res.json()
-            dispatch(fetchService(job.service._id))
             const payload = {
                     _id: job._id,
                     service: job.service._id,
@@ -210,7 +198,6 @@ export const updateJob = (job, jobId) => async (dispatch) => {
         })
         if (res.ok) {
             const job = await res.json()
-            dispatch(fetchService(job.service._id))
             const payload = {
                     _id: job._id,
                     service: job.service._id,
