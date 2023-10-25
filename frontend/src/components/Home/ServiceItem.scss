@@ -1,0 +1,39 @@
+.service-item-shape {
+  background-color: rgb(249, 249, 249);
+  margin: 10px;
+  width: 250px;
+  height: 300px;
+  position: relative;
+}
+
+.service-item-inner-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+}
+
+h2.service-item-name {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+h3.service-item-category {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: -.01rem;
+}
+
+.compensation-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .compensation-label {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .9rem;
+  }
+}

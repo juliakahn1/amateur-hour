@@ -5,11 +5,10 @@ import { useEffect, useState } from 'react';
 // prevents users from visiting login page is signed in
 export const AuthRoute = ({ component: Component, path, exact }) => {
   const loggedIn = useSelector(state => !!state.session.user);
-  console.log(loggedIn)
   return (
     <Route path={path} exact={exact} render={(props) => (
-      !loggedIn ? ( // if no one is logged in
-        <Component {...props} /> // should take them to provider index
+      !loggedIn ? ( //
+        <Component {...props} />
       ) : (
         <Redirect to="/" />
       )
