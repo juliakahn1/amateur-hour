@@ -1,6 +1,6 @@
 import DashboardItemJobIndex from './DashboardItemJobIndex/DashboardItemJobIndex';
 
-import './Dashboard.css';
+import './Dashboard.scss';
 
 const Dashboard = () => {
     return (

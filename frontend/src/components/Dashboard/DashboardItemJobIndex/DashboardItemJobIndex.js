@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchJobs } from '../../../store/jobs';
-import './DashboardItemJobIndex.css';
+import JobItem from './JobItem/JobItem';
+import './DashboardItemJobIndex.scss';
 
 const DashboardItemJobIndex = ({indexType}) => {
     // get all jobs from the store/backend with useEffect and useSelector
@@ -25,12 +26,9 @@ const DashboardItemJobIndex = ({indexType}) => {
                 <div className="dashboard-item-header">{indexType}</div>
                 <div className="job-index-container">
                     {specificJobs.map(job => {
+                        const client = indexType === "requests" ? job.provider.firstName : job.client.firstName;
                         return (
-                            <div key={job._id}>
-                                <div>{indexType === "requests" ? job.provider.firstName : job.client.firstName}</div>
-                                <div>{job.description}</div>
-                                <div>{job.statusDescription}</div>
-                            </div>
+                            <JobItem key={job._id} job={job} client={client} />
                         );
                     })}
                 </div>
