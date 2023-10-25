@@ -49,6 +49,12 @@ h2.session-form-title {
   margin: 10px;
   width: 100%;
 
+  &.signup-location-dropdown{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .session-input-label {
     margin-bottom: 10px;
     font-weight: 500;
@@ -80,8 +86,7 @@ h2.session-form-title {
   &.create-account {
     background: white;
     border: 1px solid rgb(211, 211, 211);
-    color: rgb(211, 211, 211);
-    color: black;
+    color: grey;
 
     &:hover {
       background: rgb(179, 179, 179);

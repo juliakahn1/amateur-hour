@@ -65,71 +65,83 @@ function SignupForm () {
 
   return (
     <>
-      <form className="session-form" onSubmit={handleSubmit}>
-        <h2>Sign Up Form</h2>
-        <div className="errors">{errors?.email}</div>
-        <label>
-          <span>Email</span>
-          <input type="text"
-            value={email}
-            onChange={update('email')}
-            placeholder="Email"
-          />
-        </label>
-        <div className="errors">{errors?.firstName}</div>
-        <label>
-          <span>First Name</span>
-          <input type="text"
-            value={firstName}
-            onChange={update('firstName')}
-            placeholder="First name"
-          />
-        </label>
-        <div className="errors">{errors?.lastName}</div>
-        <label>
-          <span>Last Name</span>
-          <input type="text"
-            value={lastName}
-            onChange={update('lastName')}
-            placeholder="Last name"
-          />
-        </label>
-        <div className="errors">{errors?.location}</div>
-        <label>
-          <span>Location (optional)</span>
-          <select name="services" onChange={update("location")}>
-            <option selected value="none">Where are you located?</option>
-            <option value="ca-bay-area">California Bay Area</option>
-            <option value="s-ca">Southern California</option>
-            <option value="chicagoland">Chicagoland</option>
-          </select>
-        </label>
-        <div className="errors">{errors?.password}</div>
-        <label>
-          <span>Password</span>
-          <input type="password"
-            value={password}
-            onChange={update('password')}
-            placeholder="Password"
-          />
-        </label>
-        <div className="errors">
-          {password !== password2 && 'Confirm Password field must match'}
+    <div className="session-page-background">
+      <div className="session-page-container signup-page">
+        <div className="session-page-inner-container signup-page">
+          <h2 className="session-form-title signup-form">Create an account to begin booking jobs</h2>
+          <form className="session-form signup-form" onSubmit={handleSubmit}>
+            <div className="session-input-container">
+                <span className="session-input-label">Email</span>
+                <input type="text"
+                  value={email}
+                  onChange={update('email')}
+                  placeholder="Email"
+                  className="session-input-text-field"
+                />
+              <div className="session-errors">{errors?.email}</div>
+            </div>
+            <div className="session-input-container">
+              <span className="session-input-label">First Name</span>
+              <input type="text"
+                value={firstName}
+                onChange={update('firstName')}
+                placeholder="This is how you appear to other users"
+                className="session-input-text-field"
+              />
+              <div className="session-errors">{errors?.firstName}</div>
+            </div>
+            <div className="session-input-container">
+              <span className="session-input-label">Last Name</span>
+              <input type="text"
+                value={lastName}
+                onChange={update('lastName')}
+                placeholder="Your last name won't be shown on your profile"
+                className="session-input-text-field"
+              />
+              <div className="session-errors">{errors?.lastName}</div>
+            </div>
+            <div className="session-input-container signup-location-dropdown">
+              <span className="session-input-label">Location (optional)</span>
+              <select name="services" onChange={update("location")}>
+                <option selected value="none">Where are you located?</option>
+                <option value="ca-bay-area">California Bay Area</option>
+                <option value="s-ca">Southern California</option>
+                <option value="chicagoland">Chicagoland</option>
+              </select>
+              <div className="session-errors">{errors?.location}</div>
+            </div>
+            <div className="session-input-container">
+              <span className="session-input-label">Password</span>
+              <input type="password"
+                value={password}
+                onChange={update('password')}
+                placeholder="Password"
+                className="session-input-text-field"
+              />
+              <div className="session-errors">{errors?.password}</div>
+            </div>
+            <div className="session-input-container">
+              <span className="session-input-label">Confirm Password</span>
+              <input type="password"
+                value={password2}
+                onChange={update('password2')}
+                placeholder="Reenter your password"
+                className="session-input-text-field"
+              />
+              <div className="session-errors">
+                {password !== password2 && 'Confirm Password field must match'}
+              </div>
+            </div>
+            <input
+              className="session-form-button"
+              type="submit"
+              value="Create Account"
+              disabled={!email || !firstName || !lastName || !password || password !== password2}
+            />
+          </form>
         </div>
-        <label>
-          <span>Confirm Password</span>
-          <input type="password"
-            value={password2}
-            onChange={update('password2')}
-            placeholder="Reenter your password"
-          />
-        </label>
-        <input
-          type="submit"
-          value="Create Account"
-          disabled={!email || !firstName || !lastName || !password || password !== password2}
-        />
-      </form>
+      </div>
+    </div>
     </>
   );
 }
