@@ -3,9 +3,11 @@ import { closeModal } from "../../store/modals";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { createJob } from "../../store/jobs";
+import { useHistory } from "react-router-dom";
 
 function BookJob() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
     const [description, setDescription] = useState("");
     const [date, setDate] = useState(null);
@@ -27,6 +29,7 @@ function BookJob() {
         }
         dispatch(createJob(newJob));
         dispatch(closeModal());
+        history.push('/dashboard');
     }
 
     return (

@@ -1,14 +1,23 @@
 import './ServiceItem.scss'
 import { openModal } from '../../store/modals';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const ServiceItem = ({service, job}) => {
   const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.user);
+  const history = useHistory();
 
   const handleClick = e => {
     e.preventDefault();
-    dispatch(openModal("book", service))
+    if (currentUser) {
+      dispatch(openModal("book", service))
+    } else {
+      history.push('/login');
+    }
   }
+
 
   return (
     <>
