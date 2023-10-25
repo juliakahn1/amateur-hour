@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateService } from "../../store/services";
+import "./Profile.css"
 
 function ProfileEdit({userService}) {
     const dispatch = useDispatch();
