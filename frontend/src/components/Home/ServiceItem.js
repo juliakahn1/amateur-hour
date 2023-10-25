@@ -1,7 +1,7 @@
 import './ServiceItem.scss'
 
-const ServiceItem = ({service}) => {
-  console.log(service)
+const ServiceItem = ({service, job}) => {
+
   return (
     <>
       <div className="service-item-shape">
@@ -14,7 +14,7 @@ const ServiceItem = ({service}) => {
               </header>
               <section className="service-item-details">
                 <span className="service-tile-portfolio">{service.otherLink}</span>
-                <span className="service-tile-job-count">12 jobs completed</span>
+                <span className="service-tile-job-count">{job.length} jobs completed</span>
                 <span className="service-tile-compensation-label">Compensation</span>
                 <span className="service-tile-compensation-data">{service.compensation}</span>
               </section>
