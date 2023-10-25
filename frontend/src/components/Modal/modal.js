@@ -32,7 +32,7 @@ function Modal () {
             <div className="modal-background" onClick={handleClick}></div>
             <div className="modal">
                 <header className="modal-header">
-                    <span onClick={handleClick}>X</span>
+                    <span className="close-button" onClick={handleClick}>X</span>
                 </header>
                 <div className="modal-child" onClick={(e) => e.stopPropagation()}>
                     {component}

@@ -32,7 +32,7 @@ function BookJob() {
     return (
         <form onSubmit={handleSubmit}>
             <div className="book-job-container">
-                <h3>Before we send your request, we need a few details from you.</h3>
+                <h3>Before we send your {service.category} request to {provider.firstName}, we need a few details from you.</h3>
                 <div className="description-field">
                     <label>
                         Tell us about what you want done on this job.
@@ -52,7 +52,7 @@ function BookJob() {
                     />
                 </div>
             </div>
-            <input type="submit" value="Book" disabled={!description || !date}/>
+            <input type="submit" value="Send request" disabled={!description || !date}/>
         </form>
     )
 }
