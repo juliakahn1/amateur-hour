@@ -1,3 +1,77 @@
-.session-form {
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+.session-page-container {
   padding-top: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.session-page-inner-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2.session-form-title {
+  font-size: 20px;
+  color: grey;
+  line-height: 1.6rem;
+  display: flex;
+  justify-content: center;
+  margin: 10px 10px 0 10px;
+}
+
+.session-form {
+  margin: 20px 0px 20px 0px;
+  width: 60%;
+}
+
+.session-input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 100%;
+
+  .session-input-label {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .session-input-text-field {
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 10px;
+  }
+
+}
+
+.session-form-button {
+  border: none;
+  background: rgb(211, 211, 211);
+  padding: 6px 8px 6px 8px;
+  font-size: 15px;
+  border-radius: 2px;
+  width: 100%;
+  margin: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgb(179, 179, 179);
+  }
+
+  &.create-account {
+    background: white;
+    border: 1px solid rgb(211, 211, 211);
+    color: rgb(211, 211, 211);
+    color: black;
+
+    &:hover {
+      background: rgb(179, 179, 179);
+    }
+  }
 }
