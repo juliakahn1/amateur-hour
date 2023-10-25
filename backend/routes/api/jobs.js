@@ -18,8 +18,7 @@ router.get('/', async (req, res) => {
             .populate("client", "_id firstName")
             .sort({ createdAt: -1 });
         return res.json(jobs);
-    }
-    catch(err) {
+    } catch(err) {
         return res.json([]);
     }
 });
@@ -44,8 +43,7 @@ router.get('/client/:userId', async (req, res, next) => {
             .populate("client", "_id firstName")
             .sort({ createdAt: -1 })
         return res.json(jobs);
-    }
-    catch(err) {
+    } catch(err) {
         return res.json([]);
     }
 });
@@ -62,7 +60,7 @@ router.get('/provider/:userId', async (req, res, next) => {
         const error = new Error('Service not found');
         error.statusCode = 404;
         if (user._id === req.params.userId) {
-            errors.errors = { message: "No service found with that user" };
+            error.errors = { message: "No service found with that user" };
         } else {
             error.errors = { message: "No user found with that id" };
         }
@@ -77,8 +75,7 @@ router.get('/provider/:userId', async (req, res, next) => {
             .populate("client", "_id firstName")
             .sort({ createdAt: -1 })
         return res.json(jobs);
-    }
-    catch(err) {
+    } catch(err) {
         return res.json([]);
     }
 });
@@ -104,7 +101,17 @@ router.get('/:id', async (req, res, next) => {
 //// create job
 //// attach requireUser as middleware before route handler to gain access to req.user
 router.post('/', requireUser, validateJobInput, async (req, res, next) => {
-
+    let user;
+    let service;
+    try {
+        user = await User.findById(req.params.userId);
+        service = await Service.findById(req.body.service);
+    } catch(err) {
+        const error = new Error('Job could not be not created');
+        error.statusCode = 404;
+        error.errors = { message: "User or service could not be found" };
+        return next(error);
+    }
     // check to make sure the user has not already requested a job from this service
     const job = await Job.findOne({
         client: req.user._id,
@@ -113,12 +120,10 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
 
     if (job) {
         // Throw a 400 error if a service has already been requested for this client
-        const err = new Error("Validation Error");
-        err.statusCode = 400;
-        const errors = {};
-        errors.service = "You have already requested this service";
-        err.errors = errors;
-        return next(err);
+        const error = new Error('Validation Error');
+        error.statusCode = 400;
+        error.errors = { message: "You have already requested this service"};
+        return next(error);
     }
 
     try {
@@ -141,8 +146,7 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
         });
         job = await job.populate("client", "_id firstName lastName email");
         return res.json(job);
-    }
-    catch (err) {
+    } catch(err) {
         next(err);
     }
 });
@@ -171,9 +175,11 @@ router.patch('/:id', requireUser, validateJobInput, async (req, res, next) => {
         });
         job = await job.populate("client", "_id firstName lastName email");
         return res.json(job);
-    }
-    catch (err) {
-        next(err);
+    } catch(err) {
+        const error = new Error('Job could not be updated');
+        error.statusCode = 404;
+        error.errors = { message: "Job could not be updated"};
+        return next(error);
     }
 });
 
@@ -183,9 +189,11 @@ router.delete('/:id', requireUser, async (req, res, next) => {
         const filter = { _id: req.params.id };
         let job = await Job.findOneAndDelete(filter);
         return res.json(job);
-    }
-    catch (err) {
-        next(err)
+    } catch(err) {
+        const error = new Error('Job could not be deleted');
+        error.statusCode = 404;
+        error.errors = { message: "Job could not be deleted"};
+        return next(error);
     }
 })
 

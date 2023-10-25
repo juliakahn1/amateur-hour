@@ -85,7 +85,7 @@ services.forEach(service=> {
         jobs.push(
             new Job({
                 service: service._id, 
-                client: users[Math.floor(Math.random() * users.length)],
+                client: users[Math.floor(Math.random() * users.length)]._id,
                 statusDescription: statusOptions[Math.floor(Math.random() * statusOptions.length)],
                 date: faker.date.soon(),
                 description: faker.person.bio()
