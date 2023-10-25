@@ -5,6 +5,7 @@ import './Profile.css';
 import ProfileEdit from "./ProfileEdit";
 import { fetchServices } from "../../store/services";
 
+
 function Profile () {
     const dispatch = useDispatch();
     const [showEdit, setShowEdit] = useState(false);
@@ -38,7 +39,7 @@ function Profile () {
         setShowEdit(true);
     }
     
-
+    
     
     return (showEdit && userService) ? (
         <>
