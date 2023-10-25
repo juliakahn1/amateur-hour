@@ -47,7 +47,7 @@ const NavBar = () => {
           <h1 className="site-title" onClick={(e) => goHome(e)}>AmateurHour</h1>
           { getLinks() }
         </div>
-        <div className="navbar-service-categories">
+        {/* <div className="navbar-service-categories">
           {serviceCategories.map((category, index) => {
             return ( // add on click here
               <div key={index} className="navbar-service-category-tile">
@@ -55,7 +55,7 @@ const NavBar = () => {
               </div>
             )
           })}
-        </div>
+        </div> */}
       </div>
     </>
   )

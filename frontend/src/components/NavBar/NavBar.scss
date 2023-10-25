@@ -3,13 +3,13 @@
 .navbar-wrapper-outer {
   display: flex;
   flex-direction: column;
-  // height: 100px;
+  justify-content: center;
   border-bottom: 1px solid #ccc;
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 3;
-  height: 120px;
+  height: 100px;
   background: #fff;
 }
 
@@ -67,23 +67,5 @@
 
   &:hover {
     color: blue;
-  }
-}
-
-.navbar-service-categories {
-  width: 100%;
-  height: 20px;
-}
-
-.navbar-service-categories {
-  display: flex;
-  justify-content: space-around;
-  width:100%;
-  padding-bottom: 10px;
-  text-transform: uppercase;
-  font-size: 0.8rem;;
-
-  .navbar-service-category-tile {
-    cursor: pointer;
   }
 }

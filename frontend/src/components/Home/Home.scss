@@ -2,5 +2,68 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 130px 25px 0 25px;
+  margin: 30px 25px 0 25px;
+}
+
+.navbar-service-categories {
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 20px;
+  padding-top: 130px;
+  display: flex;
+  justify-content: space-evenly;
+  text-transform: uppercase;
+  font-size: 0.8rem;;
+
+  // .navbar-service-category-tile-label {
+  //   cursor: pointer;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   padding: 2px;
+  //   border-radius: 3px;
+  //   transition: transform 500ms ease;
+
+  //   &:hover {
+  //     background-color: lightgray;
+  //   }
+  // }
+
+  // .navbar-service-category-tile-radio {
+  //   opacity: 0;
+  //   display: none;
+  // }
+
+  // .navbar-service-category-tile-radio:checked + .navbar-service-category-tile-label {
+  //   background-color:lightgray;
+  // }
+}
+
+.navbar-service-tile-container {
+  position:relative;
+}
+
+.navbar-service-category-tile-radio {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.navbar-service-category-tile-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding: 10px;
+  transition: transform 500ms ease;
+}
+
+.navbar-service-category-tile-radio:checked + .navbar-service-category-tile-label {
+  background-color:lightgray;
 }

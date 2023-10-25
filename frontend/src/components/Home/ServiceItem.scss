@@ -1,15 +1,8 @@
-
-
 .service-item-shape {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1em;
   padding: 15px;
-  // background-color: rgb(249, 249, 249);
-  // margin: 10px;
-  // width: 250px;
-  // height: 300px;
-  // position: relative;
 }
 
 .service-item-inner-container {
@@ -26,24 +19,18 @@
     transition: all 0.3s ease;
     transform: translate3D(0, -1px, 0);
   }
-  // display: flex;
-  // flex-direction: column;
-  // padding: 10px;
-  // margin: 10px;
 }
 
 .service-item-metadata {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // min-height: 240px;
   height: 100%;
   padding: 25px;
 }
 
 .service-item-header {
   padding-bottom: 5px;
-  // height: 100%;
 }
 
 h3 {
@@ -52,7 +39,6 @@ h3 {
   font-size: .9rem;
   letter-spacing: -.01rem;
   font-weight: 600;
-
 }
 
 h2.service-item-name {
@@ -115,15 +101,3 @@ h2.service-item-name {
     background-color: rgb(218, 218, 218);
   }
 }
-
-// .compensation-container {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-
-//   .compensation-label {
-//     text-transform: uppercase;
-//     font-weight: 600;
-//     font-size: .9rem;
-//   }
-// }
