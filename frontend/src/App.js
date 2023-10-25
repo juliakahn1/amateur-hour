@@ -10,6 +10,7 @@ import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 import ServicesForm from './components/SessionForms/ServicesForm';
 import Profile from './components/Profile/Profile';
+import Modal from './components/Modal/modal';
 
 import { getCurrentUser } from './store/session';
 
@@ -22,6 +23,7 @@ function App() {
 
   return loaded && (
     <>
+      <Modal />
       <NavBar />
       <Switch>
         <ProtectedRoute exact path="/signup/services" component={ServicesForm} />
