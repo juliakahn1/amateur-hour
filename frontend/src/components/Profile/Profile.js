@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import './Profile.css';
 import ProfileEdit from "./ProfileEdit";
 import { fetchServices } from "../../store/services";
+import { openModal } from "../../store/modals";
 
 function Profile () {
     const dispatch = useDispatch();
@@ -38,7 +39,10 @@ function Profile () {
         setShowEdit(true);
     }
     
-
+    const handleModal = e => {
+        e.preventDefault();
+        dispatch(openModal('book'))
+    }
     
     return (showEdit && userService) ? (
         <>
@@ -53,6 +57,7 @@ function Profile () {
             <p>{userService.otherLink}</p>
             {/* <p>{currentUser.email}</p> */}
             <button onClick={handleClick}>Edit</button>
+            <button onClick={handleModal}>Modal test</button>
         </div>
         </>
     )
