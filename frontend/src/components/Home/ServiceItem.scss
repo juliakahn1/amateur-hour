@@ -67,9 +67,24 @@ h2.service-item-name {
   padding-bottom: 20px;
 }
 
-.service-tile-portfolio {
+.service-tile-portfolio-container{
+  display: flex;
   padding-bottom: 15px;
+  align-items: flex-start;
+
+  .fa-arrow-up-right-from-square {
+    height: 10px;
+  }
+}
+
+.service-tile-portfolio {
   cursor: pointer;
+  padding-right: 5px;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .service-tile-job-count {

@@ -7,11 +7,10 @@ import ServiceItem from './ServiceItem'
 import './Home.scss'
 
 const Home = () => {
-  // get all services from the store/backend with useEffect and useSelector
   const dispatch = useDispatch()
   const services = useSelector(store => store.services)
-  const servicesArr = Object.values(services)
   const jobs = useSelector(store => store.jobs)
+  const servicesArr = Object.values(services)
   const jobsArr = Object.values(jobs)
 
   useEffect(() => {

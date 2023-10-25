@@ -13,7 +13,10 @@ const ServiceItem = ({service, job}) => {
                 <h2 className="service-item-name">{service.provider.firstName}</h2>
               </header>
               <section className="service-item-details">
-                <span className="service-tile-portfolio">{service.otherLink}</span>
+                <div className="service-tile-portfolio-container">
+                  <span className="service-tile-portfolio"><a href={service.otherLink}>Visit portfolio</a></span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
                 <span className="service-tile-job-count">{job.length} jobs completed</span>
                 <span className="service-tile-compensation-label">Compensation</span>
                 <span className="service-tile-compensation-data">{service.compensation}</span>
