@@ -50,7 +50,7 @@ users.push(
     })
 );
 
-for (let i = 3; i < NUM_SEED_USERS; i++) {
+for (let i = 4; i < NUM_SEED_USERS; i++) {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
     users.push(
@@ -71,7 +71,8 @@ for (let i = 0; i < NUM_SEED_SERVICES; i++) {
         new Service({
             category: serviceCategories[Math.floor(Math.random() * serviceCategories.length)],
             provider: users[i]._id,
-            compensation: compOptions[Math.floor(Math.random() * compOptions.length)]
+            compensation: compOptions[Math.floor(Math.random() * compOptions.length)],
+            otherLink: faker.internet.url()
         })
     )
 }
