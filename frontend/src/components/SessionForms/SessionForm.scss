@@ -28,6 +28,12 @@ h2.session-form-title {
 .session-form {
   margin: 20px 0px 20px 0px;
   width: 60%;
+
+  .session-errors {
+    padding: 10px 0 3px 0 ;
+    color: rgb(215, 3, 3);
+    font-weight: 500;
+  }
 }
 
 .session-input-container {

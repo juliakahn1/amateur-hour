@@ -29,6 +29,11 @@ function LoginForm () {
     history.push('/')
   }
 
+  const toSignUp = (e) => {
+    e.preventDefault()
+    history.push('/signup')
+  }
+
   return (
     <>
       <div className="session-page-container login-page">
@@ -39,7 +44,6 @@ function LoginForm () {
           </p> */}
           <h2 className="session-form-title login-form">Log in to book new services and see your ongoing jobs</h2>
           <form className="session-form login-form" onSubmit={handleSubmit}>
-            <div className="errors">{errors?.email}</div>
             <div className="session-input-container">
               <span className="session-input-label">Email</span>
               <input type="text"
@@ -48,8 +52,8 @@ function LoginForm () {
                 placeholder="Email"
                 className="session-input-text-field"
               />
+            <div className="session-errors">{errors?.email}</div>
             </div>
-            <div className="errors">{errors?.password}</div>
             <div className="session-input-container">
               <span className="session-input-label">Password</span>
               <input type="password"
@@ -58,6 +62,7 @@ function LoginForm () {
                 placeholder="Password"
                 className="session-input-text-field"
               />
+            <div className="session-errors">{errors?.password}</div>
             </div>
             <input
               type="submit"
@@ -65,7 +70,8 @@ function LoginForm () {
               disabled={!email || !password}
               className="session-form-button"
             />
-          <button className="session-form-button create-account">
+          <button className="session-form-button create-account"
+            onClick={toSignUp}>
             Create an AmateurHour account
           </button>
           </form>
