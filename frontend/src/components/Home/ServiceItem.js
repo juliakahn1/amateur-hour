@@ -1,6 +1,14 @@
 import './ServiceItem.scss'
+import { openModal } from '../../store/modals';
+import { useDispatch } from 'react-redux';
 
 const ServiceItem = ({service, job}) => {
+  const dispatch = useDispatch();
+
+  const handleClick = e => {
+    e.preventDefault();
+    dispatch(openModal("book", service))
+  }
 
   return (
     <>
@@ -23,7 +31,7 @@ const ServiceItem = ({service, job}) => {
                 <span className="service-tile-compensation-label">Compensation</span>
                 <span className="service-tile-compensation-data">{service.compensation}</span>
               </section>
-              <button className="service-item-button">Book</button>
+              <button className="service-item-button" onClick={handleClick}>Book</button>
             </div>
           </div>
         </div>

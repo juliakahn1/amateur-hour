@@ -9,21 +9,19 @@ function BookJob() {
     const currentUser = useSelector(state => state.session.user);
     const [description, setDescription] = useState("");
     const [date, setDate] = useState(null);
-    const [statusDescription, setStatusDescription] = useState("");
-    const [provider, setProvider] = useState("");
-    const [client, setClient] = useState("");
-    const [service, setService] = useState("");
+    const service = useSelector(state => state.modals.service);
+    const provider = service.provider;
 
     const handleSubmit = e => {
         e.preventDefault();
         const newJob = {
-            service: service,
-            provider: provider,
+            service: service._id,
+            provider: provider._id,
             client: {
-                _id: currentUser.id,
+                _id: currentUser._id,
                 firstName: currentUser.firstName
             },
-            statusDescription: statusDescription,
+            statusDescription: "requested",
             date: date,
             description: description
         }

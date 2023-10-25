@@ -1,10 +1,11 @@
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
 
-export const openModal = modal => {
+export const openModal = (modalType, service) => {
     return {
         type: OPEN_MODAL,
-        modal
+        modalType,
+        service
     }
 }
 
@@ -17,7 +18,7 @@ export const closeModal = () => {
 function modalReducer(state = null, action) {
     switch (action.type) {
         case OPEN_MODAL:
-            return action.modal;
+            return {type: action.modalType, service: action.service};
         case CLOSE_MODAL:
             return null;
         default:

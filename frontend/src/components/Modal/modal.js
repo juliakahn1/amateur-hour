@@ -19,7 +19,7 @@ function Modal () {
     }
 
     let component;
-    switch(modal) {
+    switch(modal.type) {
         case 'book':
             component = <BookJob />
             break;
