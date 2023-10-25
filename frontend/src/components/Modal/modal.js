@@ -7,7 +7,7 @@ import "./Modal.css"
 
 function Modal () {
     const dispatch = useDispatch();
-    const modal = useSelector(state => state.modal);
+    const modal = useSelector(state => state.modals);
 
     if (!modal) {
         return null;
