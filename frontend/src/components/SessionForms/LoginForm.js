@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { getCurrentUser } from '../../store/session';
 import './SessionForm.scss';
 
 
@@ -30,7 +29,10 @@ function LoginForm () {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }))
-    return currentUser ? history.push('/') : null
+    if (currentUser) {
+      history.push('/')
+      dispatch(clearSessionErrors())
+    }
   }
 
   const toSignUp = (e) => {
