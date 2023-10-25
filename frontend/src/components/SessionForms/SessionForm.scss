@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
+.session-page-background {
+  background-color: rgb(246, 246, 246);
+  height: 100vh;
+}
+
 .session-page-container {
   padding-top: 130px;
   display: flex;
@@ -17,22 +22,24 @@
 }
 
 h2.session-form-title {
-  font-size: 20px;
+  font-size: 1.5rem;
   color: grey;
   line-height: 1.6rem;
   display: flex;
   justify-content: center;
-  margin: 10px 10px 0 10px;
+  margin: 10px 0 15px 0;
 }
 
 .session-form {
   margin: 20px 0px 20px 0px;
   width: 60%;
+  color: grey;
 
   .session-errors {
     padding: 10px 0 3px 0 ;
     color: rgb(215, 3, 3);
     font-weight: 500;
+    font-size: 0.9rem;
   }
 }
 
