@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 const { mongoURI: db } = require('../config/keys');
 const User = require('../models/User');
 const Service = require('../models/Service');
+const Job = require('../models/Job');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
-const { compOptions, serviceCategories } = require("../../frontend/src/constants");
+const { compOptions, serviceCategories, statusOptions } = require("../../frontend/src/constants");
 
 const NUM_SEED_USERS = 15;
 const NUM_SEED_SERVICES = 15;
+const NUM_SEED_JOBS_PER_SERVICE = 3;
 
 // create users
 const users = [];
@@ -74,6 +76,24 @@ for (let i = 0; i < NUM_SEED_SERVICES; i++) {
     )
 }
 
+// create jobs
+const jobs = [];
+
+services.forEach(service=> {
+    for (let i = 0; i < NUM_SEED_JOBS_PER_SERVICE; i++) {
+        jobs.push(
+            new Job({
+                service: service._id, 
+                client: users[Math.floor(Math.random() * users.length)],
+                statusDescription: statusOptions[Math.floor(Math.random() * statusOptions.length)],
+                date: faker.date.soon(),
+                description: faker.person.bio()
+            })
+        )
+    }
+})
+    
+
 // Connect to database
 mongoose
     .connect(db, { useNewUrlParser: true })
@@ -91,8 +111,10 @@ const insertSeeds = () => {
 
     User.collection.drop()
         .then(() => Service.collection.drop())
+        .then(() => Job.collection.drop())
         .then(() => User.insertMany(users))
         .then(() => Service.insertMany(services))
+        .then(() => Job.insertMany(jobs))
         .then(() => {
             console.log("Done!");
             mongoose.disconnect();
