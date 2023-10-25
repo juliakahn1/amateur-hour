@@ -6,8 +6,6 @@ const ADD_JOB = "jobs/ADD_JOB";
 const EDIT_JOB = "jobs/EDIT_JOB";
 const REMOVE_JOB = "jobs/REMOVE_JOB";
 
-// TODO: add job errors reducer and dispatch errors from job actions
-// Ran into error where "err.json()" was undefined
 const GET_JOB_ERRORS = "jobs/GET_JOB_ERRORS";
 const CLEAR_JOB_ERRORS = "jobs/CLEAR_JOB_ERRORS";
 
@@ -46,7 +44,6 @@ const removeJob = jobId => {
   }
 }
 
-// TO BE ADDED LATER. Ran into error where "err.json()" was undefined
 const getJobErrors = errors => {
     return {
         type: GET_JOB_ERRORS,
@@ -253,7 +250,6 @@ export const deleteJob = (jobId) => async (dispatch) => {
     }
 }
 
-// TO BE ADDED LATER. Ran into error where "err.json()" was undefined
 const nullErrors = null;
 export const jobsErrorsReducer = (state = nullErrors, action) => {
     switch(action.type) {
