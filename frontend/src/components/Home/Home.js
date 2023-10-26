@@ -25,7 +25,7 @@ const Home = () => {
   categoryFilter === 'all' ? filteredServices = servicesArr :
     filteredServices = servicesArr.filter(service => service.category === categoryFilter)
 
-  return servicesArr.length > 0 ? (
+  return (servicesArr.length > 0 && jobsArr.length > 0) ? (
     <>
       <form className="navbar-service-categories">
         <div className="navbar-service-tile-container">
@@ -51,10 +51,10 @@ const Home = () => {
       </form>
       <div className="home-services-container">
       { filteredServices.map((service, index) => {
-        let job = jobsArr.filter(job => job.provider._id === service.provider._id)
+        let jobs = jobsArr.filter(job => job.provider._id === service.provider._id)
         return (
           <div className="service-item-tile-wrapper" key={index}>
-            <ServiceItem service={service} job={job}/>
+            <ServiceItem service={service} jobs={jobs}/>
           </div>
         )
       })}

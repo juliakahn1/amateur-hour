@@ -25,10 +25,12 @@ function SignupForm () {
       location
     };
     dispatch(signup(user))
-    if (errors === 0) {
-      history.push('/signup/services')
-      dispatch(clearSessionErrors())
-    }
+      .then((res) => {
+        if (res.ok) {
+          history.push('/signup/services')
+          dispatch(clearSessionErrors())
+        }
+      })
   }
 
   const update = field => {

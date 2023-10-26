@@ -78,7 +78,7 @@ export const fetchJob = (jobId) => async (dispatch) => {
                 }
             dispatch(getJob(payload))
         }
-    } catch (err) {        
+    } catch (err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400 || resBody.statusCode === 404) {
             return dispatch(getJobErrors(resBody.errors))
@@ -108,8 +108,7 @@ export const fetchJobs = () => async (dispatch) => {
             })
             dispatch(getJobs(payload))
         }
-    } catch (err) {    
-        debugger    
+    } catch (err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400 || resBody.statusCode === 404) {
             return dispatch(getJobErrors(resBody.errors))
@@ -139,7 +138,7 @@ export const fetchClientJobs = (clientId) => async (dispatch) => {
             })
             dispatch(getJobs(payload))
         }
-    } catch (err) {        
+    } catch (err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400 || resBody.statusCode === 404) {
             return dispatch(getJobErrors(resBody.errors))
@@ -169,7 +168,7 @@ export const fetchProviderJobs = (providerId) => async (dispatch) => {
             })
             dispatch(getJobs(payload))
         }
-    } catch (err) {        
+    } catch (err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400 || resBody.statusCode === 404) {
             return dispatch(getJobErrors(resBody.errors))
@@ -200,7 +199,7 @@ export const createJob = (job) => async (dispatch) => {
                 }
             dispatch(addJob(payload))
         }
-    } catch (err) {        
+    } catch (err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400 || resBody.statusCode === 404) {
             return dispatch(getJobErrors(resBody.errors))
@@ -231,7 +230,7 @@ export const updateJob = (job, jobId) => async (dispatch) => {
                 }
             dispatch(editJob(payload))
         }
-    } catch (err) {        
+    } catch (err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400 || resBody.statusCode === 404) {
             return dispatch(getJobErrors(resBody.errors))
@@ -248,7 +247,7 @@ export const deleteJob = (jobId) => async (dispatch) => {
           const job = await res.json()
           dispatch(removeJob(job._id))
         }
-    } catch (err) {        
+    } catch (err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400 || resBody.statusCode === 404) {
             return dispatch(getJobErrors(resBody.errors))

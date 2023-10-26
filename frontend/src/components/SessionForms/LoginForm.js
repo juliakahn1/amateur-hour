@@ -13,7 +13,6 @@ function LoginForm () {
   const currentUser = useSelector(state => state.session?.user);
   const dispatch = useDispatch();
   const history = useHistory()
-  console.log(currentUser)
 
   useEffect(() => {
     return () => {
