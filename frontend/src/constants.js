@@ -24,4 +24,26 @@ const statusOptions = [
     'providerCompensated'
 ]
 
-module.exports = { compOptions, serviceCategories, statusOptions }
+const requestedJobStatuses = {
+    'requested': 'Awaiting provider acceptance',
+    'accepted': 'Awaiting provider completion',
+    'providerCompleted': 'Job completed?',
+    'clientCompleted': 'Compensation given?',
+    'providerCompensated': 'Request complete'
+}
+
+const providedJobStatuses = {
+    'requested': 'Accept job?',
+    'accepted': 'Job completed?',
+    'providerCompleted': 'Awaiting client confirmation',
+    'clientCompleted': 'Awaiting client compensation',
+    'providerCompensated': 'Job complete'
+}
+
+module.exports = {
+    compOptions,
+    serviceCategories,
+    statusOptions,
+    requestedJobStatuses,
+    providedJobStatuses
+}
