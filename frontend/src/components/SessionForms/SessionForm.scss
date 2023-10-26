@@ -50,6 +50,7 @@ h2.session-form-title {
   width: 100%;
 
   &.signup-location-dropdown {
+    margin: 0px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -63,7 +64,6 @@ h2.session-form-title {
     font-family: 'Poppins', sans-serif;
     padding: 10px;
     color: grey;
-    margin-bottom: 5px;
   }
 
   .session-input-label {
