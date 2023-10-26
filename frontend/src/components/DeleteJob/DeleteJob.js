@@ -25,6 +25,9 @@ const DeleteJob = () => {
             <div className="delete-job-header">
                 {headerString()}
             </div>
+            <div className="delete-job-text">
+                {headerString()}
+            </div>
             <button className="delete-job-button" onClick={handleClick}>Delete Job</button>
         </div>
     );
