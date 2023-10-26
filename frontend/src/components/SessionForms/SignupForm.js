@@ -106,7 +106,7 @@ function SignupForm () {
               <div className="session-errors">{errors?.lastName}</div>
             </div>
             <div className="session-input-container signup-location-dropdown">
-              <span className="session-input-label signup-location">Location (optional)</span>
+              <span className="session-input-label signup-location">Location</span>
               <select
                 name="services"
                 onChange={update("location")}
