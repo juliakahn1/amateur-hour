@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         const jobs = await Job.find()
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName' })
+                populate: ({ path: 'provider', select: '_id firstName email' })
             })
             .populate("client", "_id firstName email")
             .sort({ createdAt: -1 });
@@ -38,7 +38,7 @@ router.get('/client/:userId', async (req, res, next) => {
         const jobs = await Job.find({ client: user._id })
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName' })
+                populate: ({ path: 'provider', select: '_id firstName email' })
             })
             .populate("client", "_id firstName email")
             .sort({ createdAt: -1 })
@@ -70,7 +70,7 @@ router.get('/provider/:userId', async (req, res, next) => {
         const jobs = await Job.find({ service: firstService._id })
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName' })
+                populate: ({ path: 'provider', select: '_id firstName email' })
             })
             .populate("client", "_id firstName email")
             .sort({ createdAt: -1 })
@@ -86,7 +86,7 @@ router.get('/:id', async (req, res, next) => {
         const job = await Job.findById(req.params.id)
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName lastName' })
+                populate: ({ path: 'provider', select: '_id firstName lastName email' })
             })
             .populate("client", "_id firstName lastName location email");
         return res.json(job);
