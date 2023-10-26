@@ -15,7 +15,7 @@
 .welcome {
     font-size: 1.1rem;
     font-weight: 450;
-    color: black;
+    color: grey;
 }
 
 .link {
@@ -25,7 +25,7 @@
 
 .portfolio {
     padding-right: 5px;
-    font-weight: 600;
+    font-weight: 475;
     
 }
 
@@ -36,11 +36,28 @@
 .user-info-item > p {
     text-transform: uppercase;
     padding-top: 0.2rem;
-    font-weight: 550;
+    font-weight: 475;
+    
+}
+
+.user-info-item > span {
+    color: grey;
 }
 
 
+.edit-button {
+    border: none;
+    background: rgb(211, 211, 211);
+    padding: 6px 8px 6px 8px;
+    font-size: 15px;
+    border-radius: 2px;
+    width: 100%;
+    margin: 10px;
+    cursor: pointer;
 
-
+    &:hover {
+        background: rgb(179, 179, 179);
+      }
+}
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import './Profile.css';
+import './Profile.scss';
 import ProfileEdit from "./ProfileEdit";
 import { fetchServices } from "../../store/services";
 
@@ -78,7 +78,7 @@ function Profile () {
                     <p>{currentUser.location}</p>
                 </div>
             </div>
-            <button onClick={handleClick}>Edit</button>
+            <button className="edit-button" onClick={handleClick}>Edit</button>
         </div>
         </>
     )
