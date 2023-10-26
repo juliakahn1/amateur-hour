@@ -3,6 +3,7 @@ import { closeModal } from "../../store/modals";
 import { useDispatch, useSelector } from "react-redux";
 import BookJob from "../BookJob/BookJob";
 import DeleteJob from "../DeleteJob/DeleteJob";
+import Profile from "../Profile/Profile";
 import "./Modal.css"
 
 
@@ -26,6 +27,9 @@ function Modal() {
 			break;
         case 'delete':
             modalContent = <DeleteJob />
+            break;
+        case "profile":
+            modalContent = <Profile />
             break;
 		default:
 			return null;

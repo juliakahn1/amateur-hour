@@ -5,6 +5,7 @@ import { logout } from '../../store/session';
 import { serviceCategories } from '../../constants';
 import './NavBar.scss';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { openModal } from '../../store/modals';
 
 const NavBar = () => {
   const loggedIn = useSelector(state => !!state.session.user);
@@ -21,12 +22,17 @@ const NavBar = () => {
     history.push('/')
   }
 
+  const handleProfile = e => {
+    e.preventDefault();
+    dispatch(openModal("profile"))
+  }
+
   const getLinks = () => {
     if (loggedIn) {
       return (
         <div className="links-nav">
           <Link className="nav-button" to={'/dashboard'}>Your Dashboard</Link>
-          <Link className="nav-button" to={'/profile'}>Profile</Link>
+          <p className="nav-button" onClick={handleProfile}>Profile</p>
           <button className="nav-button logout-button" onClick={logoutUser}>Logout</button>
         </div>
       );
