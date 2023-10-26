@@ -24,6 +24,13 @@ const statusOptions = [
     'providerCompensated'
 ]
 
+/// NOTE: locations are hardcoded in component 'frontend/src/components/SessionForms/SignupForm.js'. Update there if needed.
+const locationOptions = [
+    'California Bay Area',
+    'Southern California',
+    'Chicagoland'
+]
+
 const requestedJobStatuses = {
     'requested': 'Awaiting provider acceptance',
     'accepted': 'Awaiting provider completion',
@@ -44,6 +51,7 @@ module.exports = {
     compOptions,
     serviceCategories,
     statusOptions,
+    locationOptions,
     requestedJobStatuses,
     providedJobStatuses
 }

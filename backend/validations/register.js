@@ -1,5 +1,6 @@
 const { check } = require("express-validator");
 const handleValidationErrors = require('./handleValidationErrors');
+const { locationOptions } = require('../../frontend/src/constants');
 
 // validateRegisterInput is a combination Express middleware that uses the 
 // `check` middleware to validate the keys in the body of a request to 
@@ -21,6 +22,10 @@ const validateRegisterInput = [
     .exists({ checkFalsy: true })
     .isLength({ min: 8, max: 30 })
     .withMessage('Password must be between 8 and 30 characters'),
+  check('location')
+    .exists({ checkFalsy: true })
+    .isIn(locationOptions)
+    .withMessage('Location is invalid'),
   handleValidationErrors
 ];
 
