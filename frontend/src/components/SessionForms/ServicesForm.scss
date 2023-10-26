@@ -1,5 +1,35 @@
-.profile-services-form {
+.sign-services-background {
+  background-color: rgb(246, 246, 246);
+  height: 100vh;
+
+}
+.signup-services-container {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.signup-services-inner-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h2.signup-services-title {
   padding-top: 130px;
+  font-size: 1.5rem;
+  color: grey;
+  line-height: 1.6rem;
+  margin: 10px 0 0 0;
+}
+
+h3.signup-services-byline {
+  font-size: 1.0rem;
+  color: grey;
+  line-height: 1.6rem;
+  width: 60%;
+  margin: 10px 0 0 0;
+}
+.signup-services-form {
 }
 .services-tiles {
   display: flex;
