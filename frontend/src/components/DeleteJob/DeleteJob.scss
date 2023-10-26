@@ -8,10 +8,15 @@
 .delete-job-header {
     font-weight: 500;
     font-size: 1.2rem;
+    text-transform: uppercase;
 }
 
 .delete-job-text {
-    
+    font-size: 1rem;
+    color: grey;
+    line-height: 1.6rem;
+    display: flex;
+    justify-content: center;
 }
 
 .delete-job-button {
@@ -21,7 +26,6 @@
     font-size: 15px;
     border-radius: 2px;
     width: 100%;
-    margin-top: 30px;
     cursor: pointer;
   
     &:hover {

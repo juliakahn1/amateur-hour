@@ -8,9 +8,14 @@ const DeleteJob = () => {
     const dispatch = useDispatch();
     const job = useSelector(state => state.modals.entity);
 
+    const fromOrFor = job.indexType === "Requested" ? "from" : "for";
+
     const headerString = () => {
+        return `${job.category} ${fromOrFor} ${job.name}`;
+    }
+
+    const messageString = () => {
         const requested = job.indexType === "Requested" ? "requested" : "";
-        const fromOrFor = job.indexType === "Requested" ? "from" : "for";
         const jobDetails = `${requested} ${job.category} job ${fromOrFor} ${job.name}`;
         return `Are you sure you would like to delete your ${jobDetails}?`
     }
@@ -26,7 +31,7 @@ const DeleteJob = () => {
                 {headerString()}
             </div>
             <div className="delete-job-text">
-                {headerString()}
+                {messageString()}
             </div>
             <button className="delete-job-button" onClick={handleClick}>Delete Job</button>
         </div>
