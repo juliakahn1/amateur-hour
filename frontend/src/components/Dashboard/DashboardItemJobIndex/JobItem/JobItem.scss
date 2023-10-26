@@ -1,0 +1,44 @@
+.job-item-container {
+    margin: 10px 0 10px;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    position: relative;
+}
+
+.job-item-delete {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.job-item-delete:hover {
+    cursor: pointer;
+}
+
+.job-item-header {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: .9rem;
+    letter-spacing: -.01rem;
+    font-weight: 600;
+}
+
+.job-item-email {
+    margin-bottom: 10px;
+}
+
+.job-item-date {
+    margin-bottom: 10px;
+}
+
+.job-item-description {
+    margin-bottom: 10px;
+}
+
+.job-item-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
