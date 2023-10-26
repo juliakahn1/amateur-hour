@@ -8,13 +8,20 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
     const dispatch = useDispatch();
 
     const date = new Date(job.date);
+    const statusIndex = statusOptions.indexOf(job.statusDescription);
     const status = indexType === "Requested" ?
         requestedJobStatuses[job.statusDescription] :
         providedJobStatuses[job.statusDescription];
 
     const handleDeleteModal = (e) => {
         e.preventDefault();
-        dispatch(openModal("delete", job));
+        const jobInfo = {
+            ...job,
+            indexType,
+            name,
+            category: service.category
+        }
+        dispatch(openModal("delete", jobInfo));
     }
     
     const handleClick = (e) => {
@@ -28,7 +35,11 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
     
     return (
         <div className="job-item-container">
-            <div className="job-item-delete" onClick={handleDeleteModal}>x</div>
+            {statusIndex < 3 ? 
+                <div className="job-item-delete" onClick={handleDeleteModal}>
+                    <i className="fa-solid fa-xmark"></i>
+                </div> : <></>
+            }
             <div className="job-item-header">{name} - {service.category}</div>
             <div className="job-item-email">{email}</div>
             <div className="job-item-date">{date.toLocaleDateString()}</div>
