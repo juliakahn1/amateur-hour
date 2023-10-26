@@ -9,3 +9,8 @@
 .service-edit-form {
     padding-top: 130px;
 }
+
+#service-image {
+    max-width: 200px;
+    max-height: 200px;
+}
