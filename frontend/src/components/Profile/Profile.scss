@@ -34,7 +34,6 @@
 }
 
 .user-info-item > p {
-    text-transform: uppercase;
     padding-top: 0.2rem;
     font-weight: 475;
     
@@ -60,4 +59,7 @@
       }
 }
 
+.service-category {
+    text-transform: capitalize;
+}
 

@@ -41,7 +41,7 @@ function Profile () {
     
     
     
-    return (showEdit && userService) ? (
+    return (showEdit && userService) || (showEdit && !userService) ? (
         <>
             <ProfileEdit userService={userService}/>
         </>
@@ -54,7 +54,7 @@ function Profile () {
             <div className="user-info-container">
                 <div className="user-info-item">
                     <span>Your service:</span>
-                    <p>{userService.category}</p>   
+                    <p className="service-category">{userService.category}</p>   
                 </div>
                 <div className="user-info-item">
                     <span>Preferred compensation:</span>
