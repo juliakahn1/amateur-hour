@@ -14,7 +14,8 @@ const Home = () => {
   const jobs = useSelector(store => store.jobs)
   const servicesArr = Object.values(services)
   const jobsArr = Object.values(jobs)
-  const [categoryFilter, setCategoryFilter] = useState('all')
+  const [categoryFilter, setCategoryFilter] = useState('all');
+  const [searchFilter, setSearchFilter] = useState();
   let filteredServices
 
   useEffect(() => {
@@ -26,7 +27,16 @@ const Home = () => {
     filteredServices = servicesArr.filter(service => service.category === categoryFilter)
 
   return (servicesArr.length > 0 && jobsArr.length > 0) ? (
-    <>
+    <div className="navbar-service">
+      <form className="navbar-service-search">
+        <div className="navbar-service-search-container">
+          <input className="search-input-box" type="text" onChange={e=>setSearchFilter(e.target.value)} placeholder="Search" value={searchFilter}></input>
+          <div className="search-icon">
+            {searchFilter ? <i onClick={()=>setSearchFilter("")} className="fa-solid fa-x"></i> : <i className="fas fa-search"></i>}
+          </div>
+        </div>
+        {/* <button id='hidden-submit' type='submit' className='hide'></button> */}
+      </form>
       <form className="navbar-service-categories">
         <div className="navbar-service-tile-container">
           <input value='all'
@@ -59,7 +69,8 @@ const Home = () => {
         )
       })}
       </div>
-    </>
+    </div>
+
   ) : null;
 }
 

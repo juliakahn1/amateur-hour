@@ -5,11 +5,32 @@
   margin: 30px 25px 0 25px;
 }
 
-.navbar-service-categories {
+.navbar-service {
   margin-left: 20px;
   margin-right: 20px;
   height: 20px;
   padding-top: 130px;
+}
+
+.navbar-service-search {
+  padding-left: 40px;
+}
+
+.navbar-service-search-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  align-items: end;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navbar-service-categories {
   display: flex;
   justify-content: space-evenly;
   text-transform: uppercase;
