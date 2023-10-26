@@ -5,7 +5,7 @@ const Service = require('../models/Service');
 const Job = require('../models/Job');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
-const { compOptions, serviceCategories, statusOptions } = require("../../frontend/src/constants");
+const { compOptions, serviceCategories, statusOptions, locationOptions } = require("../../frontend/src/constants");
 
 const NUM_SEED_USERS = 90;
 const NUM_SEED_SERVICES_PER_CATEGORY = 8;
@@ -21,7 +21,8 @@ users.push(
         firstName: 'Mitchell',
         lastName: 'Chan',
         email: 'mitchell@chan.io',
-        hashedPassword: bcrypt.hashSync('password', 10)
+        hashedPassword: bcrypt.hashSync('password', 10),
+        location: locationOptions[Math.floor(Math.random() * locationOptions.length)]
     })
 );
 
@@ -30,7 +31,8 @@ users.push(
         firstName: 'Davis',
         lastName: 'Lucky',
         email: 'davis@lucky.io',
-        hashedPassword: bcrypt.hashSync('password', 10)
+        hashedPassword: bcrypt.hashSync('password', 10),
+        location: locationOptions[Math.floor(Math.random() * locationOptions.length)]
     })
 );
 
@@ -39,7 +41,8 @@ users.push(
         firstName: 'Shannon',
         lastName: 'Millar',
         email: 'shannon@millar.io',
-        hashedPassword: bcrypt.hashSync('password', 10)
+        hashedPassword: bcrypt.hashSync('password', 10),
+        location: locationOptions[Math.floor(Math.random() * locationOptions.length)]
     })
 );
 
@@ -48,7 +51,8 @@ users.push(
         firstName: 'Julia',
         lastName: 'Khan',
         email: 'julia@khan.io',
-        hashedPassword: bcrypt.hashSync('password', 10)
+        hashedPassword: bcrypt.hashSync('password', 10),
+        location: locationOptions[Math.floor(Math.random() * locationOptions.length)]
     })
 );
 
@@ -60,7 +64,8 @@ for (let i = 4; i < NUM_SEED_USERS; i++) {
             firstName,
             lastName,
             email: faker.internet.email( {firstName, lastName} ),
-            hashedPassword: bcrypt.hashSync(faker.internet.password(), 10)
+            hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
+            location: locationOptions[Math.floor(Math.random() * locationOptions.length)]
         })
     )
 }

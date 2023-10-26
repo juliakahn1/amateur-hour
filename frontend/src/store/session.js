@@ -12,10 +12,12 @@ const receiveCurrentUser = currentUser => ({
 });
 
 // Dispatch receiveErrors to show authentication errors on the frontend.
-const receiveErrors = errors => ({
-  type: RECEIVE_SESSION_ERRORS,
-  errors
-});
+const receiveErrors = errors => {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors
+  }
+};
 
 // Dispatch logoutUser to clear the session user when a user logs out.
 const logoutUser = () => ({
@@ -36,13 +38,15 @@ const startSession = (userInfo, route) => async dispatch => {
       method: "POST",
       body: JSON.stringify(userInfo)
     });
-    const { user, token } = await res.json();
+    const { user, token } = await res.clone().json();
     localStorage.setItem('jwtToken', token);
-    return dispatch(receiveCurrentUser(user));
+    dispatch(receiveCurrentUser(user));
+    return res
   } catch(err) {
-    const res = await err.json();
+    const res = await err.clone().json();
     if (res.statusCode === 400) {
-      return dispatch(receiveErrors(res.errors));
+      dispatch(receiveErrors(res.errors));
+      return res
     }
   }
 };
