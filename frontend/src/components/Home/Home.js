@@ -6,16 +6,20 @@ import { fetchServices } from "../../store/services";
 import { fetchJobs } from "../../store/jobs";
 import { serviceCategories } from "../../constants";
 import ServiceItem from "./ServiceItem";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./Home.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
   const services = useSelector((store) => store.services);
   const jobs = useSelector((store) => store.jobs);
+  const currentUserLoc = useSelector((store) => store.session?.user?.location);
   const servicesArr = Object.values(services);
   const jobsArr = Object.values(jobs);
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [searchFilter, setSearchFilter] = useState("");
+  const [locFilter, setLocFilter] = useState(false)
+  const history = useHistory()
   let filteredServices;
 
   useEffect(() => {
@@ -23,11 +27,19 @@ const Home = () => {
     dispatch(fetchJobs());
   }, [dispatch]);
 
-  categoryFilter === "all"
-    ? (filteredServices = servicesArr)
-    : (filteredServices = servicesArr.filter(
-        (service) => service.category === categoryFilter
-      ));
+  if (!locFilter) {
+    if (categoryFilter === 'all') {
+      filteredServices = servicesArr
+    } else {
+      filteredServices = servicesArr.filter(service => service.category === categoryFilter)
+    }
+  } else { // if filtering by location
+    if (categoryFilter === 'all') {
+      filteredServices = servicesArr.filter(service => service.provider.location === currentUserLoc)
+    } else {
+      filteredServices = servicesArr.filter(service => service.category === categoryFilter && service.provider.location === currentUserLoc)
+    }
+  }
 
   if (searchFilter !== "") {
     const loweredSearchFilter = searchFilter.toLowerCase();
@@ -64,12 +76,22 @@ const Home = () => {
   return servicesArr.length > 0 && jobsArr.length > 0 ? (
     <div className="navbar-service">
       <form className="navbar-service-search">
-        <div className="navbar-service-search-container">
+        <div className="navbar-loc-tile-container">
+          <input
+            className="navbar-loc-tile-radio"
+            type="checkbox"
+            name="radio-loc"
+            onChange={() => currentUserLoc ? setLocFilter(!locFilter) : history.push('/login')} />
+          <div className="navbar-loc-tile-label">
+            Providers near me
+          </div>
+        </div>
+          <div className="navbar-service-search-container">
           <input
             className="search-input-box"
             type="text"
             onChange={(e) => setSearchFilter(e.target.value)}
-            placeholder="Search"
+            placeholder="Search providers by location, service, name, or compensation"
             value={searchFilter}
           ></input>
           <div className="search-icon">
@@ -83,7 +105,6 @@ const Home = () => {
             )}
           </div>
         </div>
-        {/* <button id='hidden-submit' type='submit' className='hide'></button> */}
       </form>
       <form className="navbar-service-categories">
         <div className="navbar-service-tile-container">
@@ -95,7 +116,7 @@ const Home = () => {
             onChange={() => setCategoryFilter("all")}
           />
           <div className="navbar-service-category-tile-label all-filter">
-            all
+            all services
           </div>
         </div>
         {serviceCategories.map((category, index) => {
