@@ -23,8 +23,7 @@ router.get('/', function (req, res, next) {
 
 // POST /api/users/register
 router.post('/register', validateRegisterInput, async (req, res, next) => {
-  // Check to make sure no one has already registered with the proposed email or
-  // username.
+  // Check to make sure no one has already registered with the proposed email.
   const user = await User.findOne({
     $or: [{ email: req.body.email }]
   });
@@ -89,8 +88,10 @@ router.get('/current', restoreUser, (req, res) => {
   if (!req.user) return res.json(null);
   res.json({
     _id: req.user._id,
-    username: req.user.username,
-    email: req.user.email
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
+    email: req.user.email,
+    location: req.user.location
   });
 });
 
