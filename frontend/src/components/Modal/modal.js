@@ -32,7 +32,7 @@ function Modal() {
 			<div className="modal-background" onClick={handleClick}></div>
 			<div className="modal">
 				<header className="modal-header">
-					<i class="fa-solid fa-xmark" onClick={handleClick}></i>
+					<i className="fa-solid fa-xmark" onClick={handleClick}></i>
 				</header>
 				<div className="modal-child" onClick={(e) => e.stopPropagation()}>
 					{ modalContent }

@@ -36,7 +36,8 @@ function BookJob() {
 	return (
 			<div className="book-job-container">
 				<form onSubmit={handleSubmit}>
-					<h2 className="book-job-header">Before you book your {service.category} job with {provider.firstName}, add when and details</h2>
+					<h1 className="book-job-header">Your new booking with {provider.firstName}</h1>
+					<h2 className="book-job-subheader">Before you book your {service.category} job with {provider.firstName}, add the date and details.</h2>
 					<div className="book-job-description-field">
 						<span className="book-job-field-label">Job details</span>
 							<textarea
@@ -45,14 +46,15 @@ function BookJob() {
 								onChange={(e) => setDescription(e.target.value)}
 								rows={5}
 								cols={30}
-								placeholder={`Who, what, and where? Give ${service.provider.firstName} a few more details about the job you're booking.`}
+								placeholder={`Who, what, and where? Give ${service.provider.firstName} some more info about the job you're booking so they can prepare.`}
 							/>
 					</div>
 					<div className="book-job-date-field">
 						<span className="book-job-field-label">What's the date for this job?</span>
 						<input
 							type="date"
-							// selected={new Date()}
+							selected={new Date()}
+							min={new Date().toISOString().slice(0, 10)}
 							onChange={(e) => setDate(e.target.value)}
 						/>
 					</div>

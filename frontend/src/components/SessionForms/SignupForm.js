@@ -12,7 +12,6 @@ function SignupForm () {
   const [password2, setPassword2] = useState('');
   const [location, setLocation] = useState('');
   const errors = useSelector(state => state.errors.session);
-  const currentUser = useSelector(state => state.session.user)
   const dispatch = useDispatch();
   const history = useHistory()
 

@@ -36,7 +36,7 @@ const ServiceItem = ({service, jobs}) => {
               </header>
               <section className="service-item-details">
                 <div className="service-tile-portfolio-container">
-                  <a href={service.otherLink} target="_blank">
+                  <a href={service.otherLink} target="_blank" rel="noreferrer">
                     <span className="service-tile-portfolio">visit portfolio</span>
                     <i className="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>

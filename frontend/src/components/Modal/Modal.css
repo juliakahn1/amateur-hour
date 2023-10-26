@@ -1,32 +1,32 @@
 .modal-background {
-    width: 100vw;
-    height: 100vw;
-    background-color: rgb(0, 0, 0, 0.4);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4;
+	width: 100vw;
+	height: 100vw;
+	background-color: rgb(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 4;
 }
 
 .modal {
-    display: flex;
-    padding: 30px;
-    position: fixed;
-    background: #FFFFFF;
-    min-width: 550px;
-    border-radius: 3px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.28);
-    overflow: clip;
-    min-height: 400px;
-    flex-direction: row-reverse;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 6;
-    justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row-reverse;
+	padding: 30px;
+	position: fixed;
+	background: #FFFFFF;
+	min-width: 400px;
+	border-radius: 3px;
+	box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+	overflow: clip;
+	min-height: 200px;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	z-index: 6;
 }
 
 .fa-solid, .fa-xmark {
-    cursor: pointer;
-    color: grey;
+	cursor: pointer;
+	color: grey;
 }

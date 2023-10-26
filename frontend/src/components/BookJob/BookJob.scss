@@ -4,7 +4,12 @@
   width: 100%;
 }
 
-h2.book-job-header {
+h1.book-job-header {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+h2.book-job-subheader {
   font-size: 1rem;
   color: grey;
   line-height: 1.6rem;
@@ -35,7 +40,7 @@ h2.book-job-header {
 .book-job-date-field {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
 
 .book-job-form-button {
