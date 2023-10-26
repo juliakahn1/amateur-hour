@@ -39,7 +39,7 @@ body {
 ol, ul {
 	list-style: none;
 }
-input, button {
+input, button, textarea {
 	font-family: 'Poppins', sans-serif;
 }
 blockquote, q {

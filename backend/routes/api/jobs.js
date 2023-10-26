@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
             .sort({ createdAt: -1 });
         return res.json(jobs);
     } catch(err) {
-        return res.json([]);
+        return res.json({errors: 'No jobs found'});
     }
 });
 
@@ -48,7 +48,7 @@ router.get('/client/:userId', async (req, res, next) => {
     }
 });
 
-// get all jobs for the provider's FIRST service. 
+// get all jobs for the provider's FIRST service.
 //// TODO: get jobs for all services once we allow providers to have more than one service
 router.get('/provider/:userId', async (req, res, next) => {
     let user;
@@ -137,7 +137,7 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
 
         let job = await newJob.save();
         job = await job.populate({
-            path: "service", 
+            path: "service",
             populate: {
                 path: "provider",
                 select: "_id firstName lastName email"
@@ -166,7 +166,7 @@ router.patch('/:id', requireUser, validateJobInput, async (req, res, next) => {
             new: true
         });
         job = await job.populate({
-            path: "service", 
+            path: "service",
             populate: {
                 path: "provider",
                 select: "_id firstName lastName email"

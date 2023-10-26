@@ -20,10 +20,9 @@ const ServiceItem = ({service, jobs}) => {
     }
   }
 
-  jobs.some(job => job.client._id === currentUser._id) ?
-    bookButton = (<button className="service-item-button booked" disabled>job underway</button>) :
+  jobs.some(job => job.client._id === currentUser?._id) ?
+    bookButton = (<button className="service-item-button booked" disabled>job in progress</button>) :
     bookButton = (<button className="service-item-button" onClick={handleClick}>Book</button>)
-
 
   return (
     <>

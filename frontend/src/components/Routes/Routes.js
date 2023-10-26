@@ -19,7 +19,6 @@ export const AuthRoute = ({ component: Component, path, exact }) => {
 // prevents not-logged in users from accessing certain routes
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
   const [mounting, setMounting] = useState(false)
-  // const loggedIn = useSelector(state => !!state.session.user);
   const loggedIn = useSelector(state => state.session.user);
   useEffect(() => {
     if (loggedIn !== undefined) setMounting(true)

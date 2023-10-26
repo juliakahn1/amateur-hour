@@ -25,7 +25,7 @@ const Home = () => {
   categoryFilter === 'all' ? filteredServices = servicesArr :
     filteredServices = servicesArr.filter(service => service.category === categoryFilter)
 
-  return servicesArr.length > 0 ? (
+  return (servicesArr.length > 0 && jobsArr.length > 0) ? (
     <>
       <form className="navbar-service-categories">
         <div className="navbar-service-tile-container">
