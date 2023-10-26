@@ -49,29 +49,33 @@ function Profile () {
         <>
         <div className="service-info-container">
             <div className="welcome">
-                <h1>Hello, firstName. Here's a little bit about you:</h1>
+                <h1>Hello, {currentUser.firstName}. Here's a little bit about you:</h1>
             </div>
             <div className="user-info-container">
                 <div className="user-info-item">
-                    <p>The service you're providing:</p>
+                    <span>Your service:</span>
                     <p>{userService.category}</p>   
                 </div>
                 <div className="user-info-item">
-                    <p>Your preferred compensation:</p>
+                    <span>Preferred compensation:</span>
                     <p>{userService.compensation}</p>
                 </div>
                 <div className="user-info-item">
-                    <p>Your portfolio link:</p>
+                    <span>Portfolio link:</span>
                     <div className="portfolio-container">
-                        <a href={userService.otherLink} target="_blank" rel="noreferrer">
+                        <a className="link" href={userService.otherLink} target="_blank" rel="noreferrer">
                             <span className="portfolio">{userService.otherLink}</span>
                             <i className="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
                 </div>
-                <div className="user-info-item bottom">
-                    <p>Your email:</p>
+                <div className="user-info-item">
+                    <span>Email:</span>
                     <p>{currentUser.email}</p>
+                </div>
+                <div className="user-info-item bottom">
+                    <span>Location:</span>
+                    <p>{currentUser.location}</p>
                 </div>
             </div>
             <button onClick={handleClick}>Edit</button>

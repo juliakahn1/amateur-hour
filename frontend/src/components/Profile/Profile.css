@@ -13,18 +13,34 @@
 }
 
 .welcome {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 450;
     color: black;
 }
 
-a {
+.link {
     text-decoration: none;
     color: black;
 }
 
 .portfolio {
     padding-right: 5px;
+    font-weight: 600;
+    
 }
+
+.link {
+    padding-bottom: 1rem;
+}
+
+.user-info-item > p {
+    text-transform: uppercase;
+    padding-top: 0.2rem;
+    font-weight: 550;
+}
+
+
+
+
 
 
