@@ -1,7 +1,7 @@
 const compOptions = [
     'Yelp review',
     'Google review',
-    'Instagram post and tag account'
+    'Instagram post and tag'
 ]
 const serviceCategories = [
     'photography',
