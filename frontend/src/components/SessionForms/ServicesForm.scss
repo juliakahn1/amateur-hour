@@ -1,41 +1,114 @@
-.sign-services-background {
-  background-color: rgb(246, 246, 246);
-  height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
-}
-.signup-services-container {
-  margin-left: 25px;
-  margin-right: 25px;
-}
+h2.session-form-title {
 
-.signup-services-inner-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-h2.signup-services-title {
-  padding-top: 130px;
-  font-size: 1.5rem;
-  color: grey;
-  line-height: 1.6rem;
-  margin: 10px 0 0 0;
+  &.signup-service-page {
+    font-size: 1.5rem;
+    color: grey;
+    line-height: 1.6rem;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px 0;
+  }
 }
 
 h3.signup-services-byline {
-  font-size: 1.0rem;
   color: grey;
   line-height: 1.6rem;
   width: 60%;
-  margin: 10px 0 0 0;
 }
-.signup-services-form {
+
+.session-form {
+  margin: 20px 0px 20px 0px;
+  width: 60%;
+  color: grey;
+
+  .session-errors {
+    padding: 10px 0 3px 0 ;
+    color: rgb(215, 3, 3);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
 }
+
+.session-input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 100%;
+
+  &.signup-location-dropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+  }
+
+  .signup-location-dropdown-menu {
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+    color: grey;
+  }
+
+  .session-input-label {
+    margin-bottom: 10px;
+    font-weight: 500;
+
+    &.signup-location {
+      width: 42%;
+      line-height: 1.3rem;;
+    }
+  }
+
+  .session-input-sublabel {
+    font-size: 0.9rem;
+    line-height: 1.3rem
+  }
+
+  .session-input-text-field {
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 10px;
+  }
+}
+
+.session-form-button {
+  border: none;
+  background: rgb(211, 211, 211);
+  padding: 6px 8px 6px 8px;
+  font-size: 15px;
+  border-radius: 2px;
+  width: 100%;
+  margin: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgb(179, 179, 179);
+  }
+
+  &.create-account {
+    background: white;
+    border: 1px solid rgb(211, 211, 211);
+    color: grey;
+
+    &:hover {
+      background: rgb(179, 179, 179);
+    }
+  }
+}
+
+// TILES
+
 .services-tiles {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 15px;
 }
 
 .service-input-container {
