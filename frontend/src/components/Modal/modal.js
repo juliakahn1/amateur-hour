@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BookJob from "../BookJob/BookJob";
 import DeleteJob from "../DeleteJob/DeleteJob";
 import Profile from "../Profile/Profile";
+import ProfileEdit from "../Profile/ProfileEdit";
 import "./Modal.css"
 
 

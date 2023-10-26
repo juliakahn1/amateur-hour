@@ -30,7 +30,7 @@ function Profile () {
         if (services.length > 0) {
             makeServices();
         }
-    }, [services.length]);
+    }, [services.length, userService]);
 
     
     

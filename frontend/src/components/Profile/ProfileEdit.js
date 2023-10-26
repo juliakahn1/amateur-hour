@@ -16,7 +16,7 @@ function ProfileEdit({userService}) {
     const currentUser = useSelector(state => state.session.user);
 
     const handleSubmit = e => {
-        // e.preventDefault();
+        e.preventDefault();
         const service = {
             category: serviceCategory,
             otherLink: portfolio,
