@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { requestedJobStatuses, providedJobStatuses, statusOptions } from '../../../../constants';
 import './JobItem.scss';
+import { updateJob } from '../../../../store/jobs';
 
 const JobItem = ({ indexType, job, name, service = {}, email }) => {
     const dispatch = useDispatch();
@@ -13,11 +14,10 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
     const handleClick = (e) => {
         e.preventDefault();
         const statusIndex = statusOptions.indexOf(job.statusDescription);
-        if (statusIndex < statusOptions.length - 1) {
-            console.log('next status: ', statusOptions[statusIndex + 1])
-        } else {
-            console.log('final status: ', statusOptions[statusIndex])
-        }
+        const statusUpdate = {
+            statusDescription: statusOptions[statusIndex + 1]
+        };
+        dispatch(updateJob(statusUpdate, job._id));
     }
     
     return (
