@@ -35,7 +35,6 @@ const ServiceItem = ({service, jobs}) => {
                   <span className="service-item-loc"> | {service.provider.location}</span>
                 </h3>
                 <h2 className="service-item-name">{service.provider.firstName}</h2>
-                {/* <h3 className="service-item-loc">{service.provider.location}</h3> */}
               </header>
               <section className="service-item-details">
                 <div className="service-tile-portfolio-container">
