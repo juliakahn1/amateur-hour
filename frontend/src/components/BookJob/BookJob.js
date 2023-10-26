@@ -12,7 +12,7 @@ function BookJob() {
 	const currentUser = useSelector(state => state.session.user);
 	const [description, setDescription] = useState("");
 	const [date, setDate] = useState(null);
-	const service = useSelector(state => state.modals.service);
+	const service = useSelector(state => state.modals.entity);
 	const provider = service.provider;
 
 	const handleSubmit = e => {

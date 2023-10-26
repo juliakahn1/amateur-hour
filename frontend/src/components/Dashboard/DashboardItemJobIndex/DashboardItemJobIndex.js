@@ -1,36 +1,45 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchJobs } from '../../../store/jobs';
-import './DashboardItemJobIndex.css';
+import JobItem from './JobItem/JobItem';
+import { fetchServices } from '../../../store/services';
+import './DashboardItemJobIndex.scss';
 
-const DashboardItemJobIndex = ({indexType}) => {
+const DashboardItemJobIndex = ({ indexType }) => {
     // get all jobs from the store/backend with useEffect and useSelector
     const dispatch = useDispatch();
     const currentUser = useSelector(store => store.session.user);
-    const allJobs = Object.values(useSelector(store => store.jobs));
+    const jobs = Object.values(useSelector(store => store.jobs));
     const services = useSelector(state => state.services);
 
-    let specificJobs
-    indexType === "requests" ?
-        specificJobs = allJobs.filter(job => job.client._id === currentUser._id) : 
-        specificJobs = allJobs.filter(job => job.provider._id === currentUser._id);
+    let filteredJobs;
+    indexType === "Requested" ?
+        filteredJobs = jobs.filter(job => job.client._id === currentUser._id) :
+        filteredJobs = jobs.filter(job => job.provider._id === currentUser._id);
 
-    useEffect(() => {   
-        if (allJobs.length === 0) dispatch(fetchJobs())
+    useEffect(() => {
+        if (jobs.length === 0) dispatch(fetchJobs())
+        if (Object.values(services).length === 0) dispatch(fetchServices())
     }, []);
 
     return (
         <>
             <div className="dashboard-item-job-index-container">
-                <div className="dashboard-item-header">{indexType}</div>
+                <div className="dashboard-item-header">Your {indexType} Jobs</div>
                 <div className="job-index-container">
-                    {specificJobs.map(job => {
+                    {filteredJobs.map(job => {
+                        const name = indexType === "Requested" ? job.provider.firstName : job.client.firstName;
+                        const email = indexType === "Requested" ? job.provider.email : job.client.email;
+                        const service = services[job.service];
                         return (
-                            <div key={job._id}>
-                                <div>{indexType === "requests" ? job.provider.firstName : job.client.firstName}</div>
-                                <div>{job.description}</div>
-                                <div>{job.statusDescription}</div>
-                            </div>
+                            <JobItem
+                                key={job._id}
+                                job={job}
+                                indexType={indexType}
+                                name={name}
+                                email={email}
+                                service={service}
+                            />
                         );
                     })}
                 </div>

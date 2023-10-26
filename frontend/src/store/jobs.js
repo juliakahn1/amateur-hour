@@ -69,7 +69,8 @@ export const fetchJob = (jobId) => async (dispatch) => {
                     provider: job.service.provider,
                     client: {
                         _id: job.client._id,
-                        firstName: job.client.firstName
+                        firstName: job.client.firstName,
+                        email: job.client.email
                     },
                     statusDescription: job.statusDescription,
                     date: job.date,
@@ -97,7 +98,8 @@ export const fetchJobs = () => async (dispatch) => {
                     provider: job.service.provider,
                     client: {
                         _id: job.client._id,
-                        firstName: job.client.firstName
+                        firstName: job.client.firstName,
+                        email: job.client.email
                     },
                     statusDescription: job.statusDescription,
                     date: job.date,
@@ -126,7 +128,8 @@ export const fetchClientJobs = (clientId) => async (dispatch) => {
                     provider: job.service.provider,
                     client: {
                         _id: job.client._id,
-                        firstName: job.client.firstName
+                        firstName: job.client.firstName,
+                        email: job.client.email
                     },
                     statusDescription: job.statusDescription,
                     date: job.date,
@@ -155,7 +158,8 @@ export const fetchProviderJobs = (providerId) => async (dispatch) => {
                     provider: job.service.provider,
                     client: {
                         _id: job.client._id,
-                        firstName: job.client.firstName
+                        firstName: job.client.firstName,
+                        email: job.client.email
                     },
                     statusDescription: job.statusDescription,
                     date: job.date,
@@ -186,7 +190,8 @@ export const createJob = (job) => async (dispatch) => {
                     provider: job.service.provider,
                     client: {
                         _id: job.client._id,
-                        firstName: job.client.firstName
+                        firstName: job.client.firstName,
+                        email: job.client.email
                     },
                     statusDescription: job.statusDescription,
                     date: job.date,
@@ -216,7 +221,8 @@ export const updateJob = (job, jobId) => async (dispatch) => {
                     provider: job.service.provider,
                     client: {
                         _id: job.client._id,
-                        firstName: job.client.firstName
+                        firstName: job.client.firstName,
+                        email: job.client.email
                     },
                     statusDescription: job.statusDescription,
                     date: job.date,
