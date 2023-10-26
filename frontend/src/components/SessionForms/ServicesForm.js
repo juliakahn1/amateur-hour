@@ -33,7 +33,6 @@ const ServicesForm = () => {
 return (
   <>
     <div className="sign-services-background">
-
       <div className="signup-services-container">
         <div className="signup-services-inner-container">
           <h2 className="signup-services-title">Looking to gain cred for your skills?</h2>
