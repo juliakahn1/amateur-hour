@@ -24,7 +24,20 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
         dispatch(openModal("delete", jobInfo));
     }
 
-    const handleClick = (e) => {
+    const handleEmail = (e) => {
+        e.preventDefault();
+        navigator.clipboard.writeText(email);
+        const tooltip = document.getElementById("email-copy-tooltip");
+        tooltip.innerText = "Copied to clipboard!";
+    }
+
+    const resetTooltip = (e) => {
+        e.preventDefault();
+        const tooltip = document.getElementById("email-copy-tooltip");
+        tooltip.innerText = "Copy to clipboard";
+    }
+
+    const handleStatus = (e) => {
         e.preventDefault();
         const statusIndex = statusOptions.indexOf(job.statusDescription);
         const statusUpdate = {
@@ -40,21 +53,35 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
                     <i className="fa-solid fa-xmark"></i>
                 </div> : <></>
             }
-            <div className="job-item-category">{service.category}</div>
+            <div>
+                <div className="job-item-header-wrapper">
+                    <div className="job-item-category">{`${service.category} | `}</div>
+                    <div className="job-item-date">{`DUE: ${date.toLocaleDateString()}`}</div>
+                </div>
+            </div>
             <div className="job-item-name">{name}</div>
-            <div className="job-item-email">{email}</div>
-            <div className="job-item-date-wrapper">
-                <div className="job-item-category">Due Date:</div>
-                <div className="job-item-date">{date.toLocaleDateString()}</div>
+            <div
+                className="job-item-email-wrapper"
+                onClick={handleEmail}
+                onMouseLeave={resetTooltip}
+            >
+                <span id="email-copy-tooltip" className="email-copy-tooltip">Copy to clipboard</span>
+                <div>{email}</div>
+                <i class="fas fa-clipboard email-clipboard"></i>
             </div>
             <div className="job-item-description">{job.description}</div>
             <div className="job-item-status">
+                <div className="job-item-category">Status: </div>
                 {status}
-                {status.includes("?") ?
-                    <div className="job-item-status-buttons">
-                        <button onClick={handleClick}>Yes</button>
-                    </div> : <></>}
             </div>
+            {status.includes("?") ?
+                <button
+                    className="job-item-status-button"
+                    onClick={handleStatus}
+                >
+                    Yes
+                </button> : <></>
+            }
         </div>
     );
 }
