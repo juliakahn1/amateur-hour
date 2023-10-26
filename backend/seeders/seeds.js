@@ -181,7 +181,7 @@ services.push(
 
         //// UNCOMMENT TO USE IMAGES FROM AWS AND COMMENT REFERENCE TO LOCAL FILE
         imageUrl: "https://www.homeadvisor.com/r/wp-content/uploads/2016/01/smiling-newly-hired-gardener.jpeg",
-        // imageUrl: "https://amateur-hour-seeds.s3.us-west-1.amazonaws.com/gardening_9.jpg"
+        // imageUrl: "https://amateur-hour-seeds.s3.us-west-1.amazonaws.com/gardening_2.jpg"
     })
 );
 
