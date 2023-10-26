@@ -24,4 +24,11 @@ const statusOptions = [
     'providerCompensated'
 ]
 
-module.exports = { compOptions, serviceCategories, statusOptions }
+/// NOTE: locations are hardcoded in component 'frontend/src/components/SessionForms/SignupForm.js'. Update there if needed.
+const locationOptions = [
+    'California Bay Area',
+    'Southern California',
+    'Chicagoland'
+]
+
+module.exports = { compOptions, serviceCategories, statusOptions, locationOptions }
