@@ -11,10 +11,11 @@ import "./Home.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((store) => store.session?.user);
   const services = useSelector((store) => store.services);
+  const servicesArrAll = Object.values(services);
+  const servicesArr = servicesArrAll.filter(service => currentUser ? service.provider._id !== currentUser._id : service)
   const jobs = useSelector((store) => store.jobs);
-  const currentUserLoc = useSelector((store) => store.session?.user?.location);
-  const servicesArr = Object.values(services);
   const jobsArr = Object.values(jobs);
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [searchFilter, setSearchFilter] = useState("");
@@ -35,9 +36,9 @@ const Home = () => {
     }
   } else { // if filtering by location
     if (categoryFilter === 'all') {
-      filteredServices = servicesArr.filter(service => service.provider.location === currentUserLoc)
+      filteredServices = servicesArr.filter(service => service.provider.location === currentUser.location)
     } else {
-      filteredServices = servicesArr.filter(service => service.category === categoryFilter && service.provider.location === currentUserLoc)
+      filteredServices = servicesArr.filter(service => service.category === categoryFilter && service.provider.location === currentUser.location)
     }
   }
 
@@ -81,7 +82,7 @@ const Home = () => {
             className="navbar-loc-tile-radio"
             type="checkbox"
             name="radio-loc"
-            onChange={() => currentUserLoc ? setLocFilter(!locFilter) : history.push('/login')} />
+            onChange={() => currentUser ? setLocFilter(!locFilter) : history.push('/login')} />
           <div className="navbar-loc-tile-label">
             Providers near me
           </div>
