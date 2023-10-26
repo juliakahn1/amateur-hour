@@ -62,6 +62,11 @@ function SignupForm () {
     return e => setState(e.currentTarget.value);
   }
 
+  const updateFromDropdown = e => {
+    setLocation(e.currentTarget.value);
+    console.log(e.currentTarget.value)
+  }
+
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
@@ -110,13 +115,13 @@ function SignupForm () {
                 <span className="session-input-label signup-location">Location</span>
                 <select
                   name="services"
-                  onChange={update("location")}
+                  onChange={updateFromDropdown}
                   className="signup-location-dropdown-menu"
                   >
                     <option selected value="null">Where are you located?</option>
-                    <option value="ca-bay-area">California Bay Area</option>
-                    <option value="s-ca">Southern California</option>
-                    <option value="chicagoland">Chicagoland</option>
+                    <option value="California Bay Area">California Bay Area</option>
+                    <option value="Southern California">Southern California</option>
+                    <option value="Chicagoland">Chicagoland</option>
                 </select>
               </div>
               <div className="session-errors">
