@@ -23,7 +23,7 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
         }
         dispatch(openModal("delete", jobInfo));
     }
-    
+
     const handleClick = (e) => {
         e.preventDefault();
         const statusIndex = statusOptions.indexOf(job.statusDescription);
@@ -32,17 +32,21 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
         };
         dispatch(updateJob(statusUpdate, job._id));
     }
-    
+
     return (
         <div className="job-item-container">
-            {statusIndex < 3 ? 
+            {statusIndex < 3 ?
                 <div className="job-item-delete" onClick={handleDeleteModal}>
                     <i className="fa-solid fa-xmark"></i>
                 </div> : <></>
             }
-            <div className="job-item-header">{name} - {service.category}</div>
+            <div className="job-item-category">{service.category}</div>
+            <div className="job-item-name">{name}</div>
             <div className="job-item-email">{email}</div>
-            <div className="job-item-date">{date.toLocaleDateString()}</div>
+            <div className="job-item-date-wrapper">
+                <div className="job-item-category">Due Date:</div>
+                <div className="job-item-date">{date.toLocaleDateString()}</div>
+            </div>
             <div className="job-item-description">{job.description}</div>
             <div className="job-item-status">
                 {status}
