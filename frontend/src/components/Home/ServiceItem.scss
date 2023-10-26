@@ -35,17 +35,23 @@
 
 h3.service-item-category {
   text-transform: uppercase;
-  margin-bottom: 9px;
+  margin-bottom: 15px;
   font-size: .9rem;
   letter-spacing: -.01rem;
   font-weight: 600;
+}
+
+span.service-item-loc {
+  margin-bottom: 9px;
+  font-size: .9rem;
+  letter-spacing: -.01rem;
+  font-weight: 300;
 }
 
 h2.service-item-name {
   font-size: 1.7rem;
   margin-bottom: 15px;
   font-family: 'Lora', serif;
-
 }
 
 .service-item-details {
