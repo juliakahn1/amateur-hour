@@ -50,6 +50,7 @@ h2.session-form-title {
   width: 100%;
 
   &.signup-location-dropdown {
+    margin: 0px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -71,7 +72,8 @@ h2.session-form-title {
 
     &.signup-location {
       width: 42%;
-      line-height: 1.3rem;;
+      line-height: 1.3rem;
+      margin: 0px;
     }
   }
 
