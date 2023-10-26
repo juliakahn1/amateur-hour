@@ -1,11 +1,30 @@
-.test {
-    margin: 200px;
-}
-
 .service-info-container {
-    padding-top: 130px;
+    display: flex;
+    flex-direction: column;
+    
 }
 
-.service-edit-form {
-    padding-top: 130px;
+.user-info-item {
+    padding-top: 1rem;
 }
+
+.bottom {
+    padding-bottom: 1rem;
+}
+
+.welcome {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.portfolio {
+    padding-right: 5px;
+}
+
+
