@@ -27,13 +27,13 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
     const handleEmail = (e) => {
         e.preventDefault();
         navigator.clipboard.writeText(email);
-        const tooltip = document.getElementById("email-copy-tooltip");
+        const tooltip = e.currentTarget.children[0];
         tooltip.innerText = "Copied to clipboard!";
     }
 
     const resetTooltip = (e) => {
         e.preventDefault();
-        const tooltip = document.getElementById("email-copy-tooltip");
+        const tooltip = e.currentTarget.children[0];
         tooltip.innerText = "Copy to clipboard";
     }
 
@@ -53,11 +53,8 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
                     <i className="fa-solid fa-xmark"></i>
                 </div> : <></>
             }
-            <div>
-                <div className="job-item-header-wrapper">
-                    <div className="job-item-category">{`${service.category} | `}</div>
-                    <div className="job-item-date">{`DUE: ${date.toLocaleDateString()}`}</div>
-                </div>
+            <div className="job-item-header-wrapper">
+                <div className="job-item-category">{`${service.category}`}</div>
             </div>
             <div className="job-item-name">{name}</div>
             <div
@@ -67,7 +64,11 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
             >
                 <span id="email-copy-tooltip" className="email-copy-tooltip">Copy to clipboard</span>
                 <div>{email}</div>
-                <i class="fas fa-clipboard email-clipboard"></i>
+                <i className="fas fa-clipboard email-clipboard"></i>
+            </div>
+            <div className="job-item-date-wrapper">
+                <div className="job-item-category">Due: </div>
+                <div className="job-item-date">{date.toLocaleDateString()}</div>
             </div>
             <div className="job-item-description">{job.description}</div>
             <div className="job-item-status">

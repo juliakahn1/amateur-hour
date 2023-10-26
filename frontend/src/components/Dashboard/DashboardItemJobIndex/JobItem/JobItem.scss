@@ -53,7 +53,7 @@
     }
 
     &:hover .email-clipboard {
-        visibility: visible;
+        color: #000;
     }
 
     &:hover .email-copy-tooltip {
@@ -76,7 +76,7 @@
 }
 
 .email-clipboard {
-    visibility: hidden;
+    color: grey;
     margin-left: 5px;
 }
 
