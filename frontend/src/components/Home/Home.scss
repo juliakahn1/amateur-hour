@@ -13,19 +13,27 @@
 }
 
 .navbar-service-search {
-  padding-left: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 .navbar-service-search-container {
   position: relative;
   display: inline-block;
+  width: 20%;
+}
+
+.search-input-box {
   width: 100%;
-  align-items: end;
+  box-sizing: border-box;
+  padding: 5px 20px 5px 5px;
+  border: 1px solid #ccc;
 }
 
 .search-icon {
   position: absolute;
-  right: 15px;
+  right: 5px;
   top: 50%;
   transform: translateY(-50%);
 }
