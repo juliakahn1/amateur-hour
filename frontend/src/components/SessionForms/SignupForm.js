@@ -83,67 +83,45 @@ function SignupForm() {
                   placeholder="Email"
                   className="session-input-text-field"
                 />
-              <div className="session-errors">{errors?.email}</div>
-            </div>
-            <div className="session-input-container">
-              <span className="session-input-label">First Name</span>
-              <input type="text"
-                value={firstName}
-                onChange={update('firstName')}
-                placeholder="This is how you appear to other users"
-                className="session-input-text-field"
-              />
-              <div className="session-errors">{errors?.firstName}</div>
-            </div>
-            <div className="session-input-container">
-              <span className="session-input-label">Last Name</span>
-              <input type="text"
-                value={lastName}
-                onChange={update('lastName')}
-                placeholder="Your last name won't be shown on your profile"
-                className="session-input-text-field"
-              />
-              <div className="session-errors">{errors?.lastName}</div>
-            </div>
-            <div className="session-input-container">
-              <div className="session-input-container signup-location-dropdown">
-                <span className="session-input-label signup-location">Location</span>
-                <select
-                  name="services"
-                  onChange={update("location")}
-                  className="signup-location-dropdown-menu"
+                <div className="session-errors">{errors?.email}</div>
+              </div>
+              <div className="session-input-container">
+                <span className="session-input-label">First Name</span>
+                <input type="text"
+                  value={firstName}
+                  onChange={update('firstName')}
+                  placeholder="This is how you appear to other users"
+                  className="session-input-text-field"
+                />
+                <div className="session-errors">{errors?.firstName}</div>
+              </div>
+              <div className="session-input-container">
+                <span className="session-input-label">Last Name</span>
+                <input type="text"
+                  value={lastName}
+                  onChange={update('lastName')}
+                  placeholder="Your last name won't be shown on your profile"
+                  className="session-input-text-field"
+                />
+                <div className="session-errors">{errors?.lastName}</div>
+              </div>
+              <div className="session-input-container">
+                <div className="session-input-container signup-location-dropdown">
+                  <span className="session-input-label signup-location">Location</span>
+                  <select
+                    name="services"
+                    onChange={update("location")}
+                    className="signup-location-dropdown-menu"
                   >
                     <option selected value="null">Where are you located?</option>
                     <option value="ca-bay-area">California Bay Area</option>
                     <option value="s-ca">Southern California</option>
                     <option value="chicagoland">Chicagoland</option>
-                </select>
-              </div>
-              <div className="session-errors">
-                {errors?.location && 'Select a location'}
-              </div>
-            </div>
-            <div className="session-input-container">
-              <span className="session-input-label">Password</span>
-              <input type="password"
-                value={password}
-                onChange={update('password')}
-                placeholder="Password"
-                className="session-input-text-field"
-              />
-              <div className="session-errors">{errors?.password}</div>
-            </div>
-            <div className="session-input-container">
-              <span className="session-input-label">Confirm Password</span>
-              <input type="password"
-                value={password2}
-                onChange={update('password2')}
-                placeholder="Reenter your password"
-                className="session-input-text-field"
-              />
-            </div>
-              <div className="session-errors">
-                {password !== password2 && 'Confirm Password field must match'}
+                  </select>
+                </div>
+                <div className="session-errors">
+                  {errors?.location && 'Select a location'}
+                </div>
               </div>
               <div className="session-input-container">
                 <span className="session-input-label">Password</span>
@@ -163,9 +141,9 @@ function SignupForm() {
                   placeholder="Reenter your password"
                   className="session-input-text-field"
                 />
-                <div className="session-errors">
-                  {password !== password2 && 'Confirm Password field must match'}
-                </div>
+              </div>
+              <div className="session-errors">
+                {password !== password2 && 'Confirm Password field must match'}
               </div>
               <input
                 className="session-form-button"

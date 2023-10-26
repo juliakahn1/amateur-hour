@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 h2.session-form-title {
-
   &.signup-service-page {
     font-size: 1.5rem;
     color: grey;
@@ -15,7 +14,7 @@ h2.session-form-title {
 h3.signup-services-byline {
   color: grey;
   line-height: 1.6rem;
-  width: 60%;
+  width: 59%;
 }
 
 .session-form {
@@ -36,6 +35,10 @@ h3.signup-services-byline {
   flex-direction: column;
   margin: 10px;
   width: 100%;
+
+  &.signup-services-form {
+    margin-bottom: 30px;
+  }
 
   &.signup-location-dropdown {
     display: flex;
@@ -65,7 +68,7 @@ h3.signup-services-byline {
 
   .session-input-sublabel {
     font-size: 0.9rem;
-    line-height: 1.3rem
+    line-height: 1.3rem;
   }
 
   .session-input-text-field {
@@ -108,7 +111,10 @@ h3.signup-services-byline {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 2px;
 }
 
 .service-input-container {
@@ -133,9 +139,43 @@ h3.signup-services-byline {
   justify-content: center;
   border-radius: 3px;
   padding: 10px;
+  margin: 0 3px 0 3px;
   transition: transform 500ms ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .service-radio-button:checked + .radio-tile {
-  background-color:lightgray;
+  background-color:rgb(173, 173, 173);
+  color: white;
+}
+
+.service-radio-button:hover + .radio-tile {
+  background-color: rgb(234, 234, 234);
+}
+
+// END TILES
+
+.session-form-button-container {
+  &.signup-service-page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .service-skip {
+    background: none;
+    font-weight: 500;
+    color: gray;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+
+    &:hover {
+      color: darkgray;
+      background: none;
+    }
+  }
 }
