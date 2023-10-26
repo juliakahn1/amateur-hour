@@ -5,11 +5,40 @@
   margin: 30px 25px 0 25px;
 }
 
-.navbar-service-categories {
+.navbar-service {
   margin-left: 20px;
   margin-right: 20px;
   height: 20px;
   padding-top: 130px;
+}
+
+.navbar-service-search {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.navbar-service-search-container {
+  position: relative;
+  display: inline-block;
+  width: 20%;
+}
+
+.search-input-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 20px 5px 5px;
+  border: 1px solid #ccc;
+}
+
+.search-icon {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navbar-service-categories {
   display: flex;
   justify-content: space-evenly;
   text-transform: uppercase;

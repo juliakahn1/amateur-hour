@@ -49,6 +49,7 @@ function Profile () {
         <>
         <div className="service-info-container">
             {/* <h1>Hello, {userService.provider.firstName}</h1> */}
+            <img id='service-image' src={userService.imageUrl} alt='service-profile'></img>
             <p>{userService.category}</p>
             <p>{userService.compensation}</p>
             <p>{userService.otherLink}</p>

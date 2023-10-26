@@ -23,6 +23,9 @@ const serviceSchema = new Schema({
     otherLink: {
         type: String
     },
+    imageUrl: {
+        type: String
+    }
 }, {
     timestamps: true
 });
