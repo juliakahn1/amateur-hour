@@ -23,8 +23,7 @@ router.get('/', function (req, res, next) {
 
 // POST /api/users/register
 router.post('/register', validateRegisterInput, async (req, res, next) => {
-  // Check to make sure no one has already registered with the proposed email or
-  // username.
+  // Check to make sure no one has already registered with the proposed email.
   const user = await User.findOne({
     $or: [{ email: req.body.email }]
   });
