@@ -13,7 +13,6 @@ const receiveCurrentUser = currentUser => ({
 
 // Dispatch receiveErrors to show authentication errors on the frontend.
 const receiveErrors = errors => {
-  debugger
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
