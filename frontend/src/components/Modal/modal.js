@@ -2,6 +2,7 @@ import React from "react";
 import { closeModal } from "../../store/modals";
 import { useDispatch, useSelector } from "react-redux";
 import BookJob from "../BookJob/BookJob";
+import DeleteJob from "../DeleteJob/DeleteJob";
 import "./Modal.css"
 
 
@@ -23,6 +24,9 @@ function Modal() {
 		case 'book':
 			modalContent = <BookJob />
 			break;
+        case 'delete':
+            modalContent = <DeleteJob />
+            break;
 		default:
 			return null;
 	}

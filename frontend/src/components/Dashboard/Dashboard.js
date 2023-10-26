@@ -1,14 +1,14 @@
 import DashboardItemJobIndex from './DashboardItemJobIndex/DashboardItemJobIndex';
 
-import './Dashboard.css';
+import './Dashboard.scss';
 
 const Dashboard = () => {
     return (
         <>
             <div className="dashboard-container">
                 <div className="dashboard-item-container">
-                    <DashboardItemJobIndex indexType="requests" />
-                    <DashboardItemJobIndex indexType="jobs" />
+                    <DashboardItemJobIndex indexType="Requested" />
+                    <DashboardItemJobIndex indexType="Provided" />
                 </div>
             </div>
         </>

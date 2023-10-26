@@ -10,7 +10,7 @@ const validateServiceInput = require('../../validations/services');
 router.get('/', async (req, res) => {
     try {
         const services = await Service.find()
-            .populate("provider", "_id firstName lastName location")
+            .populate("provider", "_id firstName lastName location email")
             .sort({ createdAt: -1 });
         return res.json(services);
     }
@@ -33,7 +33,7 @@ router.get('/user/:userId', async (req, res, next) => {
     try {
         const services = await Service.find({ provider: user._id })
             .sort({ createdAt: -1 })
-            .populate("provider", "_id firstName lastName location");
+            .populate("provider", "_id firstName lastName location email");
         return res.json(services);
     }
     catch (err) {
@@ -45,7 +45,7 @@ router.get('/user/:userId', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const service = await Service.findById(req.params.id)
-            .populate("provider", "_id firstName lastName location");
+            .populate("provider", "_id firstName lastName location email");
         return res.json(service);
     }
     catch (err) {
@@ -88,7 +88,7 @@ router.post('/', requireUser, validateServiceInput, async (req, res, next) => {
         });
 
         let service = await newService.save();
-        service = await service.populate('provider', '_id firstName lastName location');
+        service = await service.populate('provider', '_id firstName lastName location email');
         return res.json(service);
     }
     catch (err) {
@@ -106,7 +106,7 @@ router.patch('/:id', requireUser, validateServiceInput, async (req, res, next) =
         let service = await Service.findOneAndUpdate(filter, req.body, {
             new: true
         });
-        service = await service.populate('provider', '_id firstName lastName location');
+        service = await service.populate('provider', '_id firstName lastName location email');
         return res.json(service);
     }
     catch (err) {
