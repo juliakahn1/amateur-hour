@@ -1,0 +1,66 @@
+.book-job-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+h1.book-job-header {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+h2.book-job-subheader {
+  font-size: 1rem;
+  color: grey;
+  line-height: 1.6rem;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 20px 0;
+}
+
+.book-job-description-field {
+  display: flex;
+  flex-direction: column;
+
+  .book-job-textarea-input {
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.book-job-field-label {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.book-job-date-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.book-job-form-button {
+  border: none;
+  background: rgb(211, 211, 211);
+  padding: 6px 8px 6px 8px;
+  font-size: 15px;
+  border-radius: 2px;
+  width: 100%;
+  margin-top: 30px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgb(179, 179, 179);
+  }
+}
+
+.calendar {
+  background-color: rgb(244, 244, 244);
+  border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 2px;
+}
