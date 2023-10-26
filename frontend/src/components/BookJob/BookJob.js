@@ -56,6 +56,7 @@ function BookJob() {
 							selected={new Date()}
 							min={new Date().toISOString().slice(0, 10)}
 							onChange={(e) => setDate(e.target.value)}
+							className="calendar"
 						/>
 					</div>
 					<input type="submit"
