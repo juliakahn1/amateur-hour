@@ -35,6 +35,7 @@ const DashboardItemJobIndex = ({ indexType }) => {
                             <JobItem
                                 key={job._id}
                                 job={job}
+                                indexType={indexType}
                                 name={name}
                                 email={email}
                                 service={service}

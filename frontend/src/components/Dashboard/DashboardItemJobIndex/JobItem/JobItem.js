@@ -1,7 +1,12 @@
+import { requestedJobStatuses, providedJobStatuses } from '../../../../constants';
+
 import './JobItem.scss';
 
-const JobItem = ({ job, name, service = {}, email}) => {
+const JobItem = ({ indexType, job, name, service = {}, email }) => {
     const date = new Date(job.date);
+    const status = indexType === "Requested" ?
+        requestedJobStatuses[job.statusDescription] :
+        providedJobStatuses[job.statusDescription];
     return (
         <div className="job-item-container">
             <div className="job-item-header">{name} - {service.category}</div>
@@ -9,11 +14,11 @@ const JobItem = ({ job, name, service = {}, email}) => {
             <div className="job-item-date">{date.toLocaleDateString()}</div>
             <div className="job-item-description">{job.description}</div>
             <div className="job-item-status">
-                {job.statusDescription}
-                <div className="job-item-status-buttons">
-                    <button>Yes</button>
-                    <button>No</button>
-                </div>
+                {status}
+                {status.includes("?") ?
+                    <div className="job-item-status-buttons">
+                        <button>Yes</button>
+                    </div> : <></>}
             </div>
         </div>
     );
