@@ -48,11 +48,11 @@ function Profile () {
     ) : (
         <>
         <div className="service-info-container">
-            {/* <h1>Hello, {userService.provider.firstName}</h1> */}
+            <h1>Hello, {currentUser.firstName}</h1>
             <p>{userService.category}</p>
             <p>{userService.compensation}</p>
             <p>{userService.otherLink}</p>
-            {/* <p>{currentUser.email}</p> */}
+            <p>{currentUser.email}</p>
             <button onClick={handleClick}>Edit</button>
         </div>
         </>

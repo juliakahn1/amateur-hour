@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateService } from "../../store/services";
-import "./Profile.css"
+import "./ProfileEdit.scss"
 
 function ProfileEdit({userService}) {
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function ProfileEdit({userService}) {
     return (
         <>
         <div className="service-edit-form">
-            <h2>Edit service</h2>
+            <h2>Edit your service</h2>
             <form onSubmit={handleSubmit}>
                 <h4>Change skill</h4>
                 <div className="services-tiles">
@@ -48,6 +48,16 @@ function ProfileEdit({userService}) {
                         })
                     }
                 </div>
+                <div className="links-container">
+                    <label>
+                        <span>Portfolio Link</span>
+                        <input
+                            type="text"
+                            value={portfolio}
+                            onChange={(e) => setPortfolio(e.target.value)}
+                        />
+                    </label>
+                </div>
                 <h4>Change compensation</h4>
                 <div className="services-tiles">
                     {
@@ -68,16 +78,6 @@ function ProfileEdit({userService}) {
                     }
                 </div>
                 <h4>Change your portfolio link</h4>
-                <div className="links-container">
-                    <label>
-                        <span>Portfolio Link</span>
-                        <input
-                            type="text"
-                            value={portfolio}
-                            onChange={(e) => setPortfolio(e.target.value)}
-                        />
-                    </label>
-                </div>
                 <input
                     type="submit"
                     value="Finish editing"
