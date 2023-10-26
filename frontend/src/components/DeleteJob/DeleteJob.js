@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../store/modals";
 import { deleteJob } from "../../store/jobs";
 
+import './DeleteJob.scss';
+
 const DeleteJob = () => {
     const dispatch = useDispatch();
     const job = useSelector(state => state.modals.entity);

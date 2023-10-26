@@ -1,0 +1,14 @@
+.delete-job-button {
+    border: none;
+    background: rgb(211, 211, 211);
+    padding: 6px 8px 6px 8px;
+    font-size: 15px;
+    border-radius: 2px;
+    width: 100%;
+    margin-top: 30px;
+    cursor: pointer;
+  
+    &:hover {
+      background: rgb(179, 179, 179);
+    }
+  }
