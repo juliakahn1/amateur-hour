@@ -28,7 +28,7 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
     
     return (
         <div className="job-item-container">
-            <div className="job-item-delete">x</div>
+            <div className="job-item-delete" onClick={handleDeleteModal}>x</div>
             <div className="job-item-header">{name} - {service.category}</div>
             <div className="job-item-email">{email}</div>
             <div className="job-item-date">{date.toLocaleDateString()}</div>
