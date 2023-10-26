@@ -33,6 +33,7 @@ const ServiceItem = ({service, jobs}) => {
               <header className="service-item-header">
                 <h3 className="service-item-category">{service.category}</h3>
                 <h2 className="service-item-name">{service.provider.firstName}</h2>
+                <h3 className="service-item-category">{service.provider.location}</h3>
               </header>
               <section className="service-item-details">
                 <div className="service-tile-portfolio-container">
