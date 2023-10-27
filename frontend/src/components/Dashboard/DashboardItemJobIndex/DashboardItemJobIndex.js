@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchJobs } from '../../../store/jobs';
+import { createClientJobs, fetchJobs } from '../../../store/jobs';
 import JobItem from './JobItem/JobItem';
 import { fetchServices } from '../../../store/services';
 import './DashboardItemJobIndex.scss';
@@ -20,6 +20,10 @@ const DashboardItemJobIndex = ({ indexType }) => {
     useEffect(() => {
         if (jobs.length === 0) dispatch(fetchJobs())
         if (Object.values(services).length === 0) dispatch(fetchServices())
+        if (indexType === "Requested" && filteredJobs.length === 0) {
+            const randServices = Object.values(services).sort(() => 0.5 - Math.random()).slice(0, 4)
+            dispatch(createClientJobs(randServices, currentUser._id))
+        } 
     }, []);
 
     return (
