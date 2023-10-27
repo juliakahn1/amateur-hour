@@ -18,6 +18,27 @@
     color: grey;
 }
 
+// .image-cropper {
+//     width: 100px;
+//     height: 100px;
+//     position: relative;
+//     overflow: hidden;
+//     border-radius: 50%;
+// }
+
+#service-image {
+    // display: inline;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    /* Or 600px instead of percentager value */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
 .link {
     text-decoration: none;
     color: black;
