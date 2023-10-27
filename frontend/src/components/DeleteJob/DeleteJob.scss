@@ -1,0 +1,34 @@
+.delete-job-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.delete-job-header {
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.delete-job-text {
+    font-size: 1rem;
+    color: grey;
+    line-height: 1.6rem;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-job-button {
+    border: none;
+    background: rgb(211, 211, 211);
+    padding: 6px 8px 6px 8px;
+    font-size: 15px;
+    border-radius: 2px;
+    width: 100%;
+    cursor: pointer;
+  
+    &:hover {
+      background: rgb(179, 179, 179);
+    }
+  }
