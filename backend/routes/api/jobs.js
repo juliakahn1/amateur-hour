@@ -13,9 +13,9 @@ router.get('/', async (req, res) => {
         const jobs = await Job.find()
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName email' })
+                populate: ({ path: 'provider', select: '_id firstName email location' })
             })
-            .populate("client", "_id firstName email")
+            .populate("client", "_id firstName email location")
             .sort({ createdAt: -1 });
         return res.json(jobs);
     } catch(err) {
@@ -38,9 +38,9 @@ router.get('/client/:userId', async (req, res, next) => {
         const jobs = await Job.find({ client: user._id })
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName email' })
+                populate: ({ path: 'provider', select: '_id firstName email location' })
             })
-            .populate("client", "_id firstName email")
+            .populate("client", "_id firstName email location")
             .sort({ createdAt: -1 })
         return res.json(jobs);
     } catch(err) {
@@ -70,9 +70,9 @@ router.get('/provider/:userId', async (req, res, next) => {
         const jobs = await Job.find({ service: firstService._id })
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName email' })
+                populate: ({ path: 'provider', select: '_id firstName email location' })
             })
-            .populate("client", "_id firstName email")
+            .populate("client", "_id firstName email location")
             .sort({ createdAt: -1 })
         return res.json(jobs);
     } catch(err) {
@@ -86,9 +86,9 @@ router.get('/:id', async (req, res, next) => {
         const job = await Job.findById(req.params.id)
             .populate({
                 path: 'service',
-                populate: ({ path: 'provider', select: '_id firstName lastName email' })
+                populate: ({ path: 'provider', select: '_id firstName lastName email location' })
             })
-            .populate("client", "_id firstName lastName location email");
+            .populate("client", "_id firstName lastName location email location");
         return res.json(job);
     } catch(err) {
         const error = new Error('Job not found');
@@ -140,11 +140,11 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
             path: "service",
             populate: {
                 path: "provider",
-                select: "_id firstName lastName email"
+                select: "_id firstName lastName email location"
             },
             select: "category compensation"
         });
-        job = await job.populate("client", "_id firstName lastName email");
+        job = await job.populate("client", "_id firstName lastName email location");
         return res.json(job);
     } catch(err) {
         next(err);
@@ -169,11 +169,11 @@ router.patch('/:id', requireUser, validateJobInput, async (req, res, next) => {
             path: "service",
             populate: {
                 path: "provider",
-                select: "_id firstName lastName email"
+                select: "_id firstName lastName email location"
             },
             select: "category compensation"
         });
-        job = await job.populate("client", "_id firstName lastName email");
+        job = await job.populate("client", "_id firstName lastName email location");
         return res.json(job);
     } catch(err) {
         const error = new Error('Job could not be updated');

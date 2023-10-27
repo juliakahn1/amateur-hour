@@ -30,7 +30,6 @@
 
 .job-item-header-wrapper {
     display: flex;
-    align-items: center;
 }
 
 .job-item-category {
@@ -38,6 +37,13 @@
     font-size: .9rem;
     letter-spacing: -.01rem;
     font-weight: 600;
+}
+
+.job-item-location {
+    margin-left: 5px;
+    font-size: .9rem;
+    letter-spacing: -.01rem;
+    font-weight: 300;
 }
 
 .job-item-name {
