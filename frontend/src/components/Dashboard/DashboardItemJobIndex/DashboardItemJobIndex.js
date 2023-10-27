@@ -34,6 +34,7 @@ const DashboardItemJobIndex = ({ indexType }) => {
                     {filteredJobs.map(job => {
                         const name = indexType === "Requested" ? job.provider.firstName : job.client.firstName;
                         const email = indexType === "Requested" ? job.provider.email : job.client.email;
+                        const location = indexType === "Requested" ? job.provider.location : job.client.location;
                         const service = services[job.service];
                         return (
                             <JobItem
@@ -42,6 +43,7 @@ const DashboardItemJobIndex = ({ indexType }) => {
                                 indexType={indexType}
                                 name={name}
                                 email={email}
+                                location={location}
                                 service={service}
                             />
                         );
