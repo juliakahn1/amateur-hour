@@ -31,7 +31,9 @@ const ServiceItem = ({service, jobs}) => {
           <div className="service-item-metadata">
             <div>
               <header className="service-item-header">
-                <h3 className="service-item-category">{service.category}</h3>
+                <h3 className="service-item-category">{service.category}
+                  <span className="service-item-loc"> | {service.provider.location}</span>
+                </h3>
                 <h2 className="service-item-name">{service.provider.firstName}</h2>
               </header>
               <section className="service-item-details">
