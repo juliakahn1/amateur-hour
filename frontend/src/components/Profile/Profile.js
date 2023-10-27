@@ -5,11 +5,10 @@ import './Profile.scss';
 import ProfileEdit from "./ProfileEdit";
 import { fetchServices } from "../../store/services";
 
-
 function Profile () {
     const dispatch = useDispatch();
     const [showEdit, setShowEdit] = useState(false);
-    
+
     const currentUser = useSelector(state => state.session.user);
     const [userService, setUserService] = useState(false);
     const services = useSelector(state => Object.values(state.services));
@@ -21,7 +20,7 @@ function Profile () {
             }
         })
     }
-    
+
     useEffect(() => {
             dispatch(fetchServices());
     }, []);
@@ -32,15 +31,15 @@ function Profile () {
         }
     }, [services.length, userService]);
 
-    
-    
+
+
     const handleClick = e => {
         e.preventDefault();
         setShowEdit(true);
     }
-    
-    
-    
+
+
+
     return (showEdit && userService) || (showEdit && !userService) ? (
         <>
             <ProfileEdit setShowEdit={setShowEdit} userService={userService}/>
@@ -55,7 +54,7 @@ function Profile () {
             <div className="user-info-container">
                 <div className="user-info-item">
                     <span>Your service:</span>
-                    <p className="service-category">{userService.category}</p>   
+                    <p className="service-category">{userService.category}</p>
                 </div>
                 <div className="user-info-item">
                     <span>Preferred compensation:</span>
