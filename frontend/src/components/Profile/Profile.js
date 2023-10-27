@@ -23,7 +23,7 @@ function Profile () {
 
     useEffect(() => {
             dispatch(fetchServices());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (services.length > 0) {
