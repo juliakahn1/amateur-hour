@@ -18,25 +18,20 @@
     color: grey;
 }
 
-// .image-cropper {
-//     width: 100px;
-//     height: 100px;
-//     position: relative;
-//     overflow: hidden;
-//     border-radius: 50%;
-// }
-
-#service-image {
-    // display: inline;
+.user-image-container {
     width: 200px;
     height: 200px;
     overflow: hidden;
     border-radius: 50%;
-    /* Or 600px instead of percentager value */
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0px auto 20px auto;
+}
+
+.user-image {
+    width: auto;
+    height: 100%;
+    margin-left: -50px;
 }
 
 .link {
@@ -47,7 +42,6 @@
 .portfolio {
     padding-right: 5px;
     font-weight: 475;
-    
 }
 
 .link {

@@ -48,7 +48,9 @@ function Profile () {
     ) : (
         <>
         <div className="service-info-container">
-                <img id='service-image' className='image-cropper' src={userService.imageUrl} alt='service-profile'></img>
+                <div className="user-image-container">
+                    <img className='user-image' src={userService.imageUrl} alt='service-profile'></img>
+                </div>
             <div className="welcome">
                 <h1>Hello, {currentUser.firstName}. Here's a little bit about you:</h1>
             </div>
