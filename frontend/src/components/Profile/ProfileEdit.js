@@ -1,10 +1,11 @@
-import { compOptions, serviceCategories } from "../../constants";
 import React from "react";
+import { compOptions, serviceCategories } from "../../constants";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateService } from "../../store/services";
-import "./ProfileEdit.scss";
 import { createService } from "../../store/services";
+import "./ProfileEdit.scss";
+import "./Profile.scss"
 
 function ProfileEdit({ userService, setShowEdit }) {
 	const dispatch = useDispatch();
@@ -39,9 +40,9 @@ function ProfileEdit({ userService, setShowEdit }) {
 	return userService ? (
 		<>
 			<div className="edit-form-container">
-				<h2 className="edit-header">Edit your service info</h2>
+				<h1 className="welcome-header">Update your profile</h1>
 				<form className="service-edit-form" onSubmit={handleSubmit}>
-					<h4 className="skill-title">Change skill</h4>
+					<h4 className="profile-modal-label">Swtich services</h4>
 					<div className="services-edit-tiles">
 						{
 							serviceCategories.map((categoryType, index) => {
@@ -61,7 +62,7 @@ function ProfileEdit({ userService, setShowEdit }) {
 						}
 					</div>
 					<div className="links-container">
-						<span className="portfolio-title">Portfolio Link</span>
+						<span className="profile-modal-label">Edit portfolio link</span>
 						<input
 							type="text"
 							value={portfolio}
@@ -69,7 +70,7 @@ function ProfileEdit({ userService, setShowEdit }) {
 							className="services-input-text-field"
 						/>
 					</div>
-					<h4 className="compensation-title">Compensation</h4>
+					<h4 className="profile-modal-label">Switch compensation</h4>
 					<div className="services-edit-tiles">
 						{
 							compOptions.map((compType, index) => {
@@ -91,7 +92,7 @@ function ProfileEdit({ userService, setShowEdit }) {
 					<div className="profile-edit-button-container profile-edit-page">
 						<input
 							type="submit"
-							value="Finish editing"
+							value="Update"
 							className="edit-button"
 							disabled={!compensation || !serviceCategory}
 						/>
