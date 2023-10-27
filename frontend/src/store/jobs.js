@@ -1,4 +1,6 @@
+import { statusOptions, jobDescriptionOptions } from "../constants";
 import jwtFetch from "./jwt";
+const { faker } = require("@faker-js/faker");
 
 const GET_JOB = "jobs/GET_JOB";
 const GET_JOBS = "jobs/GET_JOBS";
@@ -205,6 +207,52 @@ export const createJob = (job) => async (dispatch) => {
       return dispatch(getJobErrors(resBody.errors));
     }
   }
+};
+
+export const createClientJobs = (services, userId) => async (dispatch) => {
+    try {
+        services.forEach(async (serviceRecord) => {
+            const selectedStatus =
+                statusOptions[Math.floor(Math.random() * statusOptions.length)];
+            let selectedDate = faker.date.recent({ days: 10 });
+            if (["requested", "accepted"].includes(selectedStatus)) {
+                selectedDate = faker.date.soon({ days: 10 });
+            }
+            const job = {
+                service: serviceRecord._id,
+                client: userId,
+                statusDescription: selectedStatus,
+                date: selectedDate,
+                description: faker.helpers.arrayElement(jobDescriptionOptions)
+            }
+            const res = await jwtFetch("/api/jobs/", {
+                method: "POST",
+                body: JSON.stringify(job),
+            });
+            if (res.ok) {
+                const job = await res.json();
+                const payload = {
+                    _id: job._id,
+                    service: job.service._id,
+                    provider: job.service.provider,
+                    client: {
+                        _id: job.client._id,
+                        firstName: job.client.firstName,
+                        email: job.client.email,
+                    },
+                    statusDescription: job.statusDescription,
+                    date: job.date,
+                    description: job.description,
+                };
+                dispatch(addJob(payload));
+            }
+        })
+    } catch (err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400 || resBody.statusCode === 404) {
+            return dispatch(getJobErrors(resBody.errors));
+        }
+    }
 };
 
 export const updateJob = (job, jobId) => async (dispatch) => {
