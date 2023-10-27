@@ -4,7 +4,7 @@ import { updateJob } from '../../../../store/jobs';
 import './JobItem.scss';
 import { openModal } from '../../../../store/modals';
 
-const JobItem = ({ indexType, job, name, service = {}, email }) => {
+const JobItem = ({ indexType, job, name, service = {}, email, location }) => {
     const dispatch = useDispatch();
 
     const date = new Date(job.date);
@@ -55,6 +55,7 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
             }
             <div className="job-item-header-wrapper">
                 <div className="job-item-category">{`${service.category}`}</div>
+                <div className="job-item-location">{`| ${location}`}</div>
             </div>
             <div className="job-item-name">{name}</div>
             <div

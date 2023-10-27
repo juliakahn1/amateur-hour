@@ -137,13 +137,13 @@ h2.service-item-name {
 
   &.booked {
     cursor: auto;
+
+    &:hover {
+      background-color: #FAFAFA;
+    }
   }
 
-  &:hover &:not([disabled]) {
+  &:hover {
     background-color: rgb(218, 218, 218);
   }
-}
-
-.service-item-button .booked {
-  cursor: pointer;
 }

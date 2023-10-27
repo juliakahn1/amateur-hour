@@ -1,12 +1,10 @@
 import { compOptions, serviceCategories } from "../../constants";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateService } from "../../store/services";
 import "./ProfileEdit.scss";
-import { openModal } from "../../store/modals";
 import { createService } from "../../store/services";
-import { closeModal } from "../../store/modals";
 
 function ProfileEdit({userService, setShowEdit}) {
     const dispatch = useDispatch();
@@ -96,6 +94,7 @@ function ProfileEdit({userService, setShowEdit}) {
                         type="submit"
                         value="Finish editing"
                         className="edit-button"
+                        disabled= {!compensation || !serviceCategory}
                     />
                 </div>
             </form>
@@ -159,6 +158,7 @@ function ProfileEdit({userService, setShowEdit}) {
                         type="submit"
                         value="Create service"
                         className="edit-button"
+                        disabled= {!compensation || !serviceCategory}
                     />
                 </div>
             </form>
