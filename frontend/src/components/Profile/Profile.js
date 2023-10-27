@@ -43,7 +43,7 @@ function Profile () {
     
     return (showEdit && userService) || (showEdit && !userService) ? (
         <>
-            <ProfileEdit userService={userService}/>
+            <ProfileEdit setShowEdit={setShowEdit} userService={userService}/>
         </>
     ) : (
         <>

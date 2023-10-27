@@ -8,7 +8,7 @@ import { openModal } from "../../store/modals";
 import { createService } from "../../store/services";
 import { closeModal } from "../../store/modals";
 
-function ProfileEdit({userService}) {
+function ProfileEdit({userService, setShowEdit}) {
     const dispatch = useDispatch();
     const [serviceCategory, setServiceCategory] = useState();
     const [compensation, setCompensation] = useState();
@@ -23,8 +23,7 @@ function ProfileEdit({userService}) {
             compensation: compensation
         }
         dispatch(updateService(service, userService._id));
-        // dispatch(closeModal("profile"))
-        // dispatch(openModal("profile"));
+        setShowEdit(false);
     }
 
     const handlePost = e => {
@@ -35,8 +34,7 @@ function ProfileEdit({userService}) {
             provider: currentUser._id
         }
         dispatch(createService(service));
-        // dispatch(closeModal("profile"))
-        // dispatch(openModal("profile"));
+        setShowEdit(false);
     }
 
     return userService ? (
