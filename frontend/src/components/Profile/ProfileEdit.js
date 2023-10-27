@@ -27,6 +27,7 @@ function ProfileEdit({userService, setShowEdit}) {
     }
 
     const handlePost = e => {
+        e.preventDefault();
         const service = {
             category: serviceCategory,
             otherLink: portfolio,
