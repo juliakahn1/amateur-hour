@@ -8,13 +8,20 @@
 .navbar-service {
   height: 20px;
   padding-top: 130px;
+  background-color: #EFEFEF;
 }
 
 .navbar-service-search {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  margin: 0 50px 30px 50px;
+  padding: 0px 50px 30px 50px;
+  margin-bottom: 15px;
+  background-color: #EFEFEF;
+}
+
+.navbar-loc-tile-container {
+  margin-right: 15px;
 }
 
 .navbar-loc-tile-radio {
@@ -46,13 +53,13 @@
 }
 
 .navbar-loc-tile-radio:hover + .navbar-loc-tile-label {
-  background-color:rgb(243, 243, 243);
+  background-color:rgb(249, 249, 249);
 }
 
 .navbar-service-search-container {
   position: relative;
   display: inline-block;
-  width: 40%;
+  width: 65%;
 }
 
 .search-input-box {
