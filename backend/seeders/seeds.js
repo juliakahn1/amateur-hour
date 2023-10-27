@@ -95,13 +95,13 @@ serviceCategories.forEach((selectedCategory) => {
                     compOptions[Math.floor(Math.random() * compOptions.length)],
                 otherLink: faker.internet.url(),
                 //// UNCOMMENT TO USE IMAGES FROM AWS AND COMMENT REFERENCE TO LOCAL FILE
-                imageUrl: "https://www.rrstar.com/gcdn/presto/2023/01/13/NRRS/87e5ea0c-c552-43a0-852e-5f3f5e95781c-RFD0113_Top_Bartender006.JPG?width=660&height=440&fit=crop&format=pjpg&auto=webp",
-                // imageUrl:
-                //   "https://amateur-hour-seeds.s3.us-west-1.amazonaws.com/" +
-                //   selectedCategory +
-                //   "_" +
-                //   (i + 1) +
-                //   ".jpg",
+                // imageUrl: "https://www.rrstar.com/gcdn/presto/2023/01/13/NRRS/87e5ea0c-c552-43a0-852e-5f3f5e95781c-RFD0113_Top_Bartender006.JPG?width=660&height=440&fit=crop&format=pjpg&auto=webp",
+                imageUrl:
+                  "https://amateur-hour-seeds.s3.us-west-1.amazonaws.com/" +
+                  selectedCategory +
+                  "_" +
+                  (i + 1) +
+                  ".jpg",
             })
         );
         countUser += 1
@@ -159,8 +159,8 @@ services.push(
             "https://www.laurensgardenservice.com/portfolio-of-gardens-and-plantings/",
 
         //// UNCOMMENT TO USE IMAGES FROM AWS AND COMMENT REFERENCE TO LOCAL FILE
-        imageUrl: "https://www.homeadvisor.com/r/wp-content/uploads/2016/01/smiling-newly-hired-gardener.jpeg",
-        // imageUrl: "https://amateur-hour-seeds.s3.us-west-1.amazonaws.com/gardening_2.jpg"
+        // imageUrl: "https://www.homeadvisor.com/r/wp-content/uploads/2016/01/smiling-newly-hired-gardener.jpeg",
+        imageUrl: "https://amateur-hour-seeds.s3.us-west-1.amazonaws.com/gardening_2.jpg"
     })
 );
 

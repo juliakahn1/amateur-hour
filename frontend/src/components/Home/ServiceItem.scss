@@ -3,7 +3,8 @@
 
 .service-item-shape {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1em;
   padding: 15px;
 }
@@ -21,17 +22,27 @@
   }
 }
 
+.service-item-horiz-container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
 .service-item-image-container {
-  width: 150px;
-  height: 150px;
+  min-width: 30%;
+  width: 120px;
+  height: 120px;
   overflow: hidden;
   border-radius: 50%;
-  margin: 0px auto 20px auto;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: 20px;
 }
 
 .service-item-image {
   width: auto;
   height: 100%;
+  object-fit: cover;
 }
 
 .service-item-metadata {
