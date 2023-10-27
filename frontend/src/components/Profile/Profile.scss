@@ -1,47 +1,43 @@
 .service-info-container {
     display: flex;
     flex-direction: column;
+    min-width: 450px;
+    padding: 20px 20px 0px 20px;
 }
 
 .user-info-item {
-    padding-top: 1rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
-.bottom {
-    padding-bottom: 1rem;
-}
-
-.welcome {
-    font-size: 1.1rem;
-    font-weight: 450;
+.welcome-header {
+    font-size: 1.3rem;
+    font-weight: 400;
     color: grey;
+    margin-bottom: 10px;
 }
 
 .link {
     text-decoration: none;
     color: black;
+    display: flex;
+    align-items: baseline;
 }
 
-.portfolio {
-    padding-right: 5px;
-    font-weight: 475;
-
-}
-
-.link {
-    padding-bottom: 1rem;
-}
-
-.user-info-item > p {
-    padding-top: 0.2rem;
-    font-weight: 475;
-
-}
-
-.user-info-item > span {
+.profile-modal-label {
     color: grey;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 
+.profile-modal-info {
+    padding-top: 10px;
+
+    &.portfolio {
+        padding-right: 5px;
+        font-weight: 400;
+    }
+}
 
 .edit-button {
     border: none;
@@ -50,7 +46,8 @@
     font-size: 15px;
     border-radius: 2px;
     width: 100%;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     cursor: pointer;
 
     &:hover {
