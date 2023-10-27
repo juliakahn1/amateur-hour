@@ -63,7 +63,6 @@ function SignupForm() {
 
   const updateFromDropdown = (e) => {
     setLocation(e.currentTarget.value);
-    console.log(e.currentTarget.value);
   };
 
   useEffect(() => {
