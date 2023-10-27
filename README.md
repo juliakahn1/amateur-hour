@@ -1,6 +1,11 @@
 # Amateur Hour
 
+[![Live Site](https://img.shields.io/badge/site-online-green.svg)](https://amateur-hour.onrender.com/)
+
+
 Amateur Hour is a website that allows individuals to gain more cred/experience through porfolio pieces, public reviews, or social media presence to practice their crafts and gain a following.
+
+![Alt text](image.png)
 
 ## Background and overview
 
@@ -25,10 +30,12 @@ To ensure the integrity between provider and client (to avoid the client accepti
 **Bonus features**
 - [ ] Search services
 
-## Technologies and technical challenges
+## Technologies
 
-We're not using any outside APIs.
-An anticipated technical challenge is implenting the logic for the user dashboard to field service requests and ongoing jobs.
+- MongoDB - NoSQL backend database
+- Express - backend Node.js web application framework
+- React - JavaScript library for frontend components
+- Node.js - backend JavaScript runtime environment
 
 ## Group members and work breakdown
 
