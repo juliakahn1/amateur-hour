@@ -29,6 +29,9 @@ const ServiceItem = ({service, jobs}) => {
       <div className="service-item-shape">
         <div className="service-item-inner-container">
           <div className="service-item-metadata">
+            <div className='service-item-image-container'>
+              <img className='service-item-image' src={service.imageUrl} alt='service-profile'></img>
+            </div>
             <div>
               <header className="service-item-header">
                 <h3 className="service-item-category">{service.category}
