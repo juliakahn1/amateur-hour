@@ -86,6 +86,7 @@ const Home = () => {
           <div className="navbar-loc-tile-label">
             Providers near me
           </div>
+
         </div>
           <div className="navbar-service-search-container">
           <input
