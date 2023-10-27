@@ -54,8 +54,8 @@ const ServiceItem = ({service, jobs}) => {
                 </section>
               </div>
               <div className='service-item-image-container'>
-                {/* service.imageUrl */}
-                {/* "https://media.blogto.com/articles/20210906-simu-liu-stock-photos.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70 */}
+  
+                {/* CONSIDER REPLACING {service.imageUrl} WITH THE FOLLOWING LINK WHEN IN DEV TO REDUCE FETCHES FROM AWS "https://media.blogto.com/articles/20210906-simu-liu-stock-photos.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70 */}
                 <img id='service-item-image' className='service-item-image' src={service.imageUrl} alt='service-profile'></img>
               </div>
             </div>
