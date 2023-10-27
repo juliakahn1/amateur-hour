@@ -34,7 +34,7 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
     const resetTooltip = (e) => {
         e.preventDefault();
         const tooltip = e.currentTarget.children[0];
-        tooltip.innerText = "Copy to clipboard";
+        tooltip.innerText = email;
     }
 
     const handleStatus = (e) => {
@@ -62,15 +62,18 @@ const JobItem = ({ indexType, job, name, service = {}, email }) => {
                 onClick={handleEmail}
                 onMouseLeave={resetTooltip}
             >
-                <span id="email-copy-tooltip" className="email-copy-tooltip">Copy to clipboard</span>
-                <div>{email}</div>
+                <span id="email-copy-tooltip" className="email-copy-tooltip">{email}</span>
+                <div className="job-item-email">Copy Email</div>
                 <i className="fas fa-clipboard email-clipboard"></i>
             </div>
             <div className="job-item-date-wrapper">
                 <div className="job-item-category">Due: </div>
                 <div className="job-item-date">{date.toLocaleDateString()}</div>
             </div>
-            <div className="job-item-description">{job.description}</div>
+            <div className="job-item-description-wrapper">
+                <div className="job-item-category">Description: </div>
+                <div className="job-item-description">{job.description}</div>
+            </div>
             <div className="job-item-status">
                 <div className="job-item-category">Status: </div>
                 {status}

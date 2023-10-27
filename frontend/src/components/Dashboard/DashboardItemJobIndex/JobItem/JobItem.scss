@@ -1,13 +1,14 @@
 .job-item-container {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 1em;
     padding: 15px;
     margin: 5px;
     background: #fff 50%;
     background-size: cover;
     border-radius: 5px;
+    max-width: 250px;
     box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06),
       1px 3px 8px rgba(39, 44, 49, 0.03);
   
@@ -71,8 +72,8 @@
     padding: 5px;
     position: absolute;
     z-index: 1;
-    bottom: 150%;
-    right: 0;
+    bottom: 120%;
+    left: 50%;
     margin-left: -75px;
 }
 
