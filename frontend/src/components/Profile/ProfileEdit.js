@@ -96,6 +96,7 @@ function ProfileEdit({userService, setShowEdit}) {
                         type="submit"
                         value="Finish editing"
                         className="edit-button"
+                        disabled= {!compensation || !serviceCategory}
                     />
                 </div>
             </form>
@@ -159,6 +160,7 @@ function ProfileEdit({userService, setShowEdit}) {
                         type="submit"
                         value="Create service"
                         className="edit-button"
+                        disabled= {!compensation || !serviceCategory}
                     />
                 </div>
             </form>
