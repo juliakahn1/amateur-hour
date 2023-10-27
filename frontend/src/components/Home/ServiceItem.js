@@ -3,13 +3,14 @@ import { openModal } from '../../store/modals';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const ServiceItem = ({service, jobs}) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user);
   const history = useHistory();
-  const numJobs = jobs.length
-  let bookButton
+  const numJobs = jobs.length;
+  let bookButton;
 
   const handleClick = e => {
     e.preventDefault();
@@ -55,7 +56,7 @@ const ServiceItem = ({service, jobs}) => {
               <div className='service-item-image-container'>
                 {/* service.imageUrl */}
                 {/* "https://media.blogto.com/articles/20210906-simu-liu-stock-photos.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70 */}
-                <img className='service-item-image' src={service.imageUrl} alt='service-profile'></img>
+                <img id='service-item-image' className='service-item-image' src={service.imageUrl} alt='service-profile'></img>
               </div>
             </div>
             {bookButton}
