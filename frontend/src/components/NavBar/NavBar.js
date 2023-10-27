@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { logout } from '../../store/session';
-import { serviceCategories } from '../../constants';
 import './NavBar.scss';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { openModal } from '../../store/modals';
