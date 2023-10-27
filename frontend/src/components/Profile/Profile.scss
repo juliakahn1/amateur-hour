@@ -1,0 +1,65 @@
+.service-info-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.user-info-item {
+    padding-top: 1rem;
+}
+
+.bottom {
+    padding-bottom: 1rem;
+}
+
+.welcome {
+    font-size: 1.1rem;
+    font-weight: 450;
+    color: grey;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.portfolio {
+    padding-right: 5px;
+    font-weight: 475;
+    
+}
+
+.link {
+    padding-bottom: 1rem;
+}
+
+.user-info-item > p {
+    padding-top: 0.2rem;
+    font-weight: 475;
+    
+}
+
+.user-info-item > span {
+    color: grey;
+}
+
+
+.edit-button {
+    border: none;
+    background: rgb(211, 211, 211);
+    padding: 6px 8px 6px 8px;
+    font-size: 15px;
+    border-radius: 2px;
+    width: 100%;
+    margin: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background: rgb(179, 179, 179);
+      }
+}
+
+.service-category {
+    text-transform: capitalize;
+}
+
