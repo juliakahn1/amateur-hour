@@ -6,13 +6,29 @@ import { openModal } from '../../../../store/modals';
 
 const JobItem = ({ indexType, job, name, service = {}, email, location }) => {
 	const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	const date = new Date(job.date);
 	const statusIndex = statusOptions.indexOf(job.statusDescription);
 	const status = indexType === "Requested" ?
 		requestedJobStatuses[job.statusDescription] :
 		providedJobStatuses[job.statusDescription];
+	const date = new Date(job.date);
+	const statusIndex = statusOptions.indexOf(job.statusDescription);
+	const status = indexType === "Requested" ?
+		requestedJobStatuses[job.statusDescription] :
+		providedJobStatuses[job.statusDescription];
 
+	const handleDeleteModal = (e) => {
+		e.preventDefault();
+		const jobInfo = {
+			...job,
+			indexType,
+			name,
+			category: service.category
+		}
+		dispatch(openModal("delete", jobInfo));
+	}
 	const handleDeleteModal = (e) => {
 		e.preventDefault();
 		const jobInfo = {
@@ -30,13 +46,32 @@ const JobItem = ({ indexType, job, name, service = {}, email, location }) => {
 		const tooltip = e.currentTarget.children[0];
 		tooltip.innerText = "Copied to clipboard!";
 	}
+	const handleEmail = (e) => {
+		e.preventDefault();
+		navigator.clipboard.writeText(email);
+		const tooltip = e.currentTarget.children[0];
+		tooltip.innerText = "Copied to clipboard!";
+	}
 
 	const resetTooltip = (e) => {
 		e.preventDefault();
 		const tooltip = e.currentTarget.children[0];
 		tooltip.innerText = email;
 	}
+	const resetTooltip = (e) => {
+		e.preventDefault();
+		const tooltip = e.currentTarget.children[0];
+		tooltip.innerText = email;
+	}
 
+	const handleStatus = (e) => {
+		e.preventDefault();
+		const statusIndex = statusOptions.indexOf(job.statusDescription);
+		const statusUpdate = {
+			statusDescription: statusOptions[statusIndex + 1]
+		};
+		dispatch(updateJob(statusUpdate, job._id));
+	}
 	const handleStatus = (e) => {
 		e.preventDefault();
 		const statusIndex = statusOptions.indexOf(job.statusDescription);
