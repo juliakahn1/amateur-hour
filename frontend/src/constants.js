@@ -10,7 +10,7 @@ const serviceCategories = [
     'modeling',
     'cleaning',
     'bartending',
-    'DJ',
+    'dj',
     'moving',
     'videography',
     'decorating'
