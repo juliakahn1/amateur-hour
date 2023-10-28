@@ -28,6 +28,26 @@
     cursor: pointer;
 }
 
+.job-item-horiz-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.job-item-image-container {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.job-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .job-item-header-wrapper {
     display: flex;
 }

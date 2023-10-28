@@ -57,19 +57,26 @@ const JobItem = ({ indexType, job, name, service = {}, email, location }) => {
                 <div className="job-item-category">{`${service.category}`}</div>
                 <div className="job-item-location">{`| ${location}`}</div>
             </div>
-            <div className="job-item-name">{name}</div>
-            <div
-                className="job-item-email-wrapper"
-                onClick={handleEmail}
-                onMouseLeave={resetTooltip}
-            >
-                <span id="email-copy-tooltip" className="email-copy-tooltip">{email}</span>
-                <div className="job-item-email">Copy Email</div>
-                <i className="fas fa-clipboard email-clipboard"></i>
-            </div>
-            <div className="job-item-date-wrapper">
-                <div className="job-item-category">Due: </div>
-                <div className="job-item-date">{date.toLocaleDateString()}</div>
+            <div className='job-item-horiz-wrapper'>
+                <div className='job-item-left'>
+                    <div className="job-item-name">{name}</div>
+                    <div
+                        className="job-item-email-wrapper"
+                        onClick={handleEmail}
+                        onMouseLeave={resetTooltip}
+                    >
+                        <span id="email-copy-tooltip" className="email-copy-tooltip">{email}</span>
+                        <div className="job-item-email">Copy Email</div>
+                        <i className="fas fa-clipboard email-clipboard"></i>
+                    </div>
+                    <div className="job-item-date-wrapper">
+                        <div className="job-item-category">Due: </div>
+                        <div className="job-item-date">{date.toLocaleDateString()}</div>
+                    </div>
+                </div>
+                <div className='job-item-image-container'>
+                    <img id='job-item-image' className='job-item-image' src={service.imageUrl} alt='job-profile'></img>
+                </div>
             </div>
             <div className="job-item-description-wrapper">
                 <div className="job-item-category">Description: </div>
