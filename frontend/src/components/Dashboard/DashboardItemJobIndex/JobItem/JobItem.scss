@@ -11,7 +11,7 @@
     max-width: 250px;
     box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06),
       1px 3px 8px rgba(39, 44, 49, 0.03);
-  
+
     &:hover {
       box-shadow: 0 0 50px rgba(30, 34, 37, 0.1),
         0 10px 16px rgba(39, 44, 49, 0.07);
@@ -31,6 +31,13 @@
 .job-item-horiz-wrapper {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.job-item-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .job-item-image-container {
@@ -57,6 +64,7 @@
     font-size: .9rem;
     letter-spacing: -.01rem;
     font-weight: 600;
+    margin-bottom: 5p
 }
 
 .job-item-location {
@@ -69,14 +77,19 @@
 .job-item-name {
     font-size: 1.7rem;
     font-family: 'Lora', serif;
+    margin-bottom: 12px;
 }
 
 .job-item-email-wrapper {
     display: flex;
     position: relative;
+    align-items: baseline;
+    margin-bottom: 12px;
+    color: grey;
+    font-size: 0.9rem;
 
     &:hover {
-        color: grey;
+        color: darkgray;
         cursor: pointer;
     }
 
@@ -110,10 +123,20 @@
 
 .job-item-date-wrapper {
     display: flex;
+    align-items: baseline
 }
 
 .job-item-date {
     margin-left: 5px;
+}
+
+.job-item-category {
+    margin-bottom: 8px;
+}
+
+.job-item-description {
+    font-size:.9rem;
+    line-height: 1rem;
 }
 
 .job-item-status-button {
@@ -123,7 +146,7 @@
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 600;
-  
+
     &:hover {
       background-color: rgb(218, 218, 218);
     }
