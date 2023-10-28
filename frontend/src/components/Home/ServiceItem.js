@@ -3,9 +3,8 @@ import { openModal } from '../../store/modals';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
 
-const ServiceItem = ({service, jobs}) => {
+const ServiceItem = ({service, jobs, cannotRequestNewJob }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user);
   const history = useHistory();
@@ -20,10 +19,14 @@ const ServiceItem = ({service, jobs}) => {
       history.push('/login');
     }
   }
-
-  jobs.some(job => job.client._id === currentUser?._id) ?
-    bookButton = (<button className="service-item-button booked" disabled>job in progress</button>) :
-    bookButton = (<button className="service-item-button" onClick={handleClick}>Book</button>)
+  
+  if (cannotRequestNewJob) {
+    bookButton = (<button className="service-item-button booked" disabled>compensation pending</button>);
+  } else {
+    jobs.some(job => job.client._id === currentUser?._id) ?
+      bookButton = (<button className="service-item-button booked" disabled>job in progress</button>) :
+      bookButton = (<button className="service-item-button" onClick={handleClick}>Book</button>);
+  }
 
   return (
     <>
