@@ -29,7 +29,7 @@ const DashboardItemJobIndex = ({ indexType }) => {
 	return (
 		<>
 			<div className="dashboard-item-job-index-container">
-				<div className="dashboard-item-header">Your {indexType} Jobs</div>
+				<div className="dashboard-item-header">{indexType} Jobs</div>
 				<div className="job-index-container">
 					{filteredJobs.map(job => {
 						const name = indexType === "Requested" ? job.provider.firstName : job.client.firstName;
