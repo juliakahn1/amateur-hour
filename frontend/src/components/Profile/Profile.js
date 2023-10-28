@@ -52,7 +52,7 @@ function Profile() {
 				<div className="user-info-container">
 					<div className="user-info-item">
 						<span className="profile-modal-label">Service</span>
-						<p className="profile-modal-info">{userService.category}</p>
+						<p className="profile-modal-info service-category">{userService.category}</p>
 					</div>
 					<div className="user-info-item">
 						<span className="profile-modal-label">Compensation</span>
