@@ -85,6 +85,10 @@ router.post('/', requireUser, validateServiceInput, async (req, res, next) => {
             instagramLink: req.body.instagramLink,
             yelpLink: req.body.yelpLink,
             otherLink: req.body.otherLink,
+            imageUrl:
+                "https://amateur-hour-seeds.s3.us-west-1.amazonaws.com/" +
+                req.body.category +
+                "_9.jpg"
         });
 
         let service = await newService.save();
