@@ -1,21 +1,23 @@
-.job-item-container {
+.job-item-container { // CHANGES
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 1em;
-    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 20px;
     margin: 5px;
     background: #fff 50%;
     background-size: cover;
     border-radius: 5px;
-    max-width: 250px;
+    width: 75%;
+    min-height: 50px;
     box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06),
       1px 3px 8px rgba(39, 44, 49, 0.03);
-  
-    &:hover {
-      box-shadow: 0 0 50px rgba(30, 34, 37, 0.1),
-        0 10px 16px rgba(39, 44, 49, 0.07);
-    }
+}
+
+.job-item-container-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .job-item-delete {
@@ -24,12 +26,41 @@
     right: 15px;
 }
 
+
 .job-item-delete:hover {
     cursor: pointer;
 }
 
+.job-item-horiz-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.job-item-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.job-item-image-container {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    // margin-left: auto;
+    margin: 0 30px 20px 0;
+}
+
+.job-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .job-item-header-wrapper {
     display: flex;
+    margin-bottom: 10px;
 }
 
 .job-item-category {
@@ -37,6 +68,7 @@
     font-size: .9rem;
     letter-spacing: -.01rem;
     font-weight: 600;
+    margin-bottom: 5p
 }
 
 .job-item-location {
@@ -49,14 +81,25 @@
 .job-item-name {
     font-size: 1.7rem;
     font-family: 'Lora', serif;
+    margin-bottom: 12px;
+}
+
+.job-item-email-portfolio-flex {
+    display: flex;
+    align-items: baseline;
 }
 
 .job-item-email-wrapper {
     display: flex;
     position: relative;
+    align-items: baseline;
+    margin-bottom: 12px;
+    margin-right: 20px;
+    color: grey;
+    font-size: 0.9rem;
 
     &:hover {
-        color: grey;
+        color: darkgray;
         cursor: pointer;
     }
 
@@ -67,6 +110,12 @@
     &:hover .email-copy-tooltip {
         visibility: visible;
         color: #000;
+    }
+
+    .job-item-email {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.8rem;
     }
 }
 
@@ -88,22 +137,59 @@
     margin-left: 5px;
 }
 
+.job-item-portfolio {
+    color: grey;
+    &:hover {
+        color: darkgray;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
 .job-item-date-wrapper {
     display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
 }
 
 .job-item-date {
     margin-left: 5px;
 }
 
+.job-item-category {
+    margin-bottom: 8px;
+}
+
+.job-item-description {
+    font-size:.9rem;
+    line-height: 1rem;
+    margin-bottom: 15px;
+}
+
+.job-item-status-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+
+.job-item-status {
+    color: black;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
 .job-item-status-button {
-    width: 100%;
+    width: 30%;
     border: none;
     padding: 12px;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 600;
-  
+    border-radius: 2px;
+
     &:hover {
       background-color: rgb(218, 218, 218);
     }

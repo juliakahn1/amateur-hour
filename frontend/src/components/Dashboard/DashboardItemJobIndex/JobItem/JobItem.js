@@ -48,47 +48,64 @@ const JobItem = ({ indexType, job, name, service = {}, email, location }) => {
 
 	return (
 		<div className="job-item-container">
-			{statusIndex < 3 ?
-				<div className="job-item-delete" onClick={handleDeleteModal}>
-					<i className="fa-solid fa-xmark"></i>
-				</div> : <></>
-			}
-			<div className="job-item-header-wrapper">
-				<div className="job-item-category">{`${service.category}`}</div>
-				<div className="job-item-location">{`| ${location}`}</div>
+      <div className="job-item-container-inner">
+				<div className="job-item-x-loc-service-container">
+					{statusIndex < 3 ?
+						<div className="job-item-delete" onClick={handleDeleteModal}>
+							<i className="fa-solid fa-xmark"></i>
+						</div> : <></>
+					}
+					<div className="job-item-header-wrapper">
+						<div className="job-item-category">{`${service.category}`}</div>
+						<div className="job-item-location">{`| ${location}`}</div>
+					</div>
+				</div>
+				<div className='job-item-horiz-wrapper'>
+					<div className='job-item-image-container'>
+						<img id='job-item-image' className='job-item-image' src={service.imageUrl} alt='job-profile'></img>
+					</div>
+					<div className='job-item-left'>
+						<div className="job-item-name">{name}</div>
+						<div className="job-item-email-portfolio-flex">
+							<div className="job-item-email-wrapper" onClick={handleEmail} onMouseLeave={resetTooltip}>
+								<span id="email-copy-tooltip" className="email-copy-tooltip">{email}</span>
+								<div className="job-item-email">Copy email</div>
+								<i className="fas fa-clipboard email-clipboard"></i>
+							</div>
+							<div className="portfolio-info">
+								<a href="" target="_blank" rel="noreferrer">
+									<span className="service-tile-portfolio job-item-portfolio">visit portfolio</span>
+									<i className="fa-solid fa-arrow-up-right-from-square"></i>
+								</a>
+							</div>
+						</div>
+						<div className="job-item-date-wrapper">
+							<div className="job-item-category">job date </div>
+							<div className="job-item-date">{date.toLocaleDateString()}</div>
+						</div>
+					</div>
+				</div>
+				<div className="job-item-description-wrapper">
+					<div className="job-item-category">job description </div>
+					<div className="job-item-description">{job.description}</div>
+				</div>
+				<div className="job-item-status-wrapper">
+					<div className="job-item-status">
+						<div className="job-item-category">Status</div>
+						{status}
+					</div>
+					{status.includes("?") ?
+						<button
+							className="job-item-status-button"
+							onClick={handleStatus}
+						>
+							Yes
+						</button> : <></>
+					}
+				</div>
 			</div>
-			<div className="job-item-name">{name}</div>
-			<div
-				className="job-item-email-wrapper"
-				onClick={handleEmail}
-				onMouseLeave={resetTooltip}
-			>
-				<span id="email-copy-tooltip" className="email-copy-tooltip">{email}</span>
-				<div className="job-item-email">Copy Email</div>
-				<i className="fas fa-clipboard email-clipboard"></i>
-			</div>
-			<div className="job-item-date-wrapper">
-				<div className="job-item-category">Due: </div>
-				<div className="job-item-date">{date.toLocaleDateString()}</div>
-			</div>
-			<div className="job-item-description-wrapper">
-				<div className="job-item-category">Description: </div>
-				<div className="job-item-description">{job.description}</div>
-			</div>
-			<div className="job-item-status">
-				<div className="job-item-category">Status: </div>
-				{status}
-			</div>
-			{status.includes("?") ?
-				<button
-					className="job-item-status-button"
-					onClick={handleStatus}
-				>
-					Yes
-				</button> : <></>
-			}
 		</div>
-	);
+		);
 }
 
 export default JobItem;

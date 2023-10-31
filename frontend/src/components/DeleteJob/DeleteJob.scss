@@ -7,8 +7,9 @@
 
 .delete-job-header {
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .delete-job-text {
@@ -27,7 +28,7 @@
     border-radius: 2px;
     width: 100%;
     cursor: pointer;
-  
+
     &:hover {
       background: rgb(179, 179, 179);
     }
