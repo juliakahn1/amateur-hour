@@ -5,7 +5,7 @@
 
 Amateur Hour is a platform that allows individuals to gain more cred/experience through porfolio pieces, public reviews, or social media presence to practice their crafts and gain a following.
 
-![Alt text](image.png)
+![Alt text](homeIndex.png)
 
 ## Background and overview
 
@@ -25,6 +25,8 @@ Users may browse the available services by provider (e.g., name, location) or by
 - Express - backend Node.js web application framework
 - React - JavaScript library for frontend components
 - Node.js - backend JavaScript runtime environment
+- AWS - cloud storage for site images
 
+## Key Features 
 
-
+## Key Code Snippets
