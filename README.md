@@ -7,7 +7,15 @@ Amateur Hour is a platform that allows individuals to gain more cred/experience 
 
 ![intro](readmeImages/intro.png)
 
-## Background and overview
+## Table of Contents
+
+- [Background and Overview](#background-and-overview)
+- [Technologies](#technologies)
+- [Key Features](#key-features)
+  - [Service Index](#service-index)
+  - [Job Dashboard](#job-dashboard)
+
+## Background and Overview
 
 It can be near impossible for people who have marketable skills (such as photographers, carpenters, gardeners, etc.) but don't have plenty of reviews on sites like Yelp, followings on social media, or a local presense in their area to break into their respective markets. For beginning skilled folks, Amateur Hour allows them to market their services and skills to clients in exchange for recognition and credit to kickstart their businesses.
 
@@ -62,7 +70,7 @@ Logged in users can manage their requested jobs (as a client) as well as their p
 
 The displayed job status will differ between requested jobs and provided jobs:
 
-![providerAcceptance](readmeimages/providerAcceptance.png)
+![providerAcceptance](readmeImages/providerAcceptance.png)
 
 and provided jobs:
 
