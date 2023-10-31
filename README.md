@@ -3,7 +3,7 @@
 [![Live Site](https://img.shields.io/badge/site-online-green.svg)](https://amateur-hour.onrender.com/)
 
 
-Amateur Hour is a platform that allows individuals to gain more cred/experience through porfolio pieces, public reviews, or social media presence to practice their crafts and gain a following.
+[Amateur Hour](https://amateur-hour.onrender.com) is a platform that allows individuals to gain more cred/experience through porfolio pieces, public reviews, or social media presence to practice their crafts and gain a following.
 
 ![intro](readmeImages/intro.png)
 
