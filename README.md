@@ -93,6 +93,6 @@ Jobs may be cancelled by either a client or provider, unless it has been confirm
 ## Team
 
 - Julia Kahn, project lead and frontend lead
--Shannon Millar, backend lead
+- Shannon Millar, backend lead
 - Mitchell Chan, fullstack, backend-focused
 - Davis Lucky, fullstack, frontend-focused
