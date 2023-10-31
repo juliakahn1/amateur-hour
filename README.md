@@ -5,7 +5,7 @@
 
 Amateur Hour is a platform that allows individuals to gain more cred/experience through porfolio pieces, public reviews, or social media presence to practice their crafts and gain a following.
 
-![Alt text](intro.png)
+![intro](readmeImages/intro.png)
 
 ## Background and overview
 
@@ -33,14 +33,31 @@ Users may browse the available services by provider (e.g., name, location) or by
 
 Logged in users can request jobs from any of the provides on the Service Index, where they can filter on various service details:
 
-![searchbar](searchbar.png)
+![searchbar](readmeImages/searchbar.png)
 
 Service category filters are readily available can be used in conjunction with the search bar (e.g., photography services in 'california bay area'):
 
-![ServiceIndex](ServiceIndex.png)
+![ServiceIndex](readmeImages/ServiceIndex.png)
 
 Clients may have as many requested jobs as they like; however, they may not request multiple jobs from the same provider at one time, nor can they request new jobs while having any pending their compensation to providers:
 
-![jobInPrgoress](jobInProgress.png) ![compPending](compPending.png)
+![jobInPrgoress](readmeImages/jobInProgress.png) ![compPending](readmeImages/compPending.png)
 
-## Key Code Snippets
+### Job Dashboard
+
+Logged in users can manage their requested jobs (as a client) as well as their provided jobs (as a provider) in their Job Dashboard:
+
+![JobDashboard](readmeImages/JobDashboard.png)
+
+The displayed job status will differ between requested jobs and provided jobs:
+
+![providerAcceptance](readmeimages/providerAcceptance.png)
+
+and provided jobs:
+
+![acceptJob](readmeImages/acceptJob.png)
+
+Jobs may be cancelled by either a client or provider, unless it has been confirmed complete by the client and is pending compensation for the provider: 
+
+![compGiven](readmeImages/compGiven.png)
+![clientComp](readmeImages/clientComp.png)
