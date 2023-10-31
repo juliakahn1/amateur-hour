@@ -74,6 +74,13 @@ const Home = () => {
     });
   }
 
+  // boolean passed to ServiceItem props to denature "Book" button if user
+  // has any requested jobs they have not provided compensation for yet
+  const cannotRequestNewJob = jobsArr.some(job => {
+    return job.statusDescription === "clientCompleted" &&
+      job.client._id === currentUser?._id
+  });
+
   return servicesArr.length > 0 && jobsArr.length > 0 ? (
     <div className="navbar-service">
       <form className="navbar-service-search">
@@ -144,7 +151,7 @@ const Home = () => {
           );
           return (
             <div className="service-item-tile-wrapper" key={index}>
-              <ServiceItem service={service} jobs={jobs} />
+              <ServiceItem service={service} jobs={jobs} cannotRequestNewJob={cannotRequestNewJob} />
             </div>
           );
         })}

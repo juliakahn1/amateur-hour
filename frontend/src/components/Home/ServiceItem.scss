@@ -3,7 +3,8 @@
 
 .service-item-shape {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1em;
   padding: 15px;
 }
@@ -21,12 +22,37 @@
   }
 }
 
+.service-item-horiz-container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.service-item-image-container {
+  min-width: 30%;
+  width: 120px;
+  height: 120px;
+  // position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.service-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .service-item-metadata {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   padding: 25px;
+  box-sizing: border-box;
 }
 
 .service-item-header {
