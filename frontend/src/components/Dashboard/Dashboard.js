@@ -6,8 +6,8 @@ const Dashboard = () => {
 		<>
 			<div className="dashboard-container">
 				<div className="dashboard-item-container">
-						<DashboardItemJobIndex indexType="Requested" />
-						<DashboardItemJobIndex  indexType="Provided" />
+					<DashboardItemJobIndex indexType="Requested" />
+					<DashboardItemJobIndex indexType="Provided" />
 				</div>
 			</div>
 		</>

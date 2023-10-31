@@ -48,7 +48,7 @@ const JobItem = ({ indexType, job, name, service = {}, email, location }) => {
 
 	return (
 		<div className="job-item-container">
-			<div className="job-item-container-inner">
+      <div className="job-item-container-inner">
 				<div className="job-item-x-loc-service-container">
 					{statusIndex < 3 ?
 						<div className="job-item-delete" onClick={handleDeleteModal}>
