@@ -14,6 +14,7 @@ Amateur Hour is a platform that allows individuals to gain more cred/experience 
 - [Key Features](#key-features)
   - [Service Index](#service-index)
   - [Job Dashboard](#job-dashboard)
+- [Team](#team)
 
 ## Background and Overview
 
@@ -89,3 +90,9 @@ Jobs may be cancelled by either a client or provider, unless it has been confirm
     </div> : <></>
 }
 ```
+## Team
+
+Julia Kahn, project lead and frontend lead
+Shannon Millar, backend lead
+Mitchell Chan, fullstack, backend-focused
+Davis Lucky, fullstack, frontend-focused
