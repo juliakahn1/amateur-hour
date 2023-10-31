@@ -43,6 +43,17 @@ Clients may have as many requested jobs as they like; however, they may not requ
 
 ![jobInPrgoress](readmeImages/jobInProgress.png) ![compPending](readmeImages/compPending.png)
 
+#### Supporting Code Sample
+```javascript
+if (cannotRequestNewJob) {
+bookButton = (<button className="service-item-button booked" disabled>compensation pending</button>);
+} else {
+jobs.some(job => job.client._id === currentUser?._id) ?
+    bookButton = (<button className="service-item-button booked" disabled>job in progress</button>) :
+    bookButton = (<button className="service-item-button" onClick={handleClick}>Book</button>);
+}
+```
+
 ### Job Dashboard
 
 Logged in users can manage their requested jobs (as a client) as well as their provided jobs (as a provider) in their Job Dashboard:
@@ -61,3 +72,12 @@ Jobs may be cancelled by either a client or provider, unless it has been confirm
 
 ![compGiven](readmeImages/compGiven.png)
 ![clientComp](readmeImages/clientComp.png)
+
+#### Supporting Code Sample
+```javascript
+{statusIndex < 3 ?
+    <div className="job-item-delete" onClick={handleDeleteModal}>
+        <i className="fa-solid fa-xmark"></i>
+    </div> : <></>
+}
+```
