@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { requestedJobStatuses, providedJobStatuses, statusOptions } from '../../../../constants';
 import { updateJob } from '../../../../store/jobs';
-import './JobItem.scss';
 import { openModal } from '../../../../store/modals';
+import './JobItem.scss';
 
 const JobItem = ({ indexType, job, name, service = {}, email, location }) => {
 	const dispatch = useDispatch();
