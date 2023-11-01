@@ -1,0 +1,92 @@
+.footer-wrapper {
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  display: inline-block;
+  height: 250px;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer-inner-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 50px 50px 0 50px;
+}
+
+.footer-disclaimer {
+  width: 60%;
+}
+
+.footer-header {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: .02em;
+  line-height: 1.45;
+  padding-bottom: 10px;
+
+  .thinner-text {
+    font-weight: 500;
+  }
+}
+
+.footer-body {
+  font-weight: 300;
+  font-size: 0.95rem;
+  letter-spacing: .01em;
+  line-height: 1.45;
+  color:#fff;
+  text-decoration: none;
+
+  &.footer-link {
+    font-size: 0.95rem;
+    letter-spacing: .02em;
+    line-height: 1.45;
+    cursor: pointer;
+    padding-bottom: 14px;
+
+    &:hover {
+      text-decoration: underline;
+      color: #7a7a7a;
+    }
+  }
+}
+
+.emphasis {
+  font-style: italic;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.footer-link-grouping {
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-name-links-container {
+  display: flex;
+}
+
+.linkedin-img {
+  height: 20px;
+  width: 23px;
+  padding-left: 10px;
+}
+
+.github-img {
+  height: 20px;
+  width: 23px;
+  padding-left: 5px;
+
+  &.main {
+    height: 40px;
+    width: 48px;
+    padding-bottom: 10px;
+  }
+}
