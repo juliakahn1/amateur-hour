@@ -1,7 +1,7 @@
 .footer-wrapper {
   background-color: #000;
   color: #fff;
-  position: fixed;
+  position: absolute;
   display: inline-block;
   height: 250px;
   width: 100%;
@@ -41,7 +41,6 @@
   text-decoration: none;
 
   &.footer-link {
-    // font-family: nyt-franklin,Arial,Helvetica,sans-serif;
     font-size: 0.95rem;
     letter-spacing: .02em;
     line-height: 1.45;
@@ -66,7 +65,6 @@
 }
 
 .footer-link-grouping {
-  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
 }
