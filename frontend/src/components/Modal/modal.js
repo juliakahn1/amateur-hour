@@ -5,6 +5,7 @@ import BookJob from "../BookJob/BookJob";
 import DeleteJob from "../DeleteJob/DeleteJob";
 import Profile from "../Profile/Profile";
 import "./Modal.css"
+import ProfileEdit from "../Profile/ProfileEdit";
 
 
 function Modal() {
@@ -31,6 +32,9 @@ function Modal() {
         case "profile":
             modalContent = <Profile />
             break;
+		case "profile-edit":
+			modalContent = <ProfileEdit />
+			break;
 		default:
 			return null;
 	}
