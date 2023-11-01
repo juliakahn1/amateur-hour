@@ -33,11 +33,23 @@ function LoginForm () {
       dispatch(clearSessionErrors())
     }
   }
+  const toLogInDemo = (e) => {
+    e.preventDefault()
+    dispatch(login( {
+      email: "demo@user.io",
+      password: "password"
+    }))
+    if (currentUser) {
+      history.push('/')
+      dispatch(clearSessionErrors())
+    }
+  }
 
   const toSignUp = (e) => {
     e.preventDefault()
     history.push('/signup')
   }
+
 
   return (
     <>
@@ -76,6 +88,8 @@ function LoginForm () {
                 disabled={!email || !password}
                 className="session-form-button"
               />
+              <button className="session-form-button create-account" onClick={toLogInDemo}> Log in as a Demo User
+            </button>
             <button className="session-form-button create-account"
               onClick={toSignUp}>
               Create an AmateurHour account
