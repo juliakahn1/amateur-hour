@@ -9,7 +9,7 @@ const Footer = () => {
       <footer className="footer-wrapper">
         <div className="footer-inner-wrapper">
           <div className="footer-disclaimer">
-            <a href="https://github.com/shanenak" target="_blank" rel="noreferrer">
+            <a href="https://github.com/juliakahn1/amateur-hour" target="_blank" rel="noreferrer">
               <img className="github-img main" src={github} alt="linkedin logo" />
             </a>
             <p className="footer-body">
