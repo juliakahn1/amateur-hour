@@ -12,6 +12,7 @@ import ServicesForm from './components/SessionForms/ServicesForm';
 import Profile from './components/Profile/Profile';
 import Modal from './components/Modal/modal';
 import Dashboard from './components/Dashboard/Dashboard';
+import Footer from './components/Footer/Footer';
 import { Route } from 'react-router-dom/cjs/react-router-dom.min';
 
 import { getCurrentUser } from './store/session';
@@ -35,6 +36,7 @@ function App() {
         <ProtectedRoute exact path="/dashboard" component={Dashboard}/>
         <Route exact path="/" component={Home} />
       </Switch>
+      <Footer />
     </>
   );
 }
