@@ -54,6 +54,7 @@ export const fetchServices = () => async (dispatch) => {
   if (res.ok) {
     const services = await res.json()
     dispatch(getServices(services))
+    return services
   }
 }
 
