@@ -15,10 +15,16 @@ const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.json({
-    message: "GET /api/users"
-  });
+router.get('/', async (req, res, next) => {
+  try {
+    const users = await User.find()
+    return res.json(users);
+  } catch (err) {
+    return res.json([])
+  }
+  // res.json({
+  //   message: "GET /api/users"
+  // });
 });
 
 // POST /api/users/register
