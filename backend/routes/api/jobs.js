@@ -104,7 +104,7 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
     let user;
     let service;
     try {
-        user = await User.findById(req.params.userId);
+        user = await User.findById(req.body.client);
         service = await Service.findById(req.body.service);
     } catch(err) {
         const error = new Error('Job could not be not created');
@@ -114,7 +114,7 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
     }
     // check to make sure the user has not already requested a job from this service
     const job = await Job.findOne({
-        client: req.user._id,
+        client: req.body.client._id,
         service: req.body.service
     });
 
@@ -128,8 +128,8 @@ router.post('/', requireUser, validateJobInput, async (req, res, next) => {
 
     try {
         const newJob = new Job({
-            service: req.body.service,
-            client: req.user._id,
+            service: service._id,
+            client: user._id,
             statusDescription: req.body.statusDescription,
             date: req.body.date,
             description: req.body.description
