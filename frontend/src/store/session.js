@@ -1,4 +1,6 @@
+import { createClientJobs, createProviderJobs, deleteJob, fetchClientJobs, fetchProviderJobs } from './jobs';
 import jwtFetch from './jwt';
+import { fetchServices } from './services';
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
@@ -30,7 +32,9 @@ export const clearSessionErrors = () => ({
 });
 
 export const signup = user => startSession(user, 'api/users/register');
-export const login = user => startSession(user, 'api/users/login');
+export const login = user => {
+  return startSession(user, 'api/users/login');
+}
 
 const startSession = (userInfo, route) => async dispatch => {
   try {
@@ -41,7 +45,7 @@ const startSession = (userInfo, route) => async dispatch => {
     const { user, token } = await res.clone().json();
     localStorage.setItem('jwtToken', token);
     dispatch(receiveCurrentUser(user));
-    return res
+    return user
   } catch(err) {
     const res = await err.clone().json();
     if (res.statusCode === 400) {
@@ -59,6 +63,56 @@ export const logout = () => dispatch => {
 const initialState = {
   user: undefined
 };
+
+export const fetchUsers = () => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/users/`);
+    if (res.ok) {
+      const users = await res.json()
+      return users
+    } else {
+      return res.json()
+    }
+  } catch(err) {
+    return err.json()
+  }
+}
+
+export const resetDemoJobs = demoUserId => dispatch => {
+  try {
+    // delete all jobs where the demo user is the client
+    dispatch(fetchClientJobs(demoUserId))
+    .then(clientJobs=>{
+      clientJobs.forEach(job=>{
+        dispatch(deleteJob(job._id))
+      })
+    })
+    .then(()=>dispatch(fetchProviderJobs(demoUserId)))
+    .then(providerJobs=>{
+      // delete all jobs where the demo user is the provider
+      providerJobs.forEach(job=>{
+        dispatch(deleteJob(job._id))
+      })
+    })
+    .then(()=>dispatch(fetchServices()))
+    .then(services=> {
+      // create random jobs where the demo user is the client
+      const serviceId = services.find(service=> service.provider._id===demoUserId)._id
+      const randServices = Object.values(services).sort(() => 0.5 - Math.random()).slice(0, 4)
+      return Promise.all([dispatch(createClientJobs(randServices, demoUserId)), serviceId]);
+    })
+    .then(([clientJobs, serviceId])=> {
+      return Promise.all([dispatch(fetchUsers()), serviceId])
+    })
+    .then(([users, serviceId])=> {
+      // create random jobs where the demo user is the provider
+      const randUsers = Object.values(users).sort(() => 0.5 - Math.random()).slice(0, 4)
+      dispatch(createProviderJobs(randUsers, serviceId))
+    })
+  } catch(err) {
+    return err.json()
+  }
+}
 
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
