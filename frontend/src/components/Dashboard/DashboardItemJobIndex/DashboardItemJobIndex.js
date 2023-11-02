@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { createClientJobs, fetchJobs } from '../../../store/jobs';
 import JobItem from './JobItem/JobItem';
 import { fetchServices } from '../../../store/services';
-import { statusOptions } from '../../../constants';
+import { statusOptions, clientStatusPriority } from '../../../constants';
 import './DashboardItemJobIndex.scss';
 
 const DashboardItemJobIndex = ({ indexType }) => {
@@ -19,6 +19,12 @@ const DashboardItemJobIndex = ({ indexType }) => {
 		filteredJobs = jobs.filter(job => job.client._id === currentUser._id) :
 		filteredJobs = jobs.filter(job => job.provider._id === currentUser._id);
 
+	// helper function to extract a job's provider or client based on the indexType propr
+	// for sorting and JobItem props
+	const jobUser = (job) => {
+		return indexType === "Requested" ? job.provider : job.client;
+	}
+
 	if (sortBy !== "") {
 		switch (sortBy) {
 			case "Date":
@@ -30,17 +36,26 @@ const DashboardItemJobIndex = ({ indexType }) => {
 				break;
 			case "Status":
 				filteredJobs.sort((job1, job2) => {
-					const job1StatusIndex = statusOptions.indexOf(job1.statusDescription);
-					const job2StatusIndex = statusOptions.indexOf(job2.statusDescription);
+					var job1StatusIndex;
+					var job2StatusIndex;
+					if (indexType === "Requested") {
+						job1StatusIndex = clientStatusPriority.indexOf(job1.statusDescription);
+						job2StatusIndex = clientStatusPriority.indexOf(job2.statusDescription);
+					} else {
+						job1StatusIndex = statusOptions.indexOf(job1.statusDescription);
+						job2StatusIndex = statusOptions.indexOf(job2.statusDescription);
+					}
 					if (job1StatusIndex < job2StatusIndex) return -1;
-					if (job1StatusIndex > job2StatusIndex) return -1;
+					else if (job1StatusIndex > job2StatusIndex) return 1;
 					else return 0;
 				});
 				break;
 			case "Location":
 				filteredJobs.sort((job1, job2) => {
-					if (job1.location < job2.location) return -1;
-					if (job1.location > job2.location) return 1;
+					const job1User = jobUser(job1);
+					const job2User = jobUser(job2);
+					if (job1User.location < job2User.location) return -1;
+					else if (job1User.location > job2User.location) return 1;
 					else return 0;
 				});
 				break;
@@ -100,18 +115,16 @@ const DashboardItemJobIndex = ({ indexType }) => {
 				</div>
 				<div className="job-index-container">
 					{filteredJobs.map(job => {
-						const name = indexType === "Requested" ? job.provider.firstName : job.client.firstName;
-						const email = indexType === "Requested" ? job.provider.email : job.client.email;
-						const location = indexType === "Requested" ? job.provider.location : job.client.location;
+						const jobItemUser = jobUser(job);
 						const service = services[job.service];
 						return (
 							<JobItem
 								key={job._id}
 								job={job}
 								indexType={indexType}
-								name={name}
-								email={email}
-								location={location}
+								name={jobItemUser.firstName}
+								email={jobItemUser.email}
+								location={jobItemUser.location}
 								service={service}
 							/>
 						);
