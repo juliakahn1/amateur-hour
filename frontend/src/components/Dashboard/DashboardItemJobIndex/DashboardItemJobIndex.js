@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { createClientJobs, fetchJobs } from '../../../store/jobs';
 import JobItem from './JobItem/JobItem';
 import { fetchServices } from '../../../store/services';
-import { statusOptions, clientStatusPriority } from '../../../constants';
+import { jobSortOptions, statusOptions, clientStatusPriority } from '../../../constants';
 import './DashboardItemJobIndex.scss';
 
 const DashboardItemJobIndex = ({ indexType }) => {
@@ -79,39 +79,21 @@ const DashboardItemJobIndex = ({ indexType }) => {
 				<div className="dashboard-item-header">{indexType} Jobs</div>
 				<div className="dashboard-item-sort-options">
 					<div>Sort By</div>
-					<div>
-						<input
-							value="Date"
-							className=""
-							type="radio"
-							name={`${indexType}-radio-sort`}
-							checked={sortBy === "Date"}
-							onChange={() => setSortBy("Date")}
-						/>
-						<div>Date</div>
-					</div>
-					<div>
-						<input
-							value="Status"
-							className=""
-							type="radio"
-							name={`${indexType}-radio-sort`}
-							checked={sortBy === "Status"}
-							onChange={() => setSortBy("Status")}
-						/>
-						<div>Status</div>
-					</div>
-					<div>
-						<input
-							value="Location"
-							className=""
-							type="radio"
-							name={`${indexType}-radio-sort`}
-							checked={sortBy === "Location"}
-							onChange={() => setSortBy("Location")}
-						/>
-						<div>Location</div>
-					</div>
+					{jobSortOptions.map((option, index) => {
+						return (
+							<div key={index}>
+								<input
+									value={option}
+									className=""
+									type="radio"
+									name={`${indexType}-radio-sort`}
+									checked={sortBy === option}
+									onChange={() => setSortBy(option)}
+								/>
+								<div>{option}</div>
+							</div>
+						);
+					})}
 				</div>
 				<div className="job-index-container">
 					{filteredJobs.map(job => {
