@@ -2,17 +2,16 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchServices } from "../../store/services";
-import ProfileEdit from "./ProfileEdit";
 import './Profile.scss';
+import { openModal } from "../../store/modals";
 
 function Profile() {
 	const dispatch = useDispatch();
-	const [showEdit, setShowEdit] = useState(false);
-
 	const currentUser = useSelector(state => state.session.user);
 	const [userService, setUserService] = useState(false);
-	const services = useSelector(state => Object.values(state.services));
-
+	const servicesObj = useSelector(state => state.services);
+	const services = Object.values(servicesObj);
+	// debugger
 	const makeServices = () => {
 		services.forEach(service => {
 			if (service.provider._id === currentUser._id) {
@@ -22,25 +21,17 @@ function Profile() {
 	}
 
 	useEffect(() => {
-		dispatch(fetchServices());
-	}, [dispatch]);
-
-	useEffect(() => {
 		if (services.length > 0) {
 			makeServices();
 		}
-	}, [services.length, userService]);
+	}, []);
 
 	const handleClick = e => {
 		e.preventDefault();
-		setShowEdit(true);
+		dispatch(openModal("profile-edit"))
 	}
 
-	return (showEdit && userService) || (showEdit && !userService) ? (
-		<>
-			<ProfileEdit setShowEdit={setShowEdit} userService={userService} />
-		</>
-	) : (
+	return (userService)  ? (
 		<>
 			<div className="service-info-container">
 				<div className="user-image-container">
@@ -79,7 +70,7 @@ function Profile() {
 				<button className="edit-button" onClick={handleClick}>Edit</button>
 			</div>
 		</>
-	)
+	) : null
 }
 
 export default Profile;
