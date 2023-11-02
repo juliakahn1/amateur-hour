@@ -4,25 +4,49 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateService } from "../../store/services";
 import { createService } from "../../store/services";
+import { openModal, closeModal } from "../../store/modals";
+import { useEffect } from "react";
+import { fetchServices } from "../../store/services";
 import "./ProfileEdit.scss";
 import "./Profile.scss"
 
-function ProfileEdit({ userService, setShowEdit }) {
+function ProfileEdit() {
 	const dispatch = useDispatch();
+	const [userService, setUserService] = useState(false);
+	const servicesObj = useSelector(state => Object.values(state.services));
+	const services = Object.values(servicesObj);
+	const makeServices = () => {
+		services.forEach(service => {
+			if (service.provider._id === currentUser._id) {
+				setUserService(service);
+			}
+		})
+	}
+
+	useEffect(() => {
+		dispatch(fetchServices());
+	}, [dispatch]);
+
+	useEffect(() => {
+		if (services.length > 0) {
+			makeServices();
+		}
+	}, [services.length, userService]);
+
 	const [serviceCategory, setServiceCategory] = useState();
 	const [compensation, setCompensation] = useState();
 	const [portfolio, setPortfolio] = useState(userService.otherLink);
 	const currentUser = useSelector(state => state.session.user);
 
-	const handleSubmit = e => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const service = {
 			category: serviceCategory,
 			otherLink: portfolio,
 			compensation: compensation
 		}
-		dispatch(updateService(service, userService._id));
-		setShowEdit(false);
+		await dispatch(updateService(service, userService._id));
+		dispatch(openModal("profile"));
 	}
 
 	const handlePost = e => {
@@ -34,7 +58,7 @@ function ProfileEdit({ userService, setShowEdit }) {
 			provider: currentUser._id
 		}
 		dispatch(createService(service));
-		setShowEdit(false);
+		dispatch(openModal("profile"))
 	}
 
 	return userService ? (
@@ -68,6 +92,7 @@ function ProfileEdit({ userService, setShowEdit }) {
 							value={portfolio}
 							onChange={(e) => setPortfolio(e.target.value)}
 							className="services-input-text-field"
+							placeholder={userService.otherLink}
 						/>
 					</div>
 					<h4 className="profile-modal-label">Switch compensation</h4>
@@ -128,7 +153,7 @@ function ProfileEdit({ userService, setShowEdit }) {
 						<span className="portfolio-title">Portfolio Link</span>
 						<input
 							type="text"
-							value={portfolio}
+							value={userService.otherLink}
 							onChange={(e) => setPortfolio(e.target.value)}
 							className="services-input-text-field"
 						/>
