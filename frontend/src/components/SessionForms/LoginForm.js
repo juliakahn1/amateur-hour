@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './SessionForm.scss';
 
 
-import { login, clearSessionErrors } from '../../store/session';
+import { login, clearSessionErrors, resetDemoJobs } from '../../store/session';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -13,6 +13,8 @@ function LoginForm () {
   const currentUser = useSelector(state => state.session?.user);
   const dispatch = useDispatch();
   const history = useHistory()
+  const demoEmail = 'demo@user.io'
+  const demoPassword = 'password'
 
   useEffect(() => {
     return () => {
@@ -36,13 +38,14 @@ function LoginForm () {
   const toLogInDemo = (e) => {
     e.preventDefault()
     dispatch(login( {
-      email: "demo@user.io",
-      password: "password"
+      email: demoEmail,
+      password: demoPassword
     }))
-    if (currentUser) {
+    .then((user)=> {
+      dispatch(resetDemoJobs(user._id))
       history.push('/')
       dispatch(clearSessionErrors())
-    }
+  })
   }
 
   const toSignUp = (e) => {
