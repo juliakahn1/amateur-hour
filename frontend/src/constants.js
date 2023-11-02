@@ -16,11 +16,25 @@ const serviceCategories = [
     'decorating'
 ]
 
+const jobSortOptions = [
+    "Date",
+    "Status",
+    "Location"
+]
+
 const statusOptions = [
     'requested',
     'accepted',
     'providerCompleted',
     'clientCompleted',
+    'providerCompensated'
+]
+
+const clientStatusPriority = [
+    'providerCompleted',
+    'clientCompleted',
+    'requested',
+    'accepted',
     'providerCompensated'
 ]
 
@@ -75,7 +89,9 @@ const jobDescriptionOptions = [
 module.exports = {
     compOptions,
     serviceCategories,
+    jobSortOptions,
     statusOptions,
+    clientStatusPriority,
     locationOptions,
     requestedJobStatuses,
     providedJobStatuses,
