@@ -77,24 +77,25 @@ const DashboardItemJobIndex = ({ indexType }) => {
 		<>
 			<div className="dashboard-item-job-index-container">
 				<div className="dashboard-item-header">{indexType} Jobs</div>
-				<div className="dashboard-item-sort-options">
-					<div>Sort By</div>
+				<form className="dashboard-item-sort-options-container">
 					{jobSortOptions.map((option, index) => {
 						return (
-							<div key={index}>
+							<div key={index} className="dashboard-item-sort-option-container">
 								<input
 									value={option}
-									className=""
+									className="dashboard-item-sort-option-radio"
 									type="radio"
 									name={`${indexType}-radio-sort`}
 									checked={sortBy === option}
 									onChange={() => setSortBy(option)}
 								/>
-								<div>{option}</div>
+								<div className="dashboard-item-sort-option-label">
+									{option}
+								</div>
 							</div>
 						);
 					})}
-				</div>
+				</form>
 				<div className="job-index-container">
 					{filteredJobs.map(job => {
 						const jobItemUser = jobUser(job);
