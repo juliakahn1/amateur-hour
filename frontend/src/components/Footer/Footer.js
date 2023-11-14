@@ -58,7 +58,7 @@ const Footer = () => {
                 <a className="footer-body footer-link" href="#" target="_blank" rel="noreferrer">
                   Davis Lucky
                 </a>
-                <a href="#" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/in/davis-lucky/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noreferrer">
                   <img className="linkedin-img" src={linkedIn} alt="linkedin logo" />
                 </a>
                 <a href="https://github.com/davislucky" target="_blank" rel="noreferrer">
